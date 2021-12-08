@@ -1,0 +1,57 @@
+﻿@model FationShop.Areas.Admin.Framework.Menu
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row pt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div>
+                    <h4>Menu</h4>
+                    <hr />
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Name)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Link)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Link)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.DisplayOrder)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.DisplayOrder)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Status)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Status)
+                        </dd>
+
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

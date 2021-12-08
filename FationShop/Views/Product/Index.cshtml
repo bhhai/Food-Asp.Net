@@ -1,0 +1,385 @@
+﻿@model IPagedList<FationShop.Areas.Admin.Framework.Product>
+@{
+    ViewBag.Title = "Sản phẩm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using PagedList;
+@using PagedList.Mvc;
+
+<link rel="stylesheet" href="~/Assets/Client/assets/css/account.css">
+<link rel="stylesheet" href="~/Assets/Client/assets/css/new.css">
+<title>Sản phẩm</title>
+
+
+<style>
+    .pagination {
+        justify-content: flex-end;
+        margin-top: 100px;
+    }
+
+        .pagination > li {
+            display: inline-block;
+            padding: 6px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f1f1f1;
+            margin: 0 10px;
+            cursor: pointer;
+            transition: all .3s ease-in-out;
+        }
+
+            .pagination > li:hover {
+                background-color: blue;
+            }
+
+                .pagination > li:hover > a {
+                    color: #fff !important;
+                }
+
+
+            .pagination > li > a {
+                padding: 15px 15px;
+                color: blue;
+                font-weight: 500;
+                transition: all .3s ease-in-out;
+            }
+
+            .pagination > li.active {
+                background-color: blue;
+            }
+
+                .pagination > li.active > a {
+                    color: #fff;
+                }
+</style>
+
+
+<div class="top">
+    <div class="top-container">
+        <ul class="top__list">
+            <li class="top__item">
+                <a href="index.html" class="top__item-link">Trang chủ</a>
+                <i class="link__icon fas fa-chevron-right"></i>
+            </li>
+            <li class="top__item">
+                <a href="#" class="top__item-link">Sản phẩm mới về</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+@if (@ViewBag.searchString != null)
+{
+<h2 class="product__title" style="margin-top: 50px">Kết quả tìm kiếm từ khóa "@ViewBag.searchString"</h2>
+}
+
+<!-- Products -->
+<div class="product__overlay"></div>
+<div class="new">
+    <div class="new-container">
+        <div class="new__navbar">
+            <div class="new__all">
+                <h3 class="new__title">
+                    <span>
+                        danh mục sản phẩm
+                    </span>
+                    <i class="fas fa-angle-down down__btn"></i>
+                </h3>
+                <ul class="new__list">
+                    <a href="#" class="new__item-link">
+                    <li class="new__item">
+                        Trang chủ
+                    </li>
+                    </a>
+                    <a href="#" class="new__item-link">
+                    <li class="new__item">
+                        Giới thiệu
+                    </li>
+                    </a>
+                    <a href="#" class="new__item-link">
+                    <li class="new__item">
+                        Sản phẩm
+                    </li>
+                    </a>
+                    <a href="#" class="new__item-link">
+                    <li class="new__item">
+                        Tin tức
+                    </li>
+                    </a>
+                    <a href="#" class="new__item-link">
+                    <li class="new__item">
+                        Liên hệ
+                    </li>
+                    </a>
+                </ul>
+            </div>
+            <div class="new__all">
+                <h3 class="new__title">
+                    <span>
+                        giới thiệu
+                    </span>
+                    <i class="fas fa-angle-down down__btn"></i>
+                </h3>
+                <ul class="new__list">
+                    <li class="new__item">
+                        <label for="vehicle1" class="new__box-color">
+                            <input type="checkbox" class="list__checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                            <i class="fas fa-check tick-back"></i>
+                        </label>
+                        <label class="new__cb-label" for="vehicle1">Danilo</label>
+                    </li>
+                    <li for="id2" class="new__item">
+                        <label for="vehicle1" class="new__box-color">
+                            <input type="checkbox" class="list__checkbox" id="vehicle2" name="vehicle2" value="Bike">
+                            <i class="fas fa-check tick-back"></i>
+                        </label>
+                        <label class="new__cb-label" for="vehicle2">Thecosmo</label>
+                    </li>
+                    <li for="id3" class="new__item">
+                        <label for="vehicle1" class="new__box-color">
+                            <input type="checkbox" class="list__checkbox" id="vehicle3" name="vehicle3" value="Bike">
+                            <i class="fas fa-check tick-back"></i>
+                        </label>
+                        <label class="new__cb-label" for="vehicle3">TOMATO</label>
+                    </li>
+                </ul>
+            </div>
+            <div class="new__all">
+                <h3 class="new__title">
+                    <span>
+                        khoảng giá
+                    </span>
+                    <i class="fas fa-angle-down down__btn"></i>
+                </h3>
+                <ul class="new__list">
+                    <li class="new__item">
+                        <label for="vehicle1" class="new__box-color">
+                            <input type="checkbox" class="list__checkbox" id="vehicle4" name="vehicle1" value="Bike">
+                            <i class="fas fa-check tick-back"></i>
+                        </label>
+                        <label class="new__cb-label" for="vehicle4">Giá dưới 100.000₫</label>
+                    </li>
+                    <li class="new__item">
+                        <label for="vehicle1" class="new__box-color">
+                            <input type="checkbox" class="list__checkbox" id="vehicle5" name="vehicle2" value="Bike">
+                            <i class="fas fa-check tick-back"></i>
+                        </label>
+                        <label class="new__cb-label" for="vehicle5">100.000₫ - 200.000₫</label>
+                    </li>
+                    <li class="new__item">
+                        <label for="vehicle1" class="new__box-color">
+                            <input type="checkbox" class="list__checkbox" id="vehicle6" name="vehicle3" value="Bike">
+                            <i class="fas fa-check tick-back"></i>
+                        </label>
+                        <label class="new__cb-label" for="vehicle6">200.000₫ - 400.000₫</label>
+                    </li>
+                    <li class="new__item">
+                        <label for="vehicle1" class="new__box-color">
+                            <input type="checkbox" class="list__checkbox" id="vehicle7" name="vehicle3" value="Bike">
+                            <i class="fas fa-check tick-back"></i>
+                        </label>
+                        <label class="new__cb-label" for="vehicle7">400.000₫ - 500.000₫</label>
+                    </li>
+                    <li class="new__item">
+                        <label for="vehicle1" class="new__box-color">
+                            <input type="checkbox" class="list__checkbox" id="vehicle8" name="vehicle3" value="Bike">
+                            <i class="fas fa-check tick-back"></i>
+                        </label>
+                        <label class="new__cb-label" for="vehicle8">Trên 500.000₫</label>
+                    </li>
+                </ul>
+            </div>
+            <div class="new__all">
+                <h3 class="new__title">
+                    <span>
+                        kích cỡ
+                    </span>
+                    <i class="fas fa-angle-down down__btn"></i>
+                </h3>
+                <ul class="new__list">
+                    <li class="new__item">
+                        <label for="vehicle1" class="new__box-color">
+                            <input type="checkbox" class="list__checkbox" id="vehicle9" name="vehicle9" value="Bike">
+                            <i class="fas fa-check tick-back"></i>
+                        </label>
+                        <label class="new__cb-label" for="vehicle9">S</label>
+                    </li>
+                    <li for="id2" class="new__item">
+                        <label for="vehicle1" class="new__box-color">
+                            <input type="checkbox" class="list__checkbox" id="vehicle10" name="vehicle10" value="Bike">
+                            <i class="fas fa-check tick-back"></i>
+                        </label>
+                        <label class="new__cb-label" for="vehicle10">M</label>
+                    </li>
+                    <li for="id3" class="new__item">
+                        <label for="vehicle1" class="new__box-color">
+                            <input type="checkbox" class="list__checkbox" id="vehicle11" name="vehicle11" value="Bike">
+                            <i class="fas fa-check tick-back"></i>
+                        </label>
+                        <label class="new__cb-label" for="vehicle11">L</label>
+                    </li>
+                    <li for="id3" class="new__item">
+                        <label for="vehicle1" class="new__box-color">
+                            <input type="checkbox" class="list__checkbox" id="vehicle12" name="vehicle12" value="Bike">
+                            <i class="fas fa-check tick-back"></i>
+                        </label>
+                        <label class="new__cb-label" for="vehicle12">XL</label>
+                    </li>
+                    <li for="id3" class="new__item">
+                        <label for="vehicle1" class="new__box-color">
+                            <input type="checkbox" class="list__checkbox" id="vehicle13" name="vehicle13" value="Bike">
+                            <i class="fas fa-check tick-back"></i>
+                        </label>
+                        <label class="new__cb-label" for="vehicle13">XXL</label>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="new__all">
+                <h3 class="new__title">
+                    <span>
+                        màu sắc
+                    </span>
+                    <i class="fas fa-angle-down down__btn"></i>
+                </h3>
+                <div class="new__list new__color list__box">
+                    <label for="color__check">
+                        <div class="bg__color">
+                            <input type="checkbox" class="input__check" id="color__check">
+                            <i class="tick fas fa-check"></i>
+                        </div>
+                    </label>
+                    <label for="color__check2">
+                        <div class="bg__color" style="background-color: #b033de;">
+                            <input type="checkbox" class="input__check" id="color__check2">
+                            <i class="tick fas fa-check"></i>
+                        </div>
+                    </label>
+                    <label for="color__check3">
+                        <div class="bg__color" style="background-color: red;">
+                            <input type="checkbox" class="input__check" id="color__check3">
+                            <i class="tick fas fa-check"></i>
+                        </div>
+                    </label>
+                    <label for="color__check4">
+                        <div class="bg__color" style="background-color: green;">
+                            <input type="checkbox" class="input__check" id="color__check4">
+                            <i class="tick fas fa-check"></i>
+                        </div>
+                    </label>
+                    <label for="color__check5">
+                        <div class="bg__color" style="background-color: palevioletred;">
+                            <input type="checkbox" class="input__check" id="color__check5">
+                            <i class="tick fas fa-check"></i>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="new__products">
+            <div class="new__sort">
+                <span class="new__sort-txt">Sắp xếp:</span>
+                <select name="" class="new__select">
+                    <option value="Mặc định">Mặc định</option>
+                    <option value="Giá: Tăng dần">Giá: Tăng dần</option>
+                    <option value="Giá: Giảm dần">Giá: Giảm dần</option>
+                    <option value="Tên: A-Z">Tên: A-Z</option>
+                    <option value="Tên: Z-A">Tên: Z-A</option>
+                    <option value="Mới nhất">Mới nhất</option>
+                    <option value="Cũ nhất">Cũ nhất</option>
+                </select>
+            </div>
+            <hr>
+
+            <div class="new__list-pro">
+                <div class="product__list">
+                    @foreach (var item in Model)
+                    {
+                        var url = "/san-pham/" + item.MetaTitle + "-" + item.ID;
+                        <div class="product__item">
+                            <a href="@url" class="pro__item-link">
+                                <div class="product__img">
+                                    <img src="@item.Image1" class="product__item-img" alt="" width="100%">
+                                    <img src="@item.Image2" class="product__item-hidden" alt="" width="100%">
+                                </div>
+                                <div class="product__name">
+                                    <h5 class="product__name-item">
+                                        <a href="product-details1.html" class="product__name-link">
+                                            @item.Name
+                                        </a>
+                                    </h5>
+                                    @if (item.PromotionPrice.HasValue)
+                                    {
+                                        <span><span class="price">@(item.Price.HasValue ? item.Price.Value.ToString("N0") + "₫" : "Liên hệ")</span></span>
+                                        <span class="product__price">@(item.PromotionPrice.HasValue ? item.PromotionPrice.Value.ToString("N0") + "₫" : "")</span>
+                                    }
+                                    else
+                                    {
+                                        <span><span class="product__price">@(item.Price.HasValue ? item.Price.Value.ToString("N0") + "₫" : "Liên hệ")</span></span>
+                                    }
+                                </div>
+                            </a>
+                            <div class="product__icon">
+                                <div class="product__ic icon__hover1">
+                                    <i class="fas fa-cart-plus"></i>
+                                </div>
+                                <div class="product__ic icon__hover2" style="margin: 0 20px;">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                                <div class="product__ic icon__hover3">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                            </div>
+
+                            <!-- Modal -->
+                            <div class="product__modal">
+                                <div class="modal__title">
+                                    <h3 class="modal__h3">thông tin sản phẩm</h3>
+                                </div>
+                                <div class="modal__body">
+                                    <div class="modal__close">
+                                        <i class="far fa-times-circle"></i>
+                                    </div>
+                                    <div class="modal__img">
+                                        <div class="modal__main-img">
+                                            <img src="@item.Image1" class="pro__main-im" width="100%" alt="">
+                                        </div>
+                                        <div class="modal__change-img">
+                                            <div class="modal__ch img__active" onclick="changeImg(this)">
+                                                <img src="@item.Image1" alt="">
+                                            </div>
+                                            <div class="modal__ch" onclick="changeImg(this)">
+                                                <img src="@item.Image2" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal__detail">
+                                        <h4 class="modal__detail-title">@item.Name</h4>
+                                        @if (item.PromotionPrice.HasValue)
+                                        {
+                                            <span><span class="price">@(item.Price.HasValue ? item.Price.Value.ToString("N0") + "₫" : "Liên hệ")</span></span>
+                                            <span class="product__price">@(item.PromotionPrice.HasValue ? item.PromotionPrice.Value.ToString("N0") + "₫" : "")</span>
+                                        }
+                                        else
+                                        {
+                                            <span><span class="product__price">@(item.Price.HasValue ? item.Price.Value.ToString("N0") + "₫" : "Liên hệ")</span></span>
+                                        }
+                                        <p class="modal__detail-p">
+                                            @item.Detail
+                                        </p>
+                                        <div class="modal__buy">
+                                            <button class="modal__btn">Hết hàng</button>
+                                            <span class="modal__or">hoặc</span>
+                                            <a href="#" class="modal__link">Xem chi tiết</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                @Html.PagedListPager(Model, page => Url.Action("Index", "Categories", new { page, ViewBag.searchString }))
+            </div>
+        </div>
+    </div>
+</div>

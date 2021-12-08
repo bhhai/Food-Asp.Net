@@ -1,0 +1,111 @@
+﻿@model FationShop.Areas.Admin.Framework.Customer
+@using BotDetect.Web.Mvc;
+@{
+    ViewBag.Title = "Đăng ký";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<title>@ViewBag.Title</title>
+<link href="@BotDetect.Web.CaptchaUrls.Absolute.LayoutStyleSheetUrl"
+      rel="stylesheet" type="text/css" />
+@{
+    MvcCaptcha registerCaptcha = new MvcCaptcha("registerCaptcha");
+    registerCaptcha.UserInputID = "CaptchaCode";
+}
+
+
+<style>
+    #register__form {
+        display: block;
+        margin: 50px auto 0;
+    }
+    
+</style>
+<link href="~/Assets/Client/assets/css/Alert.css" rel="stylesheet" />
+
+
+
+@using (Html.BeginForm("Register", "User", FormMethod.Post, new { @class = "form__item", @id = "register__form" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form__title">ĐĂNG KÝ THÀNH VIÊN MỚI</div>
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    if (ViewBag.SuccessMsg != null)
+    {
+        <div class="noti noti-success" role="alert">
+            @ViewBag.SuccessMsg
+        </div>
+    }
+    else if (ViewBag.ErrMsg != null)
+    {
+        <div class="noti noti-danger" role="alert">
+            @ViewBag.ErrMsg
+        </div>
+    }
+    <div class="form__box">
+        <div class="form__children">
+            <span class="required">*</span>
+            <i class="input__icon fas fa-envelope"></i>
+            @Html.TextBoxFor(model => model.Email, new { @class = "form__input", @id = "regis__email", @placeholder = "Email" })
+        </div>
+        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "form__errMsg" })
+    </div>
+    <div class="form__box">
+        <div class="form__children">
+            <span class="required">*</span>
+            <i class="input__icon fas fa-user"></i>
+            @Html.TextBoxFor(model => model.DisplayName, new { @class = "form__input", @id = "first-name", @placeholder = "Họ và tên" })
+        </div>
+        @Html.ValidationMessageFor(model => model.DisplayName, "", new { @class = "form__errMsg" })
+    </div>
+    <div class="form__box">
+        <div class="form__children">
+            <span class="required">*</span>
+            <i class="input__icon fas fa-lock"></i>
+            @Html.PasswordFor(model => model.Password, new { @class = "form__input", @id = "first-name", @placeholder = "Mật khẩu" })
+        </div>
+        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "form__errMsg" })
+    </div>
+    <div class="form__box">
+        <div class="form__children">
+            <span class="required">*</span>
+            <i class="input__icon fas fa-lock"></i>
+            @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form__input", @id = "first-name", @placeholder = "Nhập lại mật khẩu" })
+        </div>
+        @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "form__errMsg" })
+    </div>
+    <div class="form__box">
+        <div class="form__children">
+            <span class="required">*</span>
+            <i class="input__icon fas fa-address-card"></i>
+            @Html.TextBoxFor(model => model.Address, new { @class = "form__input", @id = "first-name", @placeholder = "Địa chỉ" })
+        </div>
+        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "form__errMsg" })
+    </div>
+    <div class="form__box">
+        <div class="form__children">
+            <span class="required">*</span>
+            <i class="input__icon fas fa-mobile-alt"></i>
+            @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form__input", @id = "first-name", @placeholder = "Số điện thoại" })
+        </div>
+        @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "form__errMsg" })
+    </div>
+    <div class="form__box">
+        <div style="display: flex; justify-content: space-between; border: none; height: 40px; border-radius: 0; font-weight: normal;">
+            @Html.TextBox("CaptchaCode", null, new { @style = "outline: none; padding: 0 10px; height: 40px; border: 1px solid #ccc; width: 50%", @placeholder = "Mã xác nhận" })
+            @Html.Captcha(registerCaptcha)
+        </div>
+        
+        @Html.ValidationMessageFor(model => model.CaptchaCode, "", new { @class = "form__errMsg" })
+    </div>
+    
+    
+    
+
+    <div class="form__button">
+        <button type="submit" class="form__btn">Đăng ký</button>
+    </div>
+}
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

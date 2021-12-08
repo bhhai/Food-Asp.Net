@@ -1,0 +1,137 @@
+﻿@model FationShop.Areas.Admin.Framework.Product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row pt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div>
+                    <h4>Chi tiết sản phẩm</h4>
+                    <hr />
+                    <dl class="dl-horizontal list-group list-group-flush">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Name)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.MetaTitle)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.MetaTitle)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Code)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Code)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Description)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Description)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Image1)
+                        </dt>
+
+                        <dd>
+                            <img src="@Url.Content(@Model.Image1)" alt="@Model.Name" style="width: 100px" />
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Image2)
+                        </dt>
+
+                        <dd>
+                            <img src="@Url.Content(@Model.Image2)" alt="@Model.Name" style="width: 100px" />
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.MoreImage)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.MoreImage)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Price)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Price)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.PromotionPrice)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.PromotionPrice)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Quantity)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Quantity)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.CategoryID)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.CategoryID)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Detail)
+                        </dt>
+
+                        <dd>
+                            @Html.Raw(Model.Detail)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Status)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Status)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Size)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Size)
+                        </dd>
+
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

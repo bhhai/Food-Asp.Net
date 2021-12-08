@@ -1,0 +1,63 @@
+﻿@model IEnumerable<FationShop.Areas.Admin.Framework.Slide>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<p class="pt-3">
+    @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary" })
+</p>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="m-0">Quản lý slider</h2>
+            </div>
+            <div class="card-body">
+            <table class="table table-striped">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Image)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DisplayOrder)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <img src="@Url.Content(item.Image)" alt="@Model.First().ID" style="width: 100px" />
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DisplayOrder)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-warning" }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "btn btn-info" }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+
+                @*@Html.PagedListPager(Model, page => Url.Action("Index", "Categories", new { page, ViewBag.searchString }))*@
+            </div>
+        </div>
+    </div>
+
+</div>
+
+

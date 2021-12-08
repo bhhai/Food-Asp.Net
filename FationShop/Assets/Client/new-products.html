@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sản phẩm mới</title>
+    <link rel="shortcut icon" type="image" href="./assets/img/shortcut-icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/home.css">
+    <link rel="stylesheet" href="./assets/css/account.css">
+    <link rel="stylesheet" href="./assets/css/new.css">
+    <link rel="stylesheet" href="./assets/css/responsive.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="navbar__container">
+            <div class="navbar__icon nav__moblie mobile__width" title="Giỏ hàng">
+                <i class="fas fa-shopping-bag"></i>
+            </div>
+            <div class="navbar__logo mobile__width" style="text-align: center;">
+                <a href="index.html" class="navbar__logo-link">
+                    <img src="./assets/img/logo.png" title="TMT Fashion" alt="" style="max-width: 120px">
+                </a>
+            </div>
+            <div class="navbar__list d-flex">
+                <div class="navbar__list__modul">
+                    <ul class="modul__list d-flex">
+                        <li class="modul__item">
+                            <a href="index.html" class="modul__item-link">Trang chủ</a>
+                        </li>
+                        <li class="modul__item">
+                            <a href="#" class="modul__item-link">giới thiệu</a>
+                        </li>
+                        <li class="modul__item">
+                            <a href="all-products.html" class="modul__item-link">sản phẩm</a>
+                            <ul class="modul__item-list">
+                                <a href="new-products.html">
+                                    <li class="item-list__link">
+                                        sản phẩm mới
+                                    </li>
+                                </a>
+                                <a href="all-products.html">
+                                    <li class="item-list__link">
+                                        sản phẩm nổi bật
+                                    </li>
+                                </a>
+                            </ul>
+                        </li>
+                        <li class="modul__item">
+                            <a href="tin-tuc.html" class="modul__item-link">tin tức</a>
+                        </li>
+                        <li class="modul__item">
+                            <a href="contact.html" class="modul__item-link">liên hệ</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="navbar__icons d-flex">
+                    <div class="navbar__icon" title="Tìm kiếm">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="navbar__icon" title="Đăng nhập">
+                        <a href="/account.html" class="navbar__acount">
+                            <i class="fas fa-user"></i>
+                        </a>
+                    </div>
+                    <div class="navbar__icon" title="Giỏ hàng">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab__mobile mobile__width">
+
+                <div class="navbar__icon navbar__mobile-btn">
+                    <i class="bars fas fa-bars" onclick="Bar()"></i>
+                </div>
+                <div class="nav__overlay" onclick="BarClose()"></div>
+                <div class="popup__mobile">
+                    <div class="popup-container">
+                        <div class="popup__logo">
+                            <img src="./assets/img/logo.png" style="max-width: 100px;" alt="">
+                            <div class="popup__close" onclick="BarClose()">
+                                <i class="fas fa-times"></i>
+                            </div>
+                        </div>
+                        <div class="popup__search">
+                            <input type="text" placeholder="Tìm kiếm..." class="popup__ip">
+                        </div>
+                        <ul class="popup__list">
+                            <li class="popup__item">
+                                <a href="index.html" class="popup__item-link">Trang chủ</a>
+                            </li>
+                            <li class="popup__item">
+                                <a href="#" class="popup__item-link">Giới thiệu</a>
+                            </li>
+                            <li class="popup__item">
+                                <div class="popup__item-main" style="display: flex; justify-content: space-between; align-items: center;">
+                                    <a href="all-products.html" class="popup__item-link">Sản phẩm</a>
+                                    <div class="popup__item-down" onclick="MenuCap2()">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                                <div class="popup__nav-hidden list__bar">
+                                    <div class="popup__nav-item">
+                                        <a href="new-products.html" class="popup__item-link">Sản phẩm mới</a>
+                                    </div>
+                                    <div class="popup__nav-item">
+                                        <a href="all-products.html" class="popup__item-link">Sản phẩm nổi bật</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="popup__item">
+                                <a href="tin-tuc.html" class="popup__item-link">Tin tức</a>
+                            </li>
+                            <li class="popup__item">
+                                <a href="contact.html" class="popup__item-link">Liên hệ</a>
+                            </li>
+                            <li class="popup__item">
+                                <a href="account.html" class="popup__item-link">Đăng ký / Đăng nhập</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="top">
+        <div class="top-container">
+            <ul class="top__list">
+                <li class="top__item">
+                    <a href="index.html" class="top__item-link">Trang chủ</a>
+                    <i class="link__icon fas fa-chevron-right"></i>
+                </li>
+                <li class="top__item">
+                    <a href="#" class="top__item-link">Sản phẩm mới về</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <!-- Products -->
+    <div class="product__overlay"></div>
+    <div class="new">
+        <div class="new-container">
+            <div class="new__navbar">
+                <div class="new__all">
+                    <h3 class="new__title">
+                        <span>
+                            danh mục sản phẩm
+                        </span>
+                        <i class="fas fa-angle-down down__btn"></i>
+                    </h3>
+                    <ul class="new__list">
+                        <a href="#" class="new__item-link">
+                            <li class="new__item">
+                                Trang chủ
+                            </li>
+                        </a>
+                        <a href="#" class="new__item-link">
+                            <li class="new__item">
+                                Giới thiệu
+                            </li>
+                        </a>
+                        <a href="#" class="new__item-link">
+                            <li class="new__item">
+                                Sản phẩm
+                            </li>
+                        </a>
+                        <a href="#" class="new__item-link">
+                            <li class="new__item">
+                                Tin tức
+                            </li>
+                        </a>
+                        <a href="#" class="new__item-link">
+                            <li class="new__item">
+                                Liên hệ
+                            </li>
+                        </a>
+                    </ul>
+                </div>
+                <div class="new__all">
+                    <h3 class="new__title">
+                        <span>
+                            giới thiệu
+                        </span>
+                        <i class="fas fa-angle-down down__btn"></i></h3>
+                    <ul class="new__list">
+                        <li class="new__item">
+                            <label for="vehicle1" class="new__box-color">
+                                <input type="checkbox" class="list__checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                                <i class="fas fa-check tick-back"></i>
+                            </label>
+                            <label class="new__cb-label" for="vehicle1">Danilo</label>
+                        </li>
+                        <li for="id2" class="new__item">
+                            <label for="vehicle1" class="new__box-color">
+                                <input type="checkbox" class="list__checkbox" id="vehicle2" name="vehicle2" value="Bike">
+                                <i class="fas fa-check tick-back"></i>
+                            </label>
+                            <label class="new__cb-label" for="vehicle2">Thecosmo</label>
+                        </li>
+                        <li for="id3" class="new__item">
+                            <label for="vehicle1" class="new__box-color">
+                                <input type="checkbox" class="list__checkbox" id="vehicle3" name="vehicle3" value="Bike">
+                                <i class="fas fa-check tick-back"></i>
+                            </label>
+                            <label class="new__cb-label" for="vehicle3">TOMATO</label>
+                        </li>
+                    </ul>
+                </div>
+                <div class="new__all">
+                    <h3 class="new__title">
+                        <span>
+                            khoảng giá
+                        </span>
+                        <i class="fas fa-angle-down down__btn"></i>
+                    </h3>
+                    <ul class="new__list">
+                        <li class="new__item">
+                            <label for="vehicle1" class="new__box-color">
+                                <input type="checkbox" class="list__checkbox" id="vehicle4" name="vehicle1" value="Bike">
+                                <i class="fas fa-check tick-back"></i>
+                            </label>
+                            <label class="new__cb-label" for="vehicle4">Giá dưới 100.000₫</label>
+                        </li>
+                        <li class="new__item">
+                            <label for="vehicle1" class="new__box-color">
+                                <input type="checkbox" class="list__checkbox" id="vehicle5" name="vehicle2" value="Bike">
+                                <i class="fas fa-check tick-back"></i>
+                            </label>
+                            <label class="new__cb-label" for="vehicle5">100.000₫ - 200.000₫</label>
+                        </li>
+                        <li class="new__item">
+                            <label for="vehicle1" class="new__box-color">
+                                <input type="checkbox" class="list__checkbox" id="vehicle6" name="vehicle3" value="Bike">
+                                <i class="fas fa-check tick-back"></i>
+                            </label>
+                            <label class="new__cb-label" for="vehicle6">200.000₫ - 400.000₫</label>
+                        </li>
+                        <li class="new__item">
+                            <label for="vehicle1" class="new__box-color">
+                                <input type="checkbox" class="list__checkbox" id="vehicle7" name="vehicle3" value="Bike">
+                                <i class="fas fa-check tick-back"></i>
+                            </label>
+                            <label class="new__cb-label" for="vehicle7">400.000₫ - 500.000₫</label>
+                        </li>
+                        <li class="new__item">
+                            <label for="vehicle1" class="new__box-color">
+                                <input type="checkbox" class="list__checkbox" id="vehicle8" name="vehicle3" value="Bike">
+                                <i class="fas fa-check tick-back"></i>
+                            </label>
+                            <label class="new__cb-label" for="vehicle8">Trên 500.000₫</label>
+                        </li>
+                    </ul>
+                </div>
+                <div class="new__all">
+                    <h3 class="new__title">
+                        <span>
+                            kích cỡ
+                        </span>
+                        <i class="fas fa-angle-down down__btn"></i>
+                    </h3>
+                    <ul class="new__list">
+                        <li class="new__item">
+                            <label for="vehicle1" class="new__box-color">
+                                <input type="checkbox" class="list__checkbox" id="vehicle9" name="vehicle9" value="Bike">
+                                <i class="fas fa-check tick-back"></i>
+                            </label>
+                            <label class="new__cb-label" for="vehicle9">S</label>
+                        </li>
+                        <li for="id2" class="new__item">
+                            <label for="vehicle1" class="new__box-color">
+                                <input type="checkbox" class="list__checkbox" id="vehicle10" name="vehicle10" value="Bike">
+                                <i class="fas fa-check tick-back"></i>
+                            </label>
+                            <label class="new__cb-label" for="vehicle10">M</label>
+                        </li>
+                        <li for="id3" class="new__item">
+                            <label for="vehicle1" class="new__box-color">
+                                <input type="checkbox" class="list__checkbox" id="vehicle11" name="vehicle11" value="Bike">
+                                <i class="fas fa-check tick-back"></i>
+                            </label>
+                            <label class="new__cb-label" for="vehicle11">L</label>
+                        </li>
+                        <li for="id3" class="new__item">
+                            <label for="vehicle1" class="new__box-color">
+                                <input type="checkbox" class="list__checkbox" id="vehicle12" name="vehicle12" value="Bike">
+                                <i class="fas fa-check tick-back"></i>
+                            </label>
+                            <label class="new__cb-label" for="vehicle12">XL</label>
+                        </li>
+                        <li for="id3" class="new__item">
+                            <label for="vehicle1" class="new__box-color">
+                                <input type="checkbox" class="list__checkbox" id="vehicle13" name="vehicle13" value="Bike">
+                                <i class="fas fa-check tick-back"></i>
+                            </label>
+                            <label class="new__cb-label" for="vehicle13">XXL</label>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="new__all">
+                    <h3 class="new__title">
+                        <span>
+                            màu sắc
+                        </span>
+                        <i class="fas fa-angle-down down__btn"></i>
+                    </h3>
+                    <div class="new__list new__color list__box">
+                        <label for="color__check">
+                            <div class="bg__color">
+                                <input type="checkbox" class="input__check" id="color__check">
+                                <i class="tick fas fa-check"></i>
+                            </div>
+                        </label>
+                        <label for="color__check2">
+                            <div class="bg__color" style="background-color: #b033de;">
+                                <input type="checkbox" class="input__check" id="color__check2">
+                                <i class="tick fas fa-check"></i>
+                            </div>
+                        </label>
+                        <label for="color__check3">
+                            <div class="bg__color" style="background-color: red;">
+                                <input type="checkbox" class="input__check" id="color__check3">
+                                <i class="tick fas fa-check"></i>
+                            </div>
+                        </label>
+                        <label for="color__check4">
+                            <div class="bg__color" style="background-color: green;">
+                                <input type="checkbox" class="input__check" id="color__check4">
+                                <i class="tick fas fa-check"></i>
+                            </div>
+                        </label>
+                        <label for="color__check5">
+                            <div class="bg__color" style="background-color: palevioletred;">
+                                <input type="checkbox" class="input__check" id="color__check5">
+                                <i class="tick fas fa-check"></i>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="new__products">
+                <div class="new__sort">
+                    <span class="new__sort-txt">Sắp xếp:</span>
+                    <select name="" class="new__select">
+                        <option value="Mặc định">Mặc định</option>
+                        <option value="Giá: Tăng dần">Giá: Tăng dần</option>
+                        <option value="Giá: Giảm dần">Giá: Giảm dần</option>
+                        <option value="Tên: A-Z">Tên: A-Z</option>
+                        <option value="Tên: Z-A">Tên: Z-A</option>
+                        <option value="Mới nhất">Mới nhất</option>
+                        <option value="Cũ nhất">Cũ nhất</option>
+                    </select>
+                </div>
+                <hr>
+
+                <div class="new__list-pro">
+                    <div class="product__list">
+                        <div class="product__item" data-aos="fade-up">
+                            <a href="#" class="pro__item-link">
+                                <div class="product__img">
+                                    <img src="./assets/img/new1-a.jpg" class="product__item-img" alt="" width="100%">
+                                    <img src="./assets/img/new1-b.jpg" class="product__item-hidden" alt="" width="100%">
+                                </div>
+                                <div class="product__name">
+                                    <h5 class="product__name-item">
+                                        <a href="product-details1.html" class="product__name-link">
+                                            Quần HOODED HOUNDSTOOTH BLAZER
+                                        </a>
+                                    </h5>
+                                    <span class="product__price">600.000₫</span>
+                                </div>
+                            </a>
+                            <div class="product__icon">
+                                <div class="product__ic icon__hover1">
+                                    <i class="fas fa-cart-plus"></i>
+                                </div>
+                                <div class="product__ic icon__hover2" style="margin: 0 20px;">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                                <div class="product__ic icon__hover3">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                            </div>
+
+                            <!-- Modal -->
+                            <div class="product__modal">
+                                <div class="modal__title">
+                                    <h3 class="modal__h3">thông tin sản phẩm</h3>
+                                </div>
+                                <div class="modal__body">
+                                    <div class="modal__close">
+                                        <i class="far fa-times-circle"></i>
+                                    </div>
+                                    <div class="modal__img">
+                                        <div class="modal__main-img">
+                                            <img src="./assets/img/new1-a.jpg" class="pro__main-im" width="100%" alt="">
+                                        </div>
+                                        <div class="modal__change-img">
+                                            <div class="modal__ch img__active" onclick="changeImg(this)">
+                                                <img src="./assets/img/new1-a.jpg" alt="">
+                                            </div>
+                                            <div class="modal__ch" onclick="changeImg(this)">
+                                                <img src="./assets/img/new1-b.jpg" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal__detail">
+                                        <h4 class="modal__detail-title">Quần HOODED HOUNDSTOOTH BLAZER</h4>
+                                        <span class="modal__price">600.000₫</span>
+                                        <span class="price">700.000đ</span>
+                                        <p class="modal__detail-p">
+                                            Quần HOODED HOUNDSTOOTH BLAZER kiểu dáng thon gọn, cổ áo nâng cao với tab có nút, khóa kéo phía trước với túi có nút, thắt lưng có thể điều chỉnh, túi vá bốn nút, tay áo dài có còng cài nút, một lỗ thông hơi phía sau, lót và một số túi bên trong. Chiều
+                                            dài trở lại cho kích thước L là 74 cm....
+                                        </p>
+                                        <div class="modal__buy">
+                                            <button class="modal__btn">Hết hàng</button>
+                                            <span class="modal__or">hoặc</span>
+                                            <a href="#" class="modal__link">Xem chi tiết</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product__item" data-aos="fade-up">
+                            <a href="#" class="pro__item-link">
+                                <div class="product__img">
+                                    <img src="./assets/img/new2-a.jpg" class="product__item-img" alt="" width="100%">
+                                    <img src="./assets/img/new2-b.jpg" class="product__item-hidden" alt="" width="100%">
+                                </div>
+                                <div class="product__name">
+                                    <h5 class="product__name-item">
+                                        <a href="product-details2.html" class="product__name-link">
+                                            Quần HOODED HOUNDSTOOTH BLAZER
+                                        </a>
+                                    </h5>
+                                    <span class="product__price">600.000₫</span>
+                                </div>
+                            </a>
+                            <div class="product__icon">
+                                <div class="product__ic icon__hover1">
+                                    <i class="fas fa-cart-plus"></i>
+                                </div>
+                                <div class="product__ic icon__hover2" style="margin: 0 20px;">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                                <div class="product__ic icon__hover3">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                            </div>
+
+                            <!-- Modal -->
+                            <div class="product__modal">
+                                <div class="modal__title">
+                                    <h3 class="modal__h3">thông tin sản phẩm</h3>
+                                </div>
+                                <div class="modal__body">
+                                    <div class="modal__close">
+                                        <i class="far fa-times-circle"></i>
+                                    </div>
+                                    <div class="modal__img">
+                                        <div class="modal__main-img">
+                                            <img src="./assets/img/pro1.jpg" class="pro__main-im" width="100%" alt="">
+                                        </div>
+                                        <div class="modal__change-img">
+                                            <div class="modal__ch img__active" onclick="changeImg(this)">
+                                                <img src="./assets/img/pro1.jpg" alt="">
+                                            </div>
+                                            <div class="modal__ch" onclick="changeImg(this)">
+                                                <img src="./assets/img/pro1-b.jpg" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal__detail">
+                                        <h4 class="modal__detail-title">Quần HOODED HOUNDSTOOTH BLAZER</h4>
+                                        <span class="modal__price">600.000₫</span>
+                                        <span class="price">700.000đ</span>
+                                        <p class="modal__detail-p">
+                                            Quần HOODED HOUNDSTOOTH BLAZER kiểu dáng thon gọn, cổ áo nâng cao với tab có nút, khóa kéo phía trước với túi có nút, thắt lưng có thể điều chỉnh, túi vá bốn nút, tay áo dài có còng cài nút, một lỗ thông hơi phía sau, lót và một số túi bên trong. Chiều
+                                            dài trở lại cho kích thước L là 74 cm....
+                                        </p>
+                                        <div class="modal__buy">
+                                            <button class="modal__btn">Hết hàng</button>
+                                            <span class="modal__or">hoặc</span>
+                                            <a href="#" class="modal__link">Xem chi tiết</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product__item" data-aos="fade-up">
+                            <a href="#" class="pro__item-link">
+                                <div class="product__img">
+                                    <img src="./assets/img/new3-a.jpg" class="product__item-img" alt="" width="100%">
+                                    <img src="./assets/img/new3-b.jpg" class="product__item-hidden" alt="" width="100%">
+                                </div>
+                                <div class="product__name">
+                                    <h5 class="product__name-item">
+                                        <a href="product-details3.html" class="product__name-link">
+                                            Quần HOODED HOUNDSTOOTH BLAZER
+                                        </a>
+                                    </h5>
+                                    <span class="product__price">600.000₫</span>
+                                </div>
+                            </a>
+                            <div class="product__icon">
+                                <div class="product__ic icon__hover1">
+                                    <i class="fas fa-cart-plus"></i>
+                                </div>
+                                <div class="product__ic icon__hover2" style="margin: 0 20px;">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                                <div class="product__ic icon__hover3">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                            </div>
+
+                            <!-- Modal -->
+                            <div class="product__modal">
+                                <div class="modal__title">
+                                    <h3 class="modal__h3">thông tin sản phẩm</h3>
+                                </div>
+                                <div class="modal__body">
+                                    <div class="modal__close">
+                                        <i class="far fa-times-circle"></i>
+                                    </div>
+                                    <div class="modal__img">
+                                        <div class="modal__main-img">
+                                            <img src="./assets/img/pro1.jpg" class="pro__main-im" width="100%" alt="">
+                                        </div>
+                                        <div class="modal__change-img">
+                                            <div class="modal__ch img__active" onclick="changeImg(this)">
+                                                <img src="./assets/img/pro1.jpg" alt="">
+                                            </div>
+                                            <div class="modal__ch" onclick="changeImg(this)">
+                                                <img src="./assets/img/pro1-b.jpg" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal__detail">
+                                        <h4 class="modal__detail-title">Quần HOODED HOUNDSTOOTH BLAZER</h4>
+                                        <span class="modal__price">600.000₫</span>
+                                        <span class="price">700.000đ</span>
+                                        <p class="modal__detail-p">
+                                            Quần HOODED HOUNDSTOOTH BLAZER kiểu dáng thon gọn, cổ áo nâng cao với tab có nút, khóa kéo phía trước với túi có nút, thắt lưng có thể điều chỉnh, túi vá bốn nút, tay áo dài có còng cài nút, một lỗ thông hơi phía sau, lót và một số túi bên trong. Chiều
+                                            dài trở lại cho kích thước L là 74 cm....
+                                        </p>
+                                        <div class="modal__buy">
+                                            <button class="modal__btn">Hết hàng</button>
+                                            <span class="modal__or">hoặc</span>
+                                            <a href="#" class="modal__link">Xem chi tiết</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product__item" data-aos="fade-up">
+                            <a href="#" class="pro__item-link">
+                                <div class="product__img">
+                                    <img src="./assets/img/new4-a.jpg" class="product__item-img" alt="" width="100%">
+                                    <img src="./assets/img/new4-b.jpg" class="product__item-hidden" alt="" width="100%">
+                                </div>
+                                <div class="product__name">
+                                    <h5 class="product__name-item">
+                                        <a href="product-details4.html" class="product__name-link">
+                                            Quần HOODED HOUNDSTOOTH BLAZER
+                                        </a>
+                                    </h5>
+                                    <span class="product__price">600.000₫</span>
+                                </div>
+                            </a>
+                            <div class="product__icon">
+                                <div class="product__ic icon__hover1">
+                                    <i class="fas fa-cart-plus"></i>
+                                </div>
+                                <div class="product__ic icon__hover2" style="margin: 0 20px;">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                                <div class="product__ic icon__hover3">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                            </div>
+
+                            <!-- Modal -->
+                            <div class="product__modal">
+                                <div class="modal__title">
+                                    <h3 class="modal__h3">thông tin sản phẩm</h3>
+                                </div>
+                                <div class="modal__body">
+                                    <div class="modal__close">
+                                        <i class="far fa-times-circle"></i>
+                                    </div>
+                                    <div class="modal__img">
+                                        <div class="modal__main-img">
+                                            <img src="./assets/img/pro1.jpg" class="pro__main-im" width="100%" alt="">
+                                        </div>
+                                        <div class="modal__change-img">
+                                            <div class="modal__ch img__active" onclick="changeImg(this)">
+                                                <img src="./assets/img/pro1.jpg" alt="">
+                                            </div>
+                                            <div class="modal__ch" onclick="changeImg(this)">
+                                                <img src="./assets/img/pro1-b.jpg" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal__detail">
+                                        <h4 class="modal__detail-title">Quần HOODED HOUNDSTOOTH BLAZER</h4>
+                                        <span class="modal__price">600.000₫</span>
+                                        <span class="price">700.000đ</span>
+                                        <p class="modal__detail-p">
+                                            Quần HOODED HOUNDSTOOTH BLAZER kiểu dáng thon gọn, cổ áo nâng cao với tab có nút, khóa kéo phía trước với túi có nút, thắt lưng có thể điều chỉnh, túi vá bốn nút, tay áo dài có còng cài nút, một lỗ thông hơi phía sau, lót và một số túi bên trong. Chiều
+                                            dài trở lại cho kích thước L là 74 cm....
+                                        </p>
+                                        <div class="modal__buy">
+                                            <button class="modal__btn">Hết hàng</button>
+                                            <span class="modal__or">hoặc</span>
+                                            <a href="#" class="modal__link">Xem chi tiết</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product__item" data-aos="fade-up">
+                            <a href="#" class="pro__item-link">
+                                <div class="product__img">
+                                    <img src="./assets/img/new5-a.jpg" class="product__item-img" alt="" width="100%">
+                                </div>
+                                <div class="product__name">
+                                    <h5 class="product__name-item">
+                                        <a href="product-details5.html" class="product__name-link">
+                                            Quần HOODED HOUNDSTOOTH BLAZER
+                                        </a>
+                                    </h5>
+                                    <span class="product__price">600.000₫</span>
+                                </div>
+                            </a>
+                            <div class="product__icon">
+                                <div class="product__ic icon__hover1">
+                                    <i class="fas fa-cart-plus"></i>
+                                </div>
+                                <div class="product__ic icon__hover2" style="margin: 0 20px;">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                                <div class="product__ic icon__hover3">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                            </div>
+
+                            <!-- Modal -->
+                            <div class="product__modal">
+                                <div class="modal__title">
+                                    <h3 class="modal__h3">thông tin sản phẩm</h3>
+                                </div>
+                                <div class="modal__body">
+                                    <div class="modal__close">
+                                        <i class="far fa-times-circle"></i>
+                                    </div>
+                                    <div class="modal__img">
+                                        <div class="modal__main-img">
+                                            <img src="./assets/img/pro1.jpg" class="pro__main-im" width="100%" alt="">
+                                        </div>
+                                        <div class="modal__change-img">
+                                            <div class="modal__ch img__active" onclick="changeImg(this)">
+                                                <img src="./assets/img/pro1.jpg" alt="">
+                                            </div>
+                                            <div class="modal__ch" onclick="changeImg(this)">
+                                                <img src="./assets/img/pro1-b.jpg" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal__detail">
+                                        <h4 class="modal__detail-title">Quần HOODED HOUNDSTOOTH BLAZER</h4>
+                                        <span class="modal__price">600.000₫</span>
+                                        <span class="price">700.000đ</span>
+                                        <p class="modal__detail-p">
+                                            Quần HOODED HOUNDSTOOTH BLAZER kiểu dáng thon gọn, cổ áo nâng cao với tab có nút, khóa kéo phía trước với túi có nút, thắt lưng có thể điều chỉnh, túi vá bốn nút, tay áo dài có còng cài nút, một lỗ thông hơi phía sau, lót và một số túi bên trong. Chiều
+                                            dài trở lại cho kích thước L là 74 cm....
+                                        </p>
+                                        <div class="modal__buy">
+                                            <button class="modal__btn">Hết hàng</button>
+                                            <span class="modal__or">hoặc</span>
+                                            <a href="#" class="modal__link">Xem chi tiết</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product__item" data-aos="fade-up">
+                            <a href="#" class="pro__item-link">
+                                <div class="product__img">
+                                    <img src="./assets/img/new6-a.jpg" class="product__item-img" alt="" width="100%">
+                                    <img src="./assets/img/new6-b.jpg" class="product__item-hidden" alt="" width="100%">
+                                </div>
+                                <div class="product__name">
+                                    <h5 class="product__name-item">
+                                        <a href="product-details6.html" class="product__name-link">
+                                            Quần HOODED HOUNDSTOOTH BLAZER
+                                        </a>
+                                    </h5>
+                                    <span class="product__price">600.000₫</span>
+                                </div>
+                            </a>
+                            <div class="product__icon">
+                                <div class="product__ic icon__hover1">
+                                    <i class="fas fa-cart-plus"></i>
+                                </div>
+                                <div class="product__ic icon__hover2" style="margin: 0 20px;">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                                <div class="product__ic icon__hover3">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                            </div>
+
+                            <!-- Modal -->
+                            <div class="product__modal">
+                                <div class="modal__title">
+                                    <h3 class="modal__h3">thông tin sản phẩm</h3>
+                                </div>
+                                <div class="modal__body">
+                                    <div class="modal__close">
+                                        <i class="far fa-times-circle"></i>
+                                    </div>
+                                    <div class="modal__img">
+                                        <div class="modal__main-img">
+                                            <img src="./assets/img/pro1.jpg" class="pro__main-im" width="100%" alt="">
+                                        </div>
+                                        <div class="modal__change-img">
+                                            <div class="modal__ch img__active" onclick="changeImg(this)">
+                                                <img src="./assets/img/pro1.jpg" alt="">
+                                            </div>
+                                            <div class="modal__ch" onclick="changeImg(this)">
+                                                <img src="./assets/img/pro1-b.jpg" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal__detail">
+                                        <h4 class="modal__detail-title">Quần HOODED HOUNDSTOOTH BLAZER</h4>
+                                        <span class="modal__price">600.000₫</span>
+                                        <span class="price">700.000đ</span>
+                                        <p class="modal__detail-p">
+                                            Quần HOODED HOUNDSTOOTH BLAZER kiểu dáng thon gọn, cổ áo nâng cao với tab có nút, khóa kéo phía trước với túi có nút, thắt lưng có thể điều chỉnh, túi vá bốn nút, tay áo dài có còng cài nút, một lỗ thông hơi phía sau, lót và một số túi bên trong. Chiều
+                                            dài trở lại cho kích thước L là 74 cm....
+                                        </p>
+                                        <div class="modal__buy">
+                                            <button class="modal__btn">Hết hàng</button>
+                                            <span class="modal__or">hoặc</span>
+                                            <a href="#" class="modal__link">Xem chi tiết</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Footer -->
+
+    <div class="footer">
+        <div class="footer-container">
+            <div class="footer__head">
+                <div class="footer__logo">
+                    <img src="./assets/img/logo.png" alt="" style="max-width: 100px;" class="footer__logo-img">
+                </div>
+                <div class="footer__block">
+                    <div class="footer__block-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="footer__block__body">
+                        <span class="footer__name">Địa chỉ:</span>
+                        <p class="footer__value">Cổ Nhuế - Bắc Từ Liêm - Hà Nội</p>
+                    </div>
+                </div>
+                <div class="footer__block">
+                    <div class="footer__block-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="footer__block__body">
+                        <span class="footer__name">Email:</span>
+                        <a href="mailto:Haibh0903@gmail.com" class="footer__value">Haibh0903@gmail.com</a>
+                    </div>
+                </div>
+                <div class="footer__block">
+                    <div class="footer__block-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="footer__block__body">
+                        <span class="footer__name">Điện thoại:</span>
+                        <a href="tel:035 285 0379" class="footer__value">035 285 0379</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="payment">
+        <div class="payment__logo">
+            <img src="./assets/img/payment-icon.png" style="max-width: 100%; max-height: 40px;" alt="">
+        </div>
+        <ul class="payment__list">
+            <li class="payment__item">
+                <a href="#" class="payment__item-link">Trang chủ</a>
+            </li>
+            <li class="payment__item">
+                <a href="#" class="payment__item-link">giới thiệu</a>
+            </li>
+            <li class="payment__item">
+                <a href="#" class="payment__item-link">sản phẩm</a>
+            </li>
+            <li class="payment__item">
+                <a href="#" class="payment__item-link">tin tức
+            <li class="payment__item" style="border-right: none">
+                <a href="#" class="payment__item-link">liên hệ</a>
+            </li>
+        </ul>
+        <div class="payment__license">
+            © Bản quyền thuộc về BuiHoangHai | <a href="https://www.facebook.com/Haibuihoang.09" class="bhh">BHH</a>
+        </div>
+    </div>
+
+
+
+
+    <script src="./assets/js/mobile.js"></script>
+    <script src="./assets/js/shopping-cart.js"></script>
+
+    <script>
+        // Modal
+
+        var popupViews = document.querySelectorAll('.product__modal');
+        var popupBtns = document.querySelectorAll('.icon__hover3');
+        var closeBtns = document.querySelectorAll('.modal__close');
+        var overlay = document.querySelector(".product__overlay");
+
+        //javascript for quick view button
+        var popup = function(popupClick) {
+            popupViews[popupClick].classList.add('modal__active');
+            overlay.classList.add("modal__active");
+        }
+
+        popupBtns.forEach((popupBtn, i) => {
+            popupBtn.addEventListener("click", () => {
+                popup(i);
+            });
+        });
+
+
+        // overlay button
+        overlay.addEventListener("click", () => {
+            overlay.classList.remove("modal__active");
+            popupViews.forEach((popupView) => {
+                popupView.classList.remove('modal__active');
+                overlay.classList.remove("modal__active");
+            });
+        })
+
+        //javascript for close button
+        closeBtns.forEach((closeBtn) => {
+            closeBtn.addEventListener("click", () => {
+                popupViews.forEach((popupView) => {
+                    popupView.classList.remove('modal__active');
+                    overlay.classList.remove("modal__active");
+                });
+            });
+        });
+
+        var bar = document.querySelector(".popup__mobile");
+        var moblieOverlay = document.querySelector(".nav__overlay");
+
+        function Bar() {
+            bar.classList.add("moblie__active");
+            moblieOverlay.classList.add("moblie__active");
+            document.getElementsByTagName("body")[0].style.overflow = "hidden";
+        }
+
+        function BarClose() {
+            bar.classList.remove("moblie__active");
+            moblieOverlay.classList.remove("moblie__active");
+            document.getElementsByTagName("body")[0].style.overflow = "auto";
+        }
+
+        function MenuCap2() {
+            var item = document.querySelector(".list__bar");
+            item.classList.toggle("item__active")
+        }
+
+
+        // Btn down
+
+        var downBtns = document.querySelectorAll(".new__title");
+        var itemView = document.querySelectorAll(".new__list");
+
+        var itemHidden = function(item) {
+            itemView[item].classList.toggle('item__active');
+        }
+
+        downBtns.forEach((downBtn, i) => {
+            downBtn.addEventListener("click", () => {
+                itemHidden(i);
+            })
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,192 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image" href="~/Assets/Client/assets/img/shortcut-icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/Assets/Client/assets/css/account.css">
+    <link rel="stylesheet" href="~/Assets/Client/assets/css/home.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <style>
+        .navbar__acount1 {
+            text-decoration: none;
+            color: #000;
+            margin-right: 15px;
+        }
+
+            .navbar__acount1:not(:last-child) {
+                padding-right: 15px;
+                border-right: 2px solid #808080;
+            }
+    </style>
+
+</head>
+
+<body>
+    <div id="top-menu" style="background-color: #ccc; color: #000; width: 100%; ">
+        <div style="width: 80%; display: flex; justify-content: space-between; margin: auto; height: 30px; line-height: 30px">
+            <a class="navbar__acount1 acc__hidden" style="border: none" href="mailto:Haibh0903@gmail.com">Contact: Haibh0903@gmail.com</a>
+
+            @if (Session["UserID"] != null)
+            {
+                <div>
+                    <span class="navbar__acount1">Xin chào: @Session["UserID"]</span>
+                    <a href="@Url.Action("LogOut", "User")" class="navbar__acount1">Đăng xuất</a>
+                </div>
+            }
+            else
+            {
+                <div>
+                    <a class="navbar__acount1" href="/dang-ky">Đăng ký</a>
+                    <a class="navbar__acount1" href="/dang-nhap">Đăng nhập</a>
+                </div>
+
+            }
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    @{Html.RenderAction("MainMenu", "Home");}
+
+
+
+    @RenderBody()
+
+
+    <!-- Footer -->
+
+    @RenderPage("_Footer.cshtml")
+
+
+
+
+    <link rel="stylesheet" href="~/Assets/Client/assets/css/responsive.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="~/Assets/Client/assets/js/mobile.js"></script>
+    <script>
+
+        AOS.init({
+            offset: 200,
+            duration: 1500
+        });
+
+        var slideIndex = 1;
+        showSlides(slideIndex);
+
+
+        // Thumbnail image controls
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("dot");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+
+
+
+
+
+
+
+
+        // Modal
+
+        var popupViews = document.querySelectorAll('.product__modal');
+        var popupBtns = document.querySelectorAll('.icon__hover3');
+        var closeBtns = document.querySelectorAll('.modal__close');
+        var overlay = document.querySelector(".product__overlay");
+
+        //javascript for quick view button
+        var popup = function (popupClick) {
+            popupViews[popupClick].classList.add('modal__active');
+            overlay.classList.add("modal__active");
+            document.getElementsByTagName("body")[0].style.overflow = "hidden";
+
+            // Change img in popup
+            var childrens = popupViews[popupClick].querySelector(".modal__change-img").children;
+            var imgMain = popupViews[popupClick].querySelector(".pro__main-im");
+            var imgDiv = popupViews[popupClick].querySelectorAll(".modal__ch");
+
+            imgDiv.forEach((item) => {
+                item.addEventListener("click", function (event) {
+                    imgMain.src = event.target.src;
+                })
+            })
+
+        }
+
+        popupBtns.forEach((popupBtn, i) => {
+            popupBtn.addEventListener("click", () => {
+                popup(i);
+            });
+        });
+
+
+        // overlay button
+        overlay.addEventListener("click", () => {
+            overlay.classList.remove("modal__active");
+            popupViews.forEach((popupView) => {
+                popupView.classList.remove('modal__active');
+                overlay.classList.remove("modal__active");
+                document.getElementsByTagName("body")[0].style.overflow = "auto";
+            });
+        })
+
+        //javascript for close button
+        closeBtns.forEach((closeBtn) => {
+            closeBtn.addEventListener("click", () => {
+                popupViews.forEach((popupView) => {
+                    popupView.classList.remove('modal__active');
+                    overlay.classList.remove("modal__active");
+                    document.getElementsByTagName("body")[0].style.overflow = "auto";
+                });
+            });
+        });
+
+
+
+
+        var slider = document.getElementById('brand-slider');
+        var btnRight = document.getElementById('btn-right');
+        var btnLeft = document.getElementById('btn-left');
+
+        btnRight.addEventListener('click', function () {
+            slider.scrollLeft += slider.scrollWidth / 8;
+        })
+
+        btnLeft.addEventListener('click', function () {
+            slider.scrollLeft -= slider.scrollWidth / 8;
+        })
+
+
+
+    </script>
+
+    @RenderSection("cartController", required: false)
+
+</body>
+
+</html>

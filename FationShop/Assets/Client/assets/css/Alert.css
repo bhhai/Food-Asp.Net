@@ -1,0 +1,19 @@
+﻿
+.noti {
+    height: 60px;
+    padding: 0 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.noti-success {
+    background-color: lightgreen;
+}
+
+.noti-danger {
+    background-color: red;
+}

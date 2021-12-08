@@ -1,0 +1,75 @@
+﻿@model FationShop.Areas.Admin.Framework.Order
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Order</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShipName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShipName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShipAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShipAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShipPhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShipPhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShipEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShipEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.Email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

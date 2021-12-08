@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Thanh toán";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<title>@ViewBag.Title</title>
+<link href="~/Assets/Client/assets/css/Alert.css" rel="stylesheet" />
+
+<div class="contact">
+    <div class="contact-container">
+        <h2 style="margin-bottom: 50px">Thanh toán</h2>
+        @if (ViewBag.OrderSuccess != null)
+        {
+            <div class="noti noti-success" role="alert">
+                @ViewBag.OrderSuccess
+            </div>
+        }
+        <div class="col-md-6">
+            @using (Html.BeginForm("Payment", "Cart"))
+            {
+                <div class="form__first">
+                    <input type="text" name="shipName" placeholder="Tên của bạn" class="form__name-input" required>
+                    <input type="email" name="email" placeholder="Email của bạn" class="form__name-input" required>
+                </div>
+                <div class="form__first">
+                    <input type="text" name="phoneNumber" placeholder="Số điện thoại" class="form__name-input" required>
+                    <input type="text" name="address" placeholder="Địa chỉ nhận hàng" class="form__name-input" required>
+                </div>
+                <input type="submit" class="form__btn-submit" value="Gửi đơn đặt hàng">
+
+            }
+        </div>
+    </div>
+
+</div>

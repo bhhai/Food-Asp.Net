@@ -1,0 +1,73 @@
+﻿@model List<FationShop.Areas.Admin.Framework.Contact>
+@{
+    ViewBag.Title = "Liên hệ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="./assets/css/account.css">
+<title>@ViewBag.Title</title>
+<!-- top -->
+
+<div class="top">
+    <div class="top-container">
+        <ul class="top__list">
+            <li class="top__item">
+                <a href="index.html" class="top__item-link">Trang chủ</a>
+                <i class="link__icon fas fa-chevron-right"></i>
+            </li>
+            <li class="top__item">
+                <a href="#" class="top__item-link">Liên hệ</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- Map -->
+<div class="map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.657715849483!2d105.7827823147636!3d21.04637738598886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135abb158a2305d%3A0x5c357d21c785ea3d!2zxJDhuqFpIGjhu41jIMSQaeG7h24gTOG7sWM!5e0!3m2!1svi!2s!4v1620454172636!5m2!1svi!2s"
+            width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+</div>
+
+
+<!-- Contact -->
+<div class="contact">
+    <div class="contact-container">
+        @foreach (var item in Model)
+        {
+            <h2 class="contact__title">
+                liên hệ
+            </h2>
+            <p class="contact__mota">@item.SubTitle</p>
+            <div class="contact__contact">
+                <div class="contact__item">
+                    <i class="fas fa-home"></i>
+                    <span class="contact__span">@item.Address</span>
+                </div>
+                <div class="contact__item">
+                    <i class="fas fa-phone-alt"></i>
+                    <span class="contact__span">@item.Hotline</span>
+                </div>
+                <div class="contact__item">
+                    <i class="fas fa-envelope"></i>
+                    <span class="contact__span">@item.Email</span>
+                </div>
+                <div class="contact__item">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span class="contact__span">@item.PhoneNumber</span>
+                </div>
+            </div>
+        }
+
+
+        <form method="POST" action="/action_page.php" class="contact__form">
+            <div class="form__first">
+                <input type="text" placeholder="Tên của bạn" class="form__name-input" required>
+                <input type="email" placeholder="Email của bạn" class="form__name-input" required>
+            </div>
+            <div class="form__plus">
+                <textarea placeholder="Nội dung" class="form__aria" cols="30" rows="10" required></textarea>
+            </div>
+            <input type="submit" class="form__btn-submit" value="Gửi">
+        </form>
+    </div>
+</div>

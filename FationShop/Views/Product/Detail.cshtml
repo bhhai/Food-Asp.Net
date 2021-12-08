@@ -1,0 +1,231 @@
+﻿@model FationShop.Areas.Admin.Framework.Product
+@{
+    ViewBag.Title = Model.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var relatedProducts = (List<FationShop.Areas.Admin.Framework.Product>)ViewBag.RelatedProduct;
+}
+<link rel="stylesheet" href="~/Assets/Client/assets/css/product-detail.css">
+<title>@Model.Name</title>
+<div class="top">
+    <div class="top-container">
+        <ul class="top__list">
+            <li class="top__item">
+                <a href="/" class="top__item-link">Trang chủ</a>
+                <i class="link__icon fas fa-chevron-right"></i>
+            </li>
+            <li class="top__item">
+                <a href="/" class="top__item-link">@Model.Name</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- Produc details -->
+
+<div class="detail">
+    <div class="detail-container">
+        <div class="modal__body">
+            <div class="modal__img">
+                <div class="modal__main-img">
+                    <img src="@Model.Image1" class="pro__main-im" width="100%" alt="">
+                </div>
+                <div class="modal__change-img">
+                    <div class="modal__ch img__active">
+                        <img src="@Model.Image1" alt="">
+                    </div>
+                    <div class="modal__ch">
+                        <img src="@Model.Image2" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="modal__detail">
+                <h4 class="modal__detail-title">@Model.Name</h4>
+                <span><span class="modal__price">@Model.PromotionPrice</span>₫</span>
+                <span class="price">@(Model.Price.HasValue ? Model.Price.Value.ToString("N0") : "Liên hệ")</span>
+                <p class="modal__status">Trạng thái: <span>Còn hàng</span></p>
+                <p class="modal__detail-p">
+                    @Model.Description
+                </p>
+                <div class="modal__box-active">
+                    <div class="modal__quanlity">
+                        <div class="modal__quan-container">
+                            <button class="modal__btn-quan modal__btn-prev">-</button>
+                            <input type="text" class="modal__btn-quan" id="quantity" value="1" disabled>
+                            <button class="modal__btn-quan modal__btn-next">+</button>
+                        </div>
+                        <div class="modal__buy">
+                            <a href="/them-gio-hang?productID=@Model.ID&quantity=1" class="modal__btn">Thêm vào giỏ</a>
+                        </div>
+                    </div>
+                    <p>Kích thước</p>
+                    <div class="modal__size-btn">
+                        <button class="size__btn">M</button>
+                        <button class="size__btn">L</button>
+                    </div>
+                </div>
+                <div class="modal__share">
+                    <span class="modal__til">Mã sản phẩm: <span>@Model.Code</span></span>
+                    <span class="modal__til">Chia sẻ: <i class="fab fa-facebook-f"></i><i class="fab fa-google-plus-g"></i></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tab -->
+
+<div class="tab">
+    <div class="tab-container">
+        <div class="tab__title">
+            <div class="tab__element tab__active">
+                Mô tả sản phẩm
+            </div>
+            <div class="tab__element">
+                Tab tùy chỉnh
+            </div>
+            <div class="tab__element">
+                Bình luận
+            </div>
+        </div>
+        <div class="tab__body">
+            <div lass="tab__body-item tab__body-active">
+                @Html.Raw(Model.Detail)
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- New products -->
+<div class="new__slider">
+    <div class="product__title">
+        <a href="#" class="product__h3">
+            SẢN PHẨM LIÊN QUAN
+        </a>
+    </div>
+    <div class="new-container">
+        @foreach (var item in relatedProducts)
+        {
+            var url = "/san-pham/" + item.MetaTitle + "-" + item.ID;
+            <div class="product__item">
+                <a href="@url" class="pro__item-link">
+                    <div class="product__img">
+                        <img src="@item.Image1" class="product__item-img" alt="" width="100%">
+                        <img src="@item.Image2" class="product__item-hidden" alt="" width="100%">
+                    </div>
+                    <div class="product__name">
+                        <h5 class="product__name-item">@item.Name</h5>
+                        <span><span class="product__price">@(item.Price.HasValue ? item.Price.Value.ToString("N0") : "Liên hệ")</span>₫</span>
+                    </div>
+                </a>
+                <div class="product__icon">
+                    <div class="product__ic icon__hover1">
+                        <i class="fas fa-cart-plus"></i>
+                    </div>
+                    <div class="product__ic icon__hover2" style="margin: 0 20px;">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="product__ic icon__hover3">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div class="product__modal">
+                    <div class="modal__title">
+                        <h3 class="modal__h3">thông tin sản phẩm</h3>
+                    </div>
+                    <div class="modal__body">
+                        <div class="modal__close">
+                            <i class="far fa-times-circle"></i>
+                        </div>
+                        <div class="modal__img">
+                            <div class="modal__main-img">
+                                <img src="./assets/img/new3-a.jpg" class="pro__main-im" width="100%" alt="">
+                            </div>
+                            <div class="modal__change-img">
+                                <div class="modal__ch img__active">
+                                    <img src="./assets/img/new3-a.jpg" alt="">
+                                </div>
+                                <div class="modal__ch">
+                                    <img src="./assets/img/new3-b.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal__detail">
+                            <h4 class="modal__detail-title">@item.Name</h4>
+                            @if (item.PromotionPrice.HasValue)
+                            {
+                                <span><span class="price">@(item.Price.HasValue ? item.Price.Value.ToString("N0") + "₫" : "Liên hệ")</span></span>
+                                <span class="product__price">@(item.PromotionPrice.HasValue ? item.PromotionPrice.Value.ToString("N0") + "₫" : "")</span>
+                            }
+                            else
+                            {
+                                <span><span class="product__price">@(item.Price.HasValue ? item.Price.Value.ToString("N0") + "₫" : "Liên hệ")</span></span>
+                            }
+                            <p class="modal__detail-p">
+                                @item.Detail
+                            </p>
+                            <div class="modal__size">
+                                <span>Kích thước</span>
+                                <select name="">
+                                    <option value="S">S</option>
+                                    <option value="M">M</option>
+                                    <option value="L">L</option>
+                                </select>
+                            </div>
+                            <div class="modal__quanlity">
+                                <span>Số lượng</span>
+                                <input type="number" min="1" value="1">
+                            </div>
+                            <div class="modal__buy">
+                                <button class="modal__btn">Thêm vào giỏ</button>
+                                <span class="modal__or">hoặc</span>
+                                <a href="#" class="modal__link">Xem chi tiết</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+
+<script src="~/Assets/Client/assets/js/mobile.js"></script>
+<script src="~/Assets/Client/assets/js/shopping-cart.js"></script>
+
+<script>
+
+    var valueCount;
+
+    // Next
+    document.querySelector('.modal__btn-next').addEventListener("click", function () {
+        valueCount = document.getElementById('quantity').value;
+        valueCount++;
+        document.getElementById('quantity').value = valueCount;
+    })
+
+    // prev
+    document.querySelector('.modal__btn-prev').addEventListener("click", function () {
+        valueCount = document.getElementById('quantity').value;
+        if (valueCount <= 1) {
+            valueCount = 1;
+            return;
+        }
+        valueCount--;
+        document.getElementById('quantity').value = valueCount;
+    })
+
+
+    // Change img in popup
+    var childrens = document.querySelector(".modal__change-img").children;
+    var imgMain = document.querySelector(".pro__main-im");
+    var imgDiv = document.querySelectorAll(".modal__ch");
+    console.log(imgDiv);
+
+    imgDiv.forEach((item) => {
+        item.addEventListener("click", function (event) {
+            imgMain.src = event.target.src;
+        })
+    })
+</script>

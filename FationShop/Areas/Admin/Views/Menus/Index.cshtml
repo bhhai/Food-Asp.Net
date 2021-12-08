@@ -1,0 +1,70 @@
+﻿@model IEnumerable<FationShop.Areas.Admin.Framework.Menu>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<p class="pt-3">
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+</p>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="m-0">Quản lý menu</h2>
+            </div>
+            <div class="card-body">
+                
+            <table class="table table-striped">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Link)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DisplayOrder)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Link)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DisplayOrder)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-warning" }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "btn btn-info" }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+
+                @*@Html.PagedListPager(Model, page => Url.Action("Index", "Categories", new { page, ViewBag.searchString }))*@
+            </div>
+        </div>
+    </div>
+
+</div>
+
+

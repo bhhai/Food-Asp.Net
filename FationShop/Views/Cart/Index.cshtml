@@ -1,0 +1,161 @@
+﻿@model List<FationShop.Models.CartItem>
+@{
+    ViewBag.Title = "Giỏ hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<title>@ViewBag.Title</title>
+<link rel="stylesheet" href="/Assets/Client/assets/css/account.css">
+<link rel="stylesheet" href="/Assets/Client/assets/css/product-detail.css">
+<link rel="stylesheet" href="/Assets/Client/assets/css/shopping-cart.css">
+
+
+@section cartController {
+
+    <script src="/Assets/Client/assets/js/cartController.js"></script>
+}
+
+<div class="top">
+    <div class="top-container">
+        <ul class="top__list">
+            <li class="top__item">
+                <a href="index.html" class="top__item-link">Trang chủ</a>
+                <i class="link__icon fas fa-chevron-right"></i>
+            </li>
+            <li class="top__item">
+                <a href="#" class="top__item-link">Giỏ hàng</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<!-- Shopping Cart -->
+<div class="shopping__cart">
+    <div class="shoppingCart-container">
+        <div class="shoppingCart__title">
+            <h3>Giỏ hàng</h3>
+        </div>
+        <div class="shoppingCart__body">
+            <div class="cart__table">
+                @{ double total = 0;}
+                @if (Session["CartSession"] != null)
+                {
+                    using (Html.BeginForm("Update", "Cart", FormMethod.Post))
+                    {
+                        <table class="cart__tableBox">
+                            <tr class="shoppingCart__item">
+                                <th class="th__product">Sản phẩm</th>
+                                <th class="quantity">Số lượng</th>
+                                <th class="quantity">Đơn giá</th>
+                                <th class="linePrice">Tổng tiền</th>
+                                <th class="remove">Xóa</th>
+                            </tr>
+                            @foreach (var item in Model)
+                            {
+                                var a = (item.Product.Price.GetValueOrDefault() * item.Quantity);
+                                total += decimal.ToDouble(a);
+                                <tr class="shoppingCart__item cart__product">
+                                    <td class="cart__itemChild">
+                                        <div class="cart__itemChild-img">
+                                            <img src="@item.Product.Image1" alt="">
+                                        </div>
+                                        <div class="cart__itemChild-content">
+                                            <span class="cart__itemChild-name">@item.Product.Name</span>
+                                            <span>@item.Product.Price.Value.ToString("N0")</span>
+                                            <span class="cart__idItem">@item.Quantity</span>
+                                        </div>
+                                    </td>
+                                    <td class="cart__row">
+                                        <div class="modal__quan-container">
+
+                                            <button class="modal__btn-quan modal__btn-prev">-</button>
+                                            <input type="text" class="modal__btn-quan" id="quantity" name="quantity" data-id="@item.Product.ID" value="@item.Quantity">
+                                            <button class="modal__btn-quan modal__btn-next">+</button>
+                                        </div>
+                                    </td>
+                                    <td class="cart__row">
+                                        @item.Product.Price.GetValueOrDefault(0).ToString()
+                                    </td>
+                                    <td class="cart__row" id="totalRow">
+                                        @a.ToString("N0")<span>₫</span>
+                                    </td>
+                                    <td class="cart__row">
+                                        <a href="@Url.Action("Delete", "Cart", new { productID = item.Product.ID })" class="far fa-trash-alt"></a>
+                                    </td>
+                                </tr>
+                            }
+
+                        </table>
+                        <button class="cart__button-link" type="submit">Cập nhật giỏ hàng</button>
+                        }
+                    }
+                else
+                {
+                    <span> Chưa có sản phẩm nào trong giỏ hàng! </span>
+                }
+
+                <div class="cart__button-action">
+                    <a href="/san-pham" class="cart__button-link">Tiếp tục mua sắm</a>
+                </div>
+            </div>
+            <div class="cart__payment">
+                <div class="cart__payment-total">
+                    <span>Tổng tiền</span>
+                    <span class="cart__payment-sum">@total.ToString("N0")<span>₫</span></span>
+                </div>
+                <div class="cart__payment-pay">
+                    <a href="/thanh-toan" class="cart__button-link link-pay">thanh toán</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+
+
+    var valueCount;
+    const prevs = document.querySelectorAll('.modal__btn-prev');
+    const nexts = document.querySelectorAll('.modal__btn-next');
+
+    // Next
+    nexts.forEach((item) => {
+        item.addEventListener('click', (e) => {
+            e.preventDefault();
+            valueCount = e.target.parentElement.children[1].value;
+            valueCount++;
+            e.target.parentElement.children[1].value = valueCount;
+            //let priceRow = e.target.parentElement.parentElement.parentElement.children[2].textContent;
+            //let totalRow = priceRow * valueCount;
+            //e.target.parentElement.parentElement.parentElement.children[3].textContent = totalRow;
+        })
+    })
+    //document.querySelector('.modal__btn-next').addEventListener("click", function () {
+    //    valueCount = document.getElementById('quantity').value;
+    //    valueCount++;
+    //    document.getElementById('quantity').value = valueCount;
+    //})
+
+    // prev
+    prevs.forEach((item) => {
+        item.addEventListener('click', (e) => {
+            e.preventDefault();
+            valueCount = e.target.parentElement.children[1].value;
+            if (valueCount <= 1) {
+                valueCount = 1;
+                return;
+            }
+            valueCount--;
+            e.target.parentElement.children[1].value = valueCount;
+            //let priceRow = e.target.parentElement.parentElement.parentElement.children[2].textContent;
+            //let totalRow = priceRow * valueCount;
+            //e.target.parentElement.parentElement.parentElement.children[3].textContent = totalRow;
+        })
+    })
+
+
+
+</script>

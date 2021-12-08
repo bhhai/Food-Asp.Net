@@ -1,0 +1,377 @@
+﻿
+@{
+    ViewBag.Title = "TMT Fashion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var slides = (List<FationShop.Areas.Admin.Framework.Slide>)ViewBag.Slides;
+    var categories = (List<FationShop.Areas.Admin.Framework.Category>)ViewBag.FeatureCategory;
+    var newProducts = (List<FationShop.Areas.Admin.Framework.Product>)ViewBag.NewProduct;
+    var featureProducts = (List<FationShop.Areas.Admin.Framework.Product>)ViewBag.FeatureProduct;
+    var blogs = (List<FationShop.Areas.Admin.Framework.Blog>)ViewBag.Blog;
+}
+<title>TMT Fashion</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+    .fa-cart-plus {
+        text-decoration: none;
+        color: #fff;
+    }
+</style>
+
+<!-- Messenger Plugin chat Code -->
+<div id="fb-root"></div>
+
+<!-- Your Plugin chat code -->
+<div id="fb-customer-chat" class="fb-customerchat">
+</div>
+
+<script>
+    var chatbox = document.getElementById('fb-customer-chat');
+    chatbox.setAttribute("page_id", "102213290118375");
+    chatbox.setAttribute("attribution", "biz_inbox");
+
+    window.fbAsyncInit = function () {
+        FB.init({
+            xfbml: true,
+            version: 'v12.0'
+        });
+    };
+
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+<!-- Slider -->
+<!-- Slideshow container -->
+<div class="slideshow-container">
+    @foreach (var item in slides)
+    {
+        <!-- Full-width images with number and caption text -->
+        <div class="mySlides fade">
+            <img src="@item.Image" style="width:100%">
+        </div>
+
+    }
+    <!-- The dots/circles -->
+    <div class="slider__dot" style="text-align:center">
+        @for (int i = 1; i <= slides.Count; i++)
+        {
+            <span class="dot" onclick="currentSlide(@i)"></span>
+        }
+    </div>
+
+</div>
+<br>
+
+@*Feature Category*@
+<div class="category">
+    <div class="category-container">
+        @foreach (var item in categories)
+        {
+            <div class="category__block">
+                <img src="~/Assets/Client/assets/img/collec1.jpg" alt="Jacket" class="category__img">
+                <div class="category__link">
+                    <h4 class="category__title" data-aos="fade-up">@item.Name</h4>
+                    <p class="category__body" data-aos="fade-up" data-aos-delay="300"><a href="/Products/@item.MetaTitle.@item.ID">Mua ngay</a></p>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+<!-- Products -->
+
+<div class="product__overlay"></div>
+<div class="product">
+    <div class="product-container">
+        <div class="product__title">
+            <a href="#" class="product__h3">
+                SẢN PHẨM NỔI BẬT
+            </a>
+        </div>
+
+        <div class="product__list">
+            @foreach (var item in featureProducts)
+            {
+                var url = "/san-pham/" + item.MetaTitle + "-" + item.ID;
+                <div class="product__item" data-aos="fade-up">
+                    <a href="@url" class="pro__item-link">
+                        <div class="product__img">
+                            <span class="onsale">14%</span>
+                            <img src="@item.Image1" class="product__item-img" alt="" width="100%">
+                            <img src="@item.Image2" class="product__item-hidden" alt="" width="100%">
+                        </div>
+                        <div class="product__name">
+                            <h5 class="product__name-item">@item.Name</h5>
+                            @if (item.PromotionPrice.HasValue)
+                            {
+                                <span><span class="price">@(item.Price.HasValue ? item.Price.Value.ToString("N0") + "₫" : "Liên hệ")</span></span>
+                                <span class="product__price">@(item.PromotionPrice.HasValue ? item.PromotionPrice.Value.ToString("N0") + "₫" : "")</span>
+                            }
+                            else
+                            {
+                                <span><span class="product__price">@(item.Price.HasValue ? item.Price.Value.ToString("N0") + "₫" : "Liên hệ")</span></span>
+                            }
+
+                        </div>
+                    </a>
+                    <div class="product__icon">
+                        <div class="product__ic icon__hover1">
+                            <a href="/them-gio-hang?productID=@item.ID&quantity=1" class="fas fa-cart-plus"></a>
+                        </div>
+                        <div class="product__ic icon__hover2" style="margin: 0 20px;">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="product__ic icon__hover3">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                    </div>
+                    <div class="product__modal">
+                        <div class="modal__title">
+                            <h3 class="modal__h3">thông tin sản phẩm</h3>
+                        </div>
+                        <div class="modal__body">
+                            <div class="modal__close">
+                                <i class="far fa-times-circle"></i>
+                            </div>
+                            <div class="modal__img">
+                                <div class="modal__main-img">
+                                    <img src="@item.Image1" class="pro__main-im" width="100%" alt="">
+                                </div>
+                                <div class="modal__change-img">
+                                    <div class="modal__ch img__active">
+                                        <img src="@item.Image1" alt="">
+                                    </div>
+                                    <div class="modal__ch">
+                                        <img src="@item.Image2" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal__detail">
+                                <h4 class="modal__detail-title">@item.Name</h4>
+                                <span><span class="modal__price">@item.Price</span>₫</span>
+                                <span class="price">@item.PromotionPrice đ</span>
+                                <p class="modal__detail-p">
+                                    @item.Description
+                                </p>
+                                <div class="modal__size">
+                                    <span>Kích thước</span>
+                                    <select name="">
+                                        <option value="S">S</option>
+                                        <option value="M">M</option>
+                                        <option value="L">L</option>
+                                    </select>
+                                </div>
+                                <div class="modal__quanlity">
+                                    <span>Số lượng</span>
+                                    <input type="number" min="1" value="1">
+                                </div>
+                                <div class="modal__buy">
+                                    <button class="modal__btn">Thêm vào giỏ</button>
+                                    <span class="modal__or">hoặc</span>
+                                    <a href="#" class="modal__link">Xem chi tiết</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+
+        <a title="Xem tất cả" href="/san-pham" class="btnx">
+            <span class="btn-content">Xem tất cả</span>
+            <span class="icon"><i class="fa fa-arrow-right"></i></span>
+        </a>
+    </div>
+</div>
+
+
+
+<!-- Boy & Girl -->
+@Html.Partial("_RecommendCategory")
+
+<!-- New Products -->
+<div class="product">
+    <div class="product-container">
+        <div class="product__title">
+            <a href="#" class="product__h3">
+                SẢN PHẨM MỚI
+            </a>
+        </div>
+
+        <div class="product__list">
+            @foreach (var item in newProducts)
+            {
+                var url = "/san-pham/" + item.MetaTitle + "-" + item.ID;
+                <div class="product__item" data-aos="fade-up">
+                    <a href="@url" class="pro__item-link">
+                        <div class="product__img">
+                            <span class="onsale">14%</span>
+                            <img src="@item.Image1" class="product__item-img" alt="" width="100%">
+                            <img src="@item.Image2" class="product__item-hidden" alt="" width="100%">
+                        </div>
+                        <div class="product__name">
+                            <h5 class="product__name-item">@item.Name</h5>
+                            @if (item.PromotionPrice.HasValue)
+                            {
+                                <span><span class="price">@(item.Price.HasValue ? item.Price.Value.ToString("N0") + "₫" : "Liên hệ")</span></span>
+                                <span class="product__price">@(item.PromotionPrice.HasValue ? item.PromotionPrice.Value.ToString("N0") + "₫" : "")</span>
+                            }
+                            else
+                            {
+                                <span><span class="product__price">@(item.Price.HasValue ? item.Price.Value.ToString("N0") + "₫" : "Liên hệ")</span></span>
+                            }
+                        </div>
+                    </a>
+                    <div class="product__icon">
+                        <div class="product__ic icon__hover1">
+                            <a href="/them-gio-hang?productID=@item.ID&quantity=1" class="fas fa-cart-plus"></a>
+                        </div>
+                        <div class="product__ic icon__hover2" style="margin: 0 20px;">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="product__ic icon__hover3">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                    </div>
+                    <div class="product__modal">
+                        <div class="modal__title">
+                            <h3 class="modal__h3">thông tin sản phẩm</h3>
+                        </div>
+                        <div class="modal__body">
+                            <div class="modal__close">
+                                <i class="far fa-times-circle"></i>
+                            </div>
+                            <div class="modal__img">
+                                <div class="modal__main-img">
+                                    <img src="@item.Image1" class="pro__main-im" width="100%" alt="">
+                                </div>
+                                <div class="modal__change-img">
+                                    <div class="modal__ch img__active">
+                                        <img src="@item.Image1" alt="">
+                                    </div>
+                                    <div class="modal__ch">
+                                        <img src="@item.Image2" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal__detail">
+                                <h4 class="modal__detail-title">@item.Name</h4>
+                                <span><span class="modal__price">@item.Price</span>₫</span>
+                                <span class="price">@item.PromotionPrice đ</span>
+                                <p class="modal__detail-p">
+                                    @item.Description
+                                </p>
+                                <div class="modal__size">
+                                    <span>Kích thước</span>
+                                    <select name="">
+                                        <option value="S">S</option>
+                                        <option value="M">M</option>
+                                        <option value="L">L</option>
+                                    </select>
+                                </div>
+                                <div class="modal__quanlity">
+                                    <span>Số lượng</span>
+                                    <input type="number" min="1" value="1">
+                                </div>
+                                <div class="modal__buy">
+                                    <button class="modal__btn">Thêm vào giỏ</button>
+                                    <span class="modal__or">hoặc</span>
+                                    <a href="#" class="modal__link">Xem chi tiết</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+
+        <a title="Xem tất cả" href="/san-pham" class="btnx">
+            <span class="btn-content">Xem tất cả</span>
+            <span class="icon"><i class="fa fa-arrow-right"></i></span>
+        </a>
+    </div>
+</div>
+<!-- Blog -->
+<div class="blog">
+    <div class="product__title">TIN TỨC</div>
+    <div class="blog-container owl-carousel owl-theme" style="width: 80%">
+        @foreach (var item in blogs)
+        {
+            var url = "/tin-tuc/" + item.MetaTitle + "/" + item.ID;
+            <div class="blog__item">
+                <a href="@url" class="blog__link">
+                    <div class="blog__img">
+                        <img src="@item.Avartar" alt="" class="blog__img-normal">
+                    </div>
+                    <div class="blog__item-normal">
+                        <h6 class="blog__item-normal__title">
+                            @item.Name
+                        </h6>
+                        <p class="blog__item-body">
+                            <i class="fas fa-calendar-alt"></i> 31/12/2020
+                        </p>
+                    </div>
+                    <div class="blog__item-hover">
+                        <p class="blog__item-hover__body">
+                            @item.Description
+                        </p>
+                    </div>
+                </a>
+            </div>
+        }
+
+    </div>
+</div>
+
+
+<!-- Brand -->
+
+@Html.Partial("_BrandSlide")
+
+
+
+
+
+<div class="regist">
+    <div class="product__title">ĐĂNG KÝ NHẬN TIN</div>
+    <p class="regist__txt">
+        Nhập địa chỉ email của bạn để nhận được tin tức mới nhất
+    </p>
+    <form action="/action_page.php" method="post" id="regist__form">
+        <input class="regist__input" data-aos="fade-right" placeholder="Nhập email của bạn..." type="email" name="fname" required>
+        <input type="submit" data-aos="fade-left" class="regist__btn" value="Đăng ký">
+    </form>
+</div>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript">
+    $('.owl-carousel').owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: true,
+        autoplay: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 2
+            },
+            1000: {
+                items: 3
+            }
+        }
+    })
+</script>

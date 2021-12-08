@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suit nam màu xanh, mặc sao cho đẹp?</title>
+    <link rel="shortcut icon" type="image" href="./assets/img/shortcut-icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/home.css">
+    <link rel="stylesheet" href="./assets/css/all-products.css">
+    <link rel="stylesheet" href="./assets/css/responsive.css">
+</head>
+
+<body>
+
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="navbar__container">
+            <div class="navbar__icon nav__moblie mobile__width" title="Giỏ hàng">
+                <i class="fas fa-shopping-bag"></i>
+            </div>
+            <div class="navbar__logo mobile__width" style="text-align: center;">
+                <a href="index.html" class="navbar__logo-link">
+                    <img src="./assets/img/logo.png" title="TMT Fashion" alt="" style="max-width: 120px">
+                </a>
+            </div>
+            <div class="navbar__list d-flex">
+                <div class="navbar__list__modul">
+                    <ul class="modul__list d-flex">
+                        <li class="modul__item">
+                            <a href="index.html" class="modul__item-link">Trang chủ</a>
+                        </li>
+                        <li class="modul__item">
+                            <a href="#" class="modul__item-link">giới thiệu</a>
+                        </li>
+                        <li class="modul__item">
+                            <a href="all-products.html" class="modul__item-link">sản phẩm</a>
+                            <ul class="modul__item-list">
+                                <a href="new-products.html">
+                                    <li class="item-list__link">
+                                        sản phẩm mới
+                                    </li>
+                                </a>
+                                <a href="all-products.html">
+                                    <li class="item-list__link">
+                                        sản phẩm nổi bật
+                                    </li>
+                                </a>
+                            </ul>
+                        </li>
+                        <li class="modul__item">
+                            <a href="tin-tuc.html" class="modul__item-link">tin tức</a>
+                        </li>
+                        <li class="modul__item">
+                            <a href="contact.html" class="modul__item-link">liên hệ</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="navbar__icons d-flex">
+                    <div class="navbar__icon" title="Tìm kiếm">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="navbar__icon" title="Đăng nhập">
+                        <a href="/account.html" class="navbar__acount">
+                            <i class="fas fa-user"></i>
+                        </a>
+                    </div>
+                    <div class="navbar__icon navbar__cart" title="Giỏ hàng">
+                        <a href="shopping-cart.html" class="navbar__acount">
+                            <i class="fas fa-shopping-bag"></i>
+                            <p>0</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab__mobile mobile__width">
+
+                <div class="navbar__icon navbar__mobile-btn">
+                    <i class="bars fas fa-bars" onclick="Bar()"></i>
+                </div>
+                <div class="nav__overlay" onclick="BarClose()"></div>
+                <div class="popup__mobile">
+                    <div class="popup-container">
+                        <div class="popup__logo">
+                            <img src="./assets/img/logo.png" style="max-width: 100px;" alt="">
+                            <div class="popup__close" onclick="BarClose()">
+                                <i class="fas fa-times"></i>
+                            </div>
+                        </div>
+                        <div class="popup__search">
+                            <input type="text" placeholder="Tìm kiếm..." class="popup__ip">
+                        </div>
+                        <ul class="popup__list">
+                            <li class="popup__item">
+                                <a href="index.html" class="popup__item-link">Trang chủ</a>
+                            </li>
+                            <li class="popup__item">
+                                <a href="#" class="popup__item-link">Giới thiệu</a>
+                            </li>
+                            <li class="popup__item">
+                                <div class="popup__item-main" style="display: flex; justify-content: space-between; align-items: center;">
+                                    <a href="all-products.html" class="popup__item-link">Sản phẩm</a>
+                                    <div class="popup__item-down" onclick="MenuCap2()">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                                <div class="popup__nav-hidden list__bar">
+                                    <div class="popup__nav-item">
+                                        <a href="new-products.html" class="popup__item-link">Sản phẩm mới</a>
+                                    </div>
+                                    <div class="popup__nav-item">
+                                        <a href="all-products.html" class="popup__item-link">Sản phẩm nổi bật</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="popup__item">
+                                <a href="tin-tuc.html" class="popup__item-link">Tin tức</a>
+                            </li>
+                            <li class="popup__item">
+                                <a href="contact.html" class="popup__item-link">Liên hệ</a>
+                            </li>
+                            <li class="popup__item">
+                                <a href="account.html" class="popup__item-link">Đăng ký / Đăng nhập</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTENT--tintuc-->
+    <div class="content">
+        <div class="items ">
+            <div class="list__title">
+                <ul class="x-100">
+                    <li><a class="items-font" href="">Trang chủ</a></li>
+                    <li><span style="margin-right: 10px;" class="list_item-tab">Tin tức</span></li>
+                    <li><span class="list_item-tab">Suit nam màu xanh, mặc sao cho đẹp? </span></li>
+                </ul>
+            </div>
+            <div class="list__blog">
+                <div class="list__blog-container">
+                    <div class="blog__area">
+                        <div class="blog__single">
+                            <div class="hearder__blog">
+                                <span class="nau"><i class="fas fa-folder"></i></span>
+                                <h3><i class="fas fa-star"></i>
+                                    <a href="">Suit nam màu xanh, mặc sao cho đẹp?</a></h3>
+                                <span class="font-13px source-blog"> 
+                                    Đăng bởi : Trịnh Minh Tài 
+                                </span>
+                                <span class="pile">|</span>
+                                <span class="font-13px date">31/12/2018</span>
+                            </div>
+                            <div class="content__text">
+                                <p>Tuy nhiên, trong bài viết này của SUPLO sẽ không chỉ nói riêng xanh navy mà nói cả các quy tắc phối cùng suit nam màu xanh.</p>
+                                <p><img src="./assets/img/suit-nam-xanh-elle-man-1_grande.jpg" alt="" width="100%"></p>
+                                <p>So với sự cổ điển của suit nam đen, sắc xanh có tính linh hoạt cao trong phối hợp với những màu sắc khác cũng như mang lại hơi thở trẻ trung vào sự cổ điển có đôi phần khô khan của suit nam.</p>
+                                <p>Màu xanh của suit chính là thứ đưa bạn đi qua thời gian và xu hướng thời trang một cách liền mạch và an toàn. Bởi tính linh hoạt cao trong quãng màu, nên có nhiều sắc xanh khác được sử dụng cho suit. Nếu xanh navy có thể
+                                    vận vào hầu hết những thời điểm trong năm thì xanh Cobalt (Royal Blue) lại rất phù hợp với khí hậu đầy nắng của mùa Xuân-Hè.</p>
+                                <p>Hãy lưu ý những quy tắc sau để dần nắm bắt được phong cách, dần dà bạn sẽ hiểu được suit cũng chỉ là một sự nhẹ nhàng trong vô số những cuộc dạo chơi trong thời trang. 8 quy tắc cơ bản với suit nam xanh:</p>
+                                <p><img src="./assets/img/suit-nam-xanh-elle-man-2_grande.jpg" alt="" width="100%"></p>
+                                <p> </p>
+                                <p>1. Để nâng cao tính thời thượng của bộ suit, bạn có thể chọn những sắc xanh rực rỡ và tươi sáng. Đặc biệt thay sự rực rỡ trên màu xanh không hề khiến chúng lố bịch mà lại phù hợp với mùa Hè.</p>
+                                <p>2. Nếu đang tìm kiếm sự cổ điển, những màu xanh đậm như navy hay xanh khói là những lựa chọn đúng đắn.</p>
+                                <p>3. Những tông màu giữa thì lại linh hoạt, rất phù hợp cho những ai không có nhiều thời gian nhưng lại phải di chuyển liên tục giữa văn phòng và các sự kiện xã hội.</p>
+                                <p>4. Khi mặc với áo sơmi hãy suy nghĩ đến việc tạo ra sự khác lạ với những tông màu. Thông thường và an toàn nhất là màu trắng, tuy nhiên, xanh nhợt và sắc hồng đem lại sự khác biệt tuyệt vời cho bộ suit.</p>
+                                <p><img src="./assets/img/suit-nam-xanh-elle-man-23_grande.jpg" alt="" width="100%"></p>
+                                <div class="shares">
+                                    <h3>Chia sẻ bài biết</h3>
+                                    <ul class="share__icons">
+                                        <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href=""><i class="fab fa-google-plus-g"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="comment__area">
+                                    <h3>Bình luận</h3>
+                                    <div class="comment__list">
+                                        <ul id="comen" class="comment__list">
+                                            
+                                        </ul>
+                                        <h3>VIẾT BÌNH LUẬN CỦA BẠN:</h3>
+                                        <div class="comment__form">
+                                            <form id="client" action="">
+                                                <div class="information">
+                                                    <div class="form__me">
+                                                        <label for="">
+                                                            Họ và tên
+                                                            <span class="required">*</span>
+                                                        </label>
+                                                        <input type="text" name="" required id="name" class="form__control">
+                                                    </div>
+                                                    <div class="form__me">
+                                                        <label for="">
+                                                            Email
+                                                            <span class="required">*</span>
+                                                        </label>
+                                                        <input type="text" name="" required id="email" class="form__control">
+                                                    </div>
+                                                </div>
+                                                <label for="">Viết bình luận 
+                                                    <span  class="required">*</span>
+                                                </label>
+                                                <textarea name="" id="comment" cols="30" required rows="10"></textarea>
+                                                <button type="button" class="btn__comment" onclick="Comment()">Gửi Bình Luận</button>
+                                            </form>
+                                        </div>
+                                        <div class="content__relate">
+                                            <h3>BÀI VIẾT LIÊN QUAN</h3>
+                                            <div class="relates">
+                                                <div class="relateto">
+                                                    <div class="img__relateto">
+                                                        <a href="./blog2.html"><img src="./assets/img/blog2.jpg" class="img__relate-hover" alt=""></a>
+                                                    </div>
+                                                    <h4><a href="./blog2.html">NGUYÊN TẮC PHỐI ĐỒ TẠO ĐIỂM CỘNG KHI ĐI XIN VIỆC</a></h4>
+                                                </div>
+                                                <div class="relateto">
+                                                    <div class="img__relateto">
+                                                        <a href="./blog3.html"><img src="./assets/img/blog3.jpg" class="img__relate-hover" alt=""></a>
+                                                    </div>
+                                                    <h4><a href="./blog3.html">9 típ ngắn phải thuộc nằm lòng khi diện suit Nam</a></h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product__left-silebar">
+                        <div class="container">
+                            <div class="search__blog">
+                                <h2>Tìm Kiếm</h2>
+                                <form action="">
+                                    <div class="input__form">
+                                        <input type="text" name="" placeholder="Tìm kiếm sản phẩm" required id="" class="form-control">
+                                        <button class="btn__form"><i class="fas fa-search"></i></button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="new__blog">
+                                <h2><a href="">Bài viết mới nhất</a></h2>
+                                <div class="content__new-blog">
+                                    <ul>
+                                        <li><a href="blog1.html">Suit nam màu xanh, mặc sao cho đẹp?</a> </li>
+                                        <li><a href="blog2.html">Nguyên tắc phối đồ tạo điểm cộng khi đi xin việc</a> </li>
+                                        <li><a href="blog3.html">9 típ ngắn phải thuộc nằm lòng khi diện suit Nam</a> </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="baner__blog">
+                                <a href=""><img src="./assets/img/shop-sidebar-blog.jpg" class="img__banner" alt=""></a>
+                            </div>
+                            <div class="tags__blog">
+                                <h2>Tags</h2>
+                                <div class="tag ">
+                                    <ul class="tags">
+                                        <li class="btn__tag"><a href="./tag1.html">Chuyện ăn mặc</a></li>
+                                        <li class="btn__tag"><a href="./tag2.htm">Đồ công sở</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function Comment(){
+            var Name, Email, texarea, filter;
+            Name = document.getElementById("name").value;
+            Email = document.getElementById("email").value;
+            texarea = document.getElementById("comment").value;
+            var d = new Date();
+            filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            if(Name == ""){
+                alert("vui lòng điền tên vào");
+            }else{
+                if(!filter.test(Email) ){
+                    alert("hãy nhập địa chỉ email hợp lệ.\nExample@gamil.com");
+                    Email.focus;
+                    return false;
+                }else{
+                    if(texarea==""){
+                        alert("vui lòng điền ý kiến của bạn vào");
+                    }
+                    else{
+                        var Coment = document.getElementById("comen");
+                        Coment.innerHTML = `<li>
+                        <div id="CMT" class="comment__content">
+                            <strong id="demo">${Name}</strong>
+                            <span  class="comment__date"><p id="da">${d.getDate()+"/"+(d.getMonth()+1)+"/"+d.getFullYear()}</p>
+                                <a id="TL" href="">Trả lời</a>
+                            </span>
+                            <p id="cm">${texarea}</p>
+                        </div> <li>`;
+                            document.getElementById("client").reset();
+                    }
+                }
+            }
+        }
+    </script>
+
+
+    <!-- Footer -->
+
+    <div class="footer">
+        <div class="footer-container">
+            <div class="footer__head">
+                <div class="footer__logo">
+                    <img src="./assets/img/logo.png" alt="" style="max-width: 100px;" class="footer__logo-img">
+                </div>
+                <div class="footer__block">
+                    <div class="footer__block-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="footer__block__body">
+                        <span class="footer__name">Địa chỉ:</span>
+                        <p class="footer__value">Cổ Nhuế - Bắc Từ Liêm - Hà Nội</p>
+                    </div>
+                </div>
+                <div class="footer__block">
+                    <div class="footer__block-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="footer__block__body">
+                        <span class="footer__name">Email:</span>
+                        <a href="mailto:Haibh0903@gmail.com" class="footer__value">Haibh0903@gmail.com</a>
+                    </div>
+                </div>
+                <div class="footer__block">
+                    <div class="footer__block-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="footer__block__body">
+                        <span class="footer__name">Điện thoại:</span>
+                        <a href="tel:035 285 0379" class="footer__value">035 285 0379</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="payment">
+        <div class="payment__logo">
+            <img src="./assets/img/payment-icon.png" style="max-width: 100%; max-height: 40px;" alt="">
+        </div>
+        <ul class="payment__list">
+            <li class="payment__item">
+                <a href="#" class="payment__item-link">Trang chủ</a>
+            </li>
+            <li class="payment__item">
+                <a href="#" class="payment__item-link">giới thiệu</a>
+            </li>
+            <li class="payment__item">
+                <a href="#" class="payment__item-link">sản phẩm</a>
+            </li>
+            <li class="payment__item">
+                <a href="#" class="payment__item-link">tin tức
+            <li class="payment__item" style="border-right: none">
+                <a href="#" class="payment__item-link">liên hệ</a>
+            </li>
+        </ul>
+        <div class="payment__license">
+            © Bản quyền thuộc về BuiHoangHai | <a href="https://www.facebook.com/Haibuihoang.09" class="bhh">BHH</a>
+        </div>
+    </div>
+
+
+
+
+    <script src="./assets/js/mobile.js"></script>
+
+</body>
+
+</html>

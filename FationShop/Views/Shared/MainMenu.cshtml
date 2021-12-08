@@ -1,0 +1,171 @@
+﻿
+@model List<FationShop.Areas.Admin.Framework.Menu>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+    .navbar__container {
+        position: relative;
+    }
+    .nav__search {
+        position: absolute;
+        bottom: -50px;
+        z-index: 9999;
+        border-radius: 5px;
+        right: 0;
+        width: 300px;
+        background-color: rgba(255, 255,255, 0.7);
+        padding: 15px;
+        display: flex;
+        justify-content: space-between;
+        transition: all .3s ease-in-out;
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    .nav__form {
+        background-color: rgba(255, 255,255, 0.7);
+        width: 100%;
+        border-radius: 5px;
+    }
+
+        .nav__form > i {
+            cursor: pointer;
+        }
+
+        .nav__search input {
+            border: none;
+            font-size: 13px;
+            padding: 10px;
+            background-color: transparent;
+            outline: none;
+            width: 90%;
+        }
+
+    .nav__search-active {
+        visibility: visible;
+        opacity: 1;
+    }
+</style>
+
+<div class="navbar">
+    
+    <div class="navbar__container">
+        <div class="nav__search">
+            @using (Html.BeginForm("Index", "Product", null, FormMethod.Post, new { @class = "nav__form" }))
+            {
+                    <input type="text" placeholder="Tìm kiếm..." class="nav__search-value" value="@Session["SearchString"]" name="searchString" />
+                    <button type="submit" class="fas fa-search"></button>
+            }
+            </div>
+        <div class="navbar__icon nav__moblie mobile__width" title="Giỏ hàng">
+            <a href="shopping-cart.html" class="navbar__acount">
+                <i class="fas fa-shopping-bag"></i>
+            </a>
+        </div>
+        <div class="navbar__logo mobile__width" style="text-align: center;">
+            <a href="/" class="navbar__logo-link">
+                <img src="~/Assets/Client/assets/img/logo.png" title="TMT Fashion" alt="" style="max-width: 120px">
+            </a>
+        </div>
+        <div class="navbar__list d-flex">
+            <div class="navbar__list__modul">
+                <ul class="modul__list d-flex">
+                    @foreach (var item in Model)
+                    {
+                        <li class="modul__item">
+                            <a href="@item.Link" class="modul__item-link">@item.Name</a>
+                            @if (item.Name == "Sản phẩm")
+                            {
+                                <ul class="modul__item-list">
+                                    <a href="new-products.html">
+                                    <li class="item-list__link">
+                                        sản phẩm mới
+                                    </li>
+                                    </a>
+                                    <a href="all-products.html">
+                                    <li class="item-list__link">
+                                        sản phẩm nổi bật
+                                    </li>
+                                    </a>
+                                </ul>
+                            }
+                        </li>
+                    }
+                </ul>
+            </div>
+            <div class="navbar__icons d-flex">
+                <div class="navbar__icon" id="icon-search" title="Tìm kiếm">
+                    <i class="fas fa-search" ></i>
+                </div>
+                <div class="navbar__icon" title="Đăng nhập">
+                    <a href="/dang-nhap" class="navbar__acount">
+                        <i class="fas fa-user"></i>
+                    </a>
+                </div>
+                @{Html.RenderAction("HeaderCart", "Home");}
+            </div>
+        </div>
+
+        <div class="tab__mobile mobile__width">
+
+            <div class="navbar__icon navbar__mobile-btn">
+                <i class="bars fas fa-bars" onclick="Bar()"></i>
+            </div>
+            <div class="nav__overlay" onclick="BarClose()"></div>
+            <div class="popup__mobile">
+                <div class="popup-container">
+                    <div class="popup__logo">
+                        <img src="./assets/img/logo.png" style="max-width: 100px;" alt="">
+                        <div class="popup__close" onclick="BarClose()">
+                            <i class="fas fa-times"></i>
+                        </div>
+                    </div>
+                    <div class="popup__search">
+                        <input type="text" placeholder="Tìm kiếm..." class="popup__ip">
+                    </div>
+                    <ul class="popup__list">
+                        <li class="popup__item">
+                            <a href="index.html" class="popup__item-link">Trang chủ</a>
+                        </li>
+                        <li class="popup__item">
+                            <a href="#" class="popup__item-link">Giới thiệu</a>
+                        </li>
+                        <li class="popup__item">
+                            <div class="popup__item-main" style="display: flex; justify-content: space-between; align-items: center;">
+                                <a href="all-products.html" class="popup__item-link">Sản phẩm</a>
+                                <div class="popup__item-down" onclick="MenuCap2()">
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </div>
+                            <div class="popup__nav-hidden list__bar">
+                                <div class="popup__nav-item">
+                                    <a href="new-products.html" class="popup__item-link">Sản phẩm mới</a>
+                                </div>
+                                <div class="popup__nav-item">
+                                    <a href="all-products.html" class="popup__item-link">Sản phẩm nổi bật</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="popup__item">
+                            <a href="tin-tuc.html" class="popup__item-link">Tin tức</a>
+                        </li>
+                        <li class="popup__item">
+                            <a href="contact.html" class="popup__item-link">Liên hệ</a>
+                        </li>
+                        <li class="popup__item">
+                            <a href="/dang-nhap" class="popup__item-link">Đăng ký / Đăng nhập</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const btn = document.getElementById("icon-search");
+    const nav = document.querySelector(".nav__search");
+    btn.addEventListener("click", () => {
+        nav.classList.toggle("nav__search-active");
+    })
+</script>

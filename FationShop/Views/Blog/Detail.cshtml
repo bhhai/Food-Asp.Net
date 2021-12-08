@@ -1,0 +1,95 @@
+﻿@model FationShop.Areas.Admin.Framework.Blog
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var relatedBlogs = (List<FationShop.Areas.Admin.Framework.Blog>)ViewBag.RelatedBlogs;
+}
+
+<link rel="stylesheet" href="~/Assets/Client/assets/css/all-products.css">
+<title>@Model.Name</title>
+
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v12.0&appId=652348552416512&autoLogAppEvents=1" nonce="rGyfxLj6"></script>
+<!-- CONTENT--tintuc-->
+<div class="content">
+    <div class="items ">
+        <div class="list__title">
+            <ul class="x-100">
+                <li><a class="items-font" href="">Trang chủ</a></li>
+                <li><span style="margin-right: 10px;" class="list_item-tab">Tin tức</span></li>
+                <li><span class="list_item-tab">@Model.Name</span></li>
+            </ul>
+        </div>
+        <div class="list__blog">
+            <div class="list__blog-container">
+                <div class="blog__area">
+                    <div class="blog__single">
+                        <div class="hearder__blog">
+                            <span class="nau"><i class="fas fa-folder"></i></span>
+                            <h3>
+                                <i class="fas fa-star"></i>
+                                <a href="#">@Model.Name</a>
+                            </h3>
+                            <span class="font-13px source-blog">
+                                Đăng bởi : Trịnh Minh Tài
+                            </span>
+                            <span class="pile">|</span>
+                            <span class="font-13px date">31/12/2018</span>
+                        </div>
+                        <div class="content__text">
+                            @Html.Raw(Model.Content)
+                            <p><img src="@Model.Avartar" alt="" width="100%"></p>
+
+                            <div class="shares">
+                                <h3>Chia sẻ bài biết</h3>
+                                <ul class="share__icons">
+                                    <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href=""><i class="fab fa-google-plus-g"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="comment__area">
+                                <h3>Bình luận</h3>
+                                <div class="fb-comments" data-href="https://localhost:44376/" data-width="" data-numposts="5"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product__left-silebar">
+                    <div class="container">
+                        <div class="search__blog">
+                            <h2>Tìm Kiếm</h2>
+                            <form action="">
+                                <div class="input__form">
+                                    <input type="text" name="" placeholder="Tìm kiếm sản phẩm" required id="" class="form-control">
+                                    <button class="btn__form"><i class="fas fa-search"></i></button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="new__blog">
+                            <h2><a href="">Bài viết mới nhất</a></h2>
+                            <div class="content__new-blog">
+                                <ul>
+                                    <li><a href="blog1.html">Suit nam màu xanh, mặc sao cho đẹp?</a> </li>
+                                    <li><a href="blog2.html">Nguyên tắc phối đồ tạo điểm cộng khi đi xin việc</a> </li>
+                                    <li><a href="blog3.html">9 típ ngắn phải thuộc nằm lòng khi diện suit Nam</a> </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="baner__blog">
+                            <a href=""><img src="./assets/img/shop-sidebar-blog.jpg" class="img__banner" alt=""></a>
+                        </div>
+                        <div class="tags__blog">
+                            <h2>Tags</h2>
+                            <div class="tag ">
+                                <ul class="tags">
+                                    <li class="btn__tag"><a href="./tag1.html">Chuyện ăn mặc</a></li>
+                                    <li class="btn__tag"><a href="./tag2.htm">Đồ công sở</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

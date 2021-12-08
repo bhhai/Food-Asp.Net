@@ -1,0 +1,58 @@
+﻿@model FationShop.Areas.Admin.Framework.Customer
+@{
+    ViewBag.Title = "Đăng nhập";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<title>@ViewBag.Title</title>
+<link href="~/Assets/Client/assets/css/Alert.css" rel="stylesheet" />
+<style>
+    #login__form {
+        display: block;
+        margin: 50px auto 0;
+    }
+</style>
+@using (Html.BeginForm("Login", "User", FormMethod.Post, new { @class = "form__item", @id = "login__form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form__title">đăng nhập</div>
+    if (ViewBag.Alert != null)
+    {
+        <div class="noti noti-danger" role="alert">
+            @ViewBag.Alert
+        </div>
+    }
+    <div class="form__box">
+        <div class="form__children">
+            <span class="required">*</span>
+            <i class="input__icon fas fa-envelope"></i>
+            @Html.TextBoxFor(model => model.Email, new { @class = "form__input", @placeholder = "Email" })
+        </div>
+        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "form__errMsg" })
+    </div>
+    <div class="form__box">
+        <div class="form__children">
+            <span class="required">*</span>
+            <i class="input__icon fas fa-lock"></i>
+            @Html.PasswordFor(model => model.Password, new { @class = "form__input", @placeholder = "Mật khẩu" })
+        </div>
+        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "form__errMsg" })
+    </div>
+    <div class="form__button">
+        <button type="submit" class="form__btn">Đăng nhập</button>
+        <div class="form__link">
+            <a href="#" class="form__forgot">Quên mật khẩu?</a>
+            <a href="/dang-ky" id="link-register">Chưa có tài khoản? Đăng ký ngay</a>
+        </div>
+    </div>
+    <div class="form__social">
+        <a href="@Url.Action("LoginFacebook", "User")" class="form__btn-img">
+            <img src="/Assets/Client/assets/img/fb-btn.svg" class="frm__img" alt="">
+        </a>
+        <a href="#" class="form__btn-img">
+            <img src="/Assets/Client/assets/img/gp-btn.svg" class="frm__img" alt="">
+        </a>
+    </div>
+}
+
+

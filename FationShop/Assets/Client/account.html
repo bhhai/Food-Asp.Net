@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập tài khoản</title>
+    <link rel="shortcut icon" type="image" href="./assets/img/shortcut-icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/home.css">
+    <link rel="stylesheet" href="./assets/css/account.css">
+    <link rel="stylesheet" href="./assets/css/responsive.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="navbar__container">
+            <div class="navbar__icon nav__moblie mobile__width" title="Giỏ hàng">
+                <i class="fas fa-shopping-bag"></i>
+            </div>
+            <div class="navbar__logo mobile__width" style="text-align: center;">
+                <a href="index.html" class="navbar__logo-link">
+                    <img src="./assets/img/logo.png" title="TMT Fashion" alt="" style="max-width: 120px">
+                </a>
+            </div>
+            <div class="navbar__list d-flex">
+                <div class="navbar__list__modul">
+                    <ul class="modul__list d-flex">
+                        <li class="modul__item">
+                            <a href="index.html" class="modul__item-link">Trang chủ</a>
+                        </li>
+                        <li class="modul__item">
+                            <a href="#" class="modul__item-link">giới thiệu</a>
+                        </li>
+                        <li class="modul__item">
+                            <a href="all-products.html" class="modul__item-link">sản phẩm</a>
+                            <ul class="modul__item-list">
+                                <a href="new-products.html">
+                                    <li class="item-list__link">
+                                        sản phẩm mới
+                                    </li>
+                                </a>
+                                <a href="all-products.html">
+                                    <li class="item-list__link">
+                                        sản phẩm nổi bật
+                                    </li>
+                                </a>
+                            </ul>
+                        </li>
+                        <li class="modul__item">
+                            <a href="tin-tuc.html" class="modul__item-link">tin tức</a>
+                        </li>
+                        <li class="modul__item">
+                            <a href="contact.html" class="modul__item-link">liên hệ</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="navbar__icons d-flex">
+                    <div class="navbar__icon" title="Tìm kiếm">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="navbar__icon" title="Đăng nhập">
+                        <a href="account.html" class="navbar__acount">
+                            <i class="fas fa-user"></i>
+                        </a>
+                    </div>
+                    <div class="navbar__icon navbar__cart" title="Giỏ hàng">
+                        <a href="shopping-cart.html" class="navbar__acount">
+                            <i class="fas fa-shopping-bag"></i>
+                            <p>0</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab__mobile mobile__width">
+
+                <div class="navbar__icon navbar__mobile-btn">
+                    <i class="bars fas fa-bars" onclick="Bar()"></i>
+                </div>
+                <div class="nav__overlay" onclick="BarClose()"></div>
+                <div class="popup__mobile">
+                    <div class="popup-container">
+                        <div class="popup__logo">
+                            <img src="./assets/img/logo.png" style="max-width: 100px;" alt="">
+                            <div class="popup__close" onclick="BarClose()">
+                                <i class="fas fa-times"></i>
+                            </div>
+                        </div>
+                        <div class="popup__search">
+                            <input type="text" placeholder="Tìm kiếm..." class="popup__ip">
+                        </div>
+                        <ul class="popup__list">
+                            <li class="popup__item">
+                                <a href="index.html" class="popup__item-link">Trang chủ</a>
+                            </li>
+                            <li class="popup__item">
+                                <a href="#" class="popup__item-link">Giới thiệu</a>
+                            </li>
+                            <li class="popup__item">
+                                <div class="popup__item-main" style="display: flex; justify-content: space-between; align-items: center;">
+                                    <a href="all-products.html" class="popup__item-link">Sản phẩm</a>
+                                    <div class="popup__item-down" onclick="MenuCap2()">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                                <div class="popup__nav-hidden list__bar">
+                                    <div class="popup__nav-item">
+                                        <a href="new-products.html" class="popup__item-link">Sản phẩm mới</a>
+                                    </div>
+                                    <div class="popup__nav-item">
+                                        <a href="all-products.html" class="popup__item-link">Sản phẩm nổi bật</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="popup__item">
+                                <a href="tin-tuc.html" class="popup__item-link">Tin tức</a>
+                            </li>
+                            <li class="popup__item">
+                                <a href="contact.html" class="popup__item-link">Liên hệ</a>
+                            </li>
+                            <li class="popup__item">
+                                <a href="account.html" class="popup__item-link">Đăng ký / Đăng nhập</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- top -->
+
+    <div class="top">
+        <div class="top-container">
+            <ul class="top__list">
+                <li class="top__item">
+                    <a href="index.html" class="top__item-link">Trang chủ</a>
+                    <i class="link__icon fas fa-chevron-right"></i>
+                </li>
+                <li class="top__item">
+                    <a href="#" class="top__item-link">Tài khoản</a>
+                    <i class="link__icon fas fa-chevron-right"></i>
+                </li>
+                <li class="top__item">
+                    <a href="#" class="top__item-link">Đăng nhập</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Form -->
+    <div class="form">
+        <div class="form-container">
+            <form id="login__form" method="POST" class="form__item">
+                <div class="form__title">đăng nhập</div>
+                <div class="form__box">
+                    <div class="form__children">
+                        <i class="input__icon fas fa-envelope"></i>
+                        <span class="required">*</span>
+                        <input id="email" placeholder="Email của bạn" class="form__input">
+                    </div>
+                    <span class="form__errMsg"></span>
+                </div>
+                <div class="form__box">
+                    <div class="form__children">
+                        <span class="required">*</span>
+                        <i class="input__icon fas fa-lock"></i>
+                        <input type="password" id="password" placeholder="Nhập mật khẩu" class="form__input">
+                    </div>
+                    <span class="form__errMsg"></span>
+                </div>
+                <div class="form__button">
+                    <button class="form__btn">Đăng nhập</button>
+                    <div class="form__link">
+                        <a href="#" class="form__forgot">Quên mật khẩu?</a>
+                        <span id="link-register">Chưa có tài khoản? Đăng ký ngay</span>
+                    </div>
+                </div>
+                <div class="form__social">
+                    <a href="#" class="form__btn-img">
+                        <img src="./assets/img/fb-btn.svg" class="frm__img" alt="">
+                    </a>
+                    <a href="#" class="form__btn-img">
+                        <img src="./assets/img/gp-btn.svg" class="frm__img" alt="">
+                    </a>
+                </div>
+            </form>
+            <form id="register__form" class="form__item">
+                <div class="form__title">ĐĂNG KÝ THÀNH VIÊN MỚI</div>
+                <div class="form__box">
+                    <div class="form__children">
+                        <span class="required">*</span>
+                        <i class="input__icon fas fa-user"></i>
+                        <input type="text" id="first-name" placeholder="Tên" class="form__input" >
+                    </div>
+                    <span class="form__errMsg"></span>
+                </div>
+                <div class="form__box">
+                    <div class="form__children">
+                        <span class="required">*</span>
+                        <i class="input__icon fas fa-user"></i>
+                        <input type="text" id="last-name" placeholder="Họ" class="form__input">
+                    </div>
+                    <span class="form__errMsg"></span>
+                </div>
+                <div class="form__box">
+                    <div class="form__children">
+                        <span class="required">*</span>
+                        <i class="input__icon fas fa-envelope"></i>
+                        <input placeholder="Email" id="regis__email" class="form__input">
+                    </div>
+                    <span class="form__errMsg"></span>
+                </div>
+                <div class="form__box">
+                    <div class="form__children">
+                        <span class="required">*</span>
+                        <i class="input__icon fas fa-lock"></i>
+                        <input type="password" id="regis__pass" placeholder="Mật khẩu" class="form__input">
+                    </div>
+                    <span class="form__errMsg"></span>
+                </div>
+                <span class="link__login">Đã có tài khoản. Đăng nhập ngay?</span>
+                <div class="form__button">
+                    <button class="form__btn">Đăng ký</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+
+    <div class="footer">
+        <div class="footer-container">
+            <div class="footer__head">
+                <div class="footer__logo">
+                    <img src="./assets/img/logo.png" alt="" style="max-width: 100px;" class="footer__logo-img">
+                </div>
+                <div class="footer__block">
+                    <div class="footer__block-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="footer__block__body">
+                        <span class="footer__name">Địa chỉ:</span>
+                        <p class="footer__value">Cổ Nhuế - Bắc Từ Liêm - Hà Nội</p>
+                    </div>
+                </div>
+                <div class="footer__block">
+                    <div class="footer__block-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="footer__block__body">
+                        <span class="footer__name">Email:</span>
+                        <a href="mailto:Haibh0903@gmail.com" class="footer__value">Haibh0903@gmail.com</a>
+                    </div>
+                </div>
+                <div class="footer__block">
+                    <div class="footer__block-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="footer__block__body">
+                        <span class="footer__name">Điện thoại:</span>
+                        <a href="tel:035 285 0379" class="footer__value">035 285 0379</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="payment">
+        <div class="payment__logo">
+            <img src="./assets/img/payment-icon.png" style="max-width: 100%; max-height: 40px;" alt="">
+        </div>
+        <ul class="payment__list">
+            <li class="payment__item">
+                <a href="#" class="payment__item-link">Trang chủ</a>
+            </li>
+            <li class="payment__item">
+                <a href="#" class="payment__item-link">giới thiệu</a>
+            </li>
+            <li class="payment__item">
+                <a href="#" class="payment__item-link">sản phẩm</a>
+            </li>
+            <li class="payment__item">
+                <a href="#" class="payment__item-link">tin tức
+            <li class="payment__item" style="border-right: none">
+                <a href="#" class="payment__item-link">liên hệ</a>
+            </li>
+        </ul>
+        <div class="payment__license">
+            © Bản quyền thuộc về BuiHoangHai | <a href="https://www.facebook.com/Haibuihoang.09" class="bhh">BHH</a>
+        </div>
+    </div>
+
+    <script src="./assets/js/mobile.js"></script>
+    <script src="./assets/js/vaidate-form.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+﻿@model FationShop.Areas.Admin.Framework.About
+@{
+    ViewBag.Title = "Giới thiệu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/Assets/Client/assets/css/intro.css">
+<title>@ViewBag.Title</title>
+
+<!-- Intro -->
+<div class="Introduce">
+    <div class="Introduce__baner">
+        <div class="items">
+            <ul class="list__title">
+                <li><a class="items-font" href="/">Trang chủ</a></li>
+                <li><span class="list_item-tab">Giới thiệu</span></li>
+            </ul>
+        </div>
+    </div>
+    <div class="Introduce__Content">
+        <div class="impomation__Itroduce">
+            <div class="headingPage">
+                <h1>Giới Thiệu</h1>
+            </div>
+            <div class="contentPage">
+
+                    <p>@Html.Raw(Model.Description)</p>
+                    <p>@Html.Raw(Model.Content)</p>
+                    <p style="display: flex; justify-content: center; width: 100%"><img src="@Model.Avartar" alt="@Model.MetaTitle" width="100%" /></p>
+            </div>
+        </div>
+    </div>
+</div>

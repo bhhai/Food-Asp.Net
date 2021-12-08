@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới thiệu</title>
+    <link rel="shortcut icon" type="image" href="./assets/img/shortcut-icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./assets/css/intro.css">
+    <link rel="stylesheet" href="./assets/css/home.css">
+    <link rel="stylesheet" href="./assets/css/responsive.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="navbar__container">
+            <div class="navbar__icon nav__moblie mobile__width" title="Giỏ hàng">
+                <a href="shopping-cart.html" class="navbar__acount">
+                    <i class="fas fa-shopping-bag"></i>
+                </a>
+            </div>
+            <div class="navbar__logo mobile__width" style="text-align: center;">
+                <a href="index.html" class="navbar__logo-link">
+                    <img src="./assets/img/logo.png" title="TMT Fashion" alt="" style="max-width: 120px">
+                </a>
+            </div>
+            <div class="navbar__list d-flex">
+                <div class="navbar__list__modul">
+                    <ul class="modul__list d-flex">
+                        <li class="modul__item">
+                            <a href="index.html" class="modul__item-link">Trang chủ</a>
+                        </li>
+                        <li class="modul__item">
+                            <a href="intro.html" class="modul__item-link">giới thiệu</a>
+                        </li>
+                        <li class="modul__item">
+                            <a href="all-products.html" class="modul__item-link">sản phẩm</a>
+                            <ul class="modul__item-list">
+                                <a href="new-products.html">
+                                    <li class="item-list__link">
+                                        sản phẩm mới
+                                    </li>
+                                </a>
+                                <a href="all-products.html">
+                                    <li class="item-list__link">
+                                        sản phẩm nổi bật
+                                    </li>
+                                </a>
+                            </ul>
+                        </li>
+                        <li class="modul__item">
+                            <a href="tin-tuc.html" class="modul__item-link">tin tức</a>
+                        </li>
+                        <li class="modul__item">
+                            <a href="contact.html" class="modul__item-link">liên hệ</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="navbar__icons d-flex">
+                    <div class="navbar__icon" title="Tìm kiếm">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="navbar__icon" title="Đăng nhập">
+                        <a href="account.html" class="navbar__acount">
+                            <i class="fas fa-user"></i>
+                        </a>
+                    </div>
+                    <div class="navbar__icon navbar__cart" title="Giỏ hàng">
+                        <a href="shopping-cart.html" class="navbar__acount">
+                            <i class="fas fa-shopping-bag"></i>
+                            <p>0</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab__mobile mobile__width">
+
+                <div class="navbar__icon navbar__mobile-btn">
+                    <i class="bars fas fa-bars" onclick="Bar()"></i>
+                </div>
+                <div class="nav__overlay" onclick="BarClose()"></div>
+                <div class="popup__mobile">
+                    <div class="popup-container">
+                        <div class="popup__logo">
+                            <img src="./assets/img/logo.png" style="max-width: 100px;" alt="">
+                            <div class="popup__close" onclick="BarClose()">
+                                <i class="fas fa-times"></i>
+                            </div>
+                        </div>
+                        <div class="popup__search">
+                            <input type="text" placeholder="Tìm kiếm..." class="popup__ip">
+                        </div>
+                        <ul class="popup__list">
+                            <li class="popup__item">
+                                <a href="index.html" class="popup__item-link">Trang chủ</a>
+                            </li>
+                            <li class="popup__item">
+                                <a href="#" class="popup__item-link">Giới thiệu</a>
+                            </li>
+                            <li class="popup__item">
+                                <div class="popup__item-main" style="display: flex; justify-content: space-between; align-items: center;">
+                                    <a href="all-products.html" class="popup__item-link">Sản phẩm</a>
+                                    <div class="popup__item-down" onclick="MenuCap2()">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                                <div class="popup__nav-hidden list__bar">
+                                    <div class="popup__nav-item">
+                                        <a href="new-products.html" class="popup__item-link">Sản phẩm mới</a>
+                                    </div>
+                                    <div class="popup__nav-item">
+                                        <a href="all-products.html" class="popup__item-link">Sản phẩm nổi bật</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="popup__item">
+                                <a href="tin-tuc.html" class="popup__item-link">Tin tức</a>
+                            </li>
+                            <li class="popup__item">
+                                <a href="contact.html" class="popup__item-link">Liên hệ</a>
+                            </li>
+                            <li class="popup__item">
+                                <a href="account.html" class="popup__item-link">Đăng ký / Đăng nhập</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Intro -->
+    <div class="Introduce">
+        <div class="Introduce__baner">
+            <div class="items">
+                <ul class="list__title">
+                    <li><a class="items-font" href="">Trang chủ</a></li>
+                    <li><span class="list_item-tab">Giới thiệu</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="Introduce__Content">
+            <div class="impomation__Itroduce">
+                <div class="headingPage">
+                    <h1>Giới Thiệu</h1>
+                </div>
+                <div class="contentPage">
+                    <p> 📍116 Phố Miếu Đần, Mễ Trì, Hà Nội  <br>
+                        📍56 Hoàng Quốc Việt, Nam Từ Liên, Hà Nội <br>
+                        📍30 Nguyễn Trãi, Bắc Từ Liêm, Hà Nội</p>
+                    <p>FOUNDED IN 2016 BY 3 YOUNG KIDS ON A MISSION TO MAKE THEIR VISION OF STREETWEAR COME TO LIFE. SINCE THEN STREETWEAREAZY HAS BECOME A LIFESTYLE BRAND FOR ALL TO WEAR. AND WE’RE ONLY GETTING STARTED!</p>
+                    <p><img src="./assets/img/founders_grande.jpg" alt="" width="100%"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+
+    <div class="footer">
+        <div class="footer-container">
+            <div class="footer__head">
+                <div class="footer__logo">
+                    <img src="./assets/img/logo.png" alt="" style="max-width: 100px;" class="footer__logo-img">
+                </div>
+                <div class="footer__block">
+                    <div class="footer__block-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="footer__block__body">
+                        <span class="footer__name">Địa chỉ:</span>
+                        <p class="footer__value">Cổ Nhuế - Bắc Từ Liêm - Hà Nội</p>
+                    </div>
+                </div>
+                <div class="footer__block">
+                    <div class="footer__block-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="footer__block__body">
+                        <span class="footer__name">Email:</span>
+                        <a href="mailto:Haibh0903@gmail.com" class="footer__value">Haibh0903@gmail.com</a>
+                    </div>
+                </div>
+                <div class="footer__block">
+                    <div class="footer__block-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="footer__block__body">
+                        <span class="footer__name">Điện thoại:</span>
+                        <a href="tel:035 285 0379" class="footer__value">035 285 0379</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="payment">
+        <div class="payment__logo">
+            <img src="./assets/img/payment-icon.png" style="max-width: 100%; max-height: 40px;" alt="">
+        </div>
+        <ul class="payment__list">
+            <li class="payment__item">
+                <a href="#" class="payment__item-link">Trang chủ</a>
+            </li>
+            <li class="payment__item">
+                <a href="#" class="payment__item-link">giới thiệu</a>
+            </li>
+            <li class="payment__item">
+                <a href="#" class="payment__item-link">sản phẩm</a>
+            </li>
+            <li class="payment__item">
+                <a href="#" class="payment__item-link">tin tức
+            <li class="payment__item" style="border-right: none">
+                <a href="#" class="payment__item-link">liên hệ</a>
+            </li>
+        </ul>
+        <div class="payment__license">
+            © Bản quyền thuộc về BuiHoangHai | <a href="https://www.facebook.com/Haibuihoang.09" class="bhh">BHH</a>
+        </div>
+    </div>
+
+    <script src="./assets/js/mobile.js"></script>
+    <script src="./assets/js/shopping-cart.js"></script>
+</body>
+</html>

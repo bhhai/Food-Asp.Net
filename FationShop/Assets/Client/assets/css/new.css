@@ -1,0 +1,171 @@
+.new {
+    width: 100%;
+    padding: 80px 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.new-container {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+ul {
+    list-style: none;
+}
+
+.new__item-link {
+    color: #000;
+}
+
+.new__navbar {
+    width: 20%;
+}
+
+.new__all {
+    display: flex;
+    flex-direction: column;
+}
+
+.new__title {
+    text-transform: uppercase;
+    font-size: 18px;
+}
+
+.new__list {
+    padding: 30px 0;
+}
+
+.new__item {
+    font-size: 12px;
+    padding: 10px 0;
+}
+
+.new__products {
+    width: 76%;
+}
+
+.new__sort {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.new__sort-txt {
+    font-size: 14px;
+}
+
+.new__select {
+    margin-left: 15px;
+    padding: 8px 20px;
+}
+
+.new__select:focus {
+    outline: none;
+}
+
+.product__list {
+    margin-top: 20px;
+}
+
+
+/* Check box */
+
+.new__box {
+    height: 18px;
+    width: 18px;
+    background: transparent;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    position: relative;
+}
+
+.new__box-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #86590d;
+    opacity: 0;
+}
+
+.new__item {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.new__cb-label {
+    margin-left: 6px;
+    cursor: pointer;
+}
+
+.list__checkbox {
+    height: 16px;
+    width: 16px;
+    border: 1px solid #ccc;
+    background: transparent;
+}
+
+.bg__color {
+    width: 30px;
+    height: 30px;
+    background: black;
+    border-radius: 50%;
+    position: relative;
+    margin-right: 10px;
+}
+
+.tick {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+}
+
+.input__check {
+    opacity: 0;
+}
+
+.input__check:checked~.tick {
+    display: block;
+}
+
+.list__box {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.new__item input {
+    display: none;
+}
+
+.new__box-color {
+    height: 18px;
+    width: 18px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+}
+
+.tick-back {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #86590d;
+    display: none;
+}
+
+.new__item input:checked~.tick-back {
+    display: block;
+}
