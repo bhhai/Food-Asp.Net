@@ -98,7 +98,7 @@
 .cart__button-link {
     display: inline-block;
     border: 0;
-    background: #86590d;
+    background: #f8452d;
     height: 50px;
     padding: 0 40px;
     border-radius: 50px;
@@ -109,7 +109,9 @@
     color: #fff;
     text-transform: uppercase;
     font-weight: 300;
-    border: 1px solid #86590d !important;
+    border: 1px solid #f8452d !important;
+    margin-top: 30px;
+    cursor: pointer;
 }
 
 .fa-cart-plus {

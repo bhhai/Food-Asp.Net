@@ -249,14 +249,17 @@ button.fa-search {
 }
 
 .category__block {
-    max-width: 30%;
+    display: flex;
+    max-width: 40%;
     overflow: hidden;
     position: relative;
     cursor: pointer;
+    width: 420px;
+    height: 520px;
 }
 
 .category__img {
-    max-width: 100%;
+    width: 100%;
     max-height: 100%;
     transition: all 1.2s ease-in-out;
 }
@@ -392,15 +395,19 @@ button.fa-search {
     transform: translateY(-80px);
 }
 
+.icon__hover1 a {
+    color: #fff;
+}
+
 .product__img {
     position: relative;
     overflow: hidden;
-    height: 270px;
-        
+    height: 320px;
 }
 
 .product__img img {
     width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 
@@ -424,13 +431,15 @@ button.fa-search {
 
 .product__name-item {
     padding: 20px 0;
+    font-size: 18px;
+    font-weight: 600;
 }
 
 .product__name-link {
     text-decoration: none;
     color: #000;
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 16px;
+    font-weight: 600;
 }
 
 .product__price {
@@ -448,7 +457,7 @@ button.fa-search {
 }
 
 .onsale {
-    background: #86590d;
+    background: #f8452d;
     box-shadow: none;
     color: #ffffff;
     font-size: 12px;
@@ -905,11 +914,12 @@ button.fa-search {
     transform: translate(-50%, -50%);
     visibility: visible;
     opacity: 1;
+    min-height: 500px;
 }
 
 .modal__title {
     padding: 10px 0;
-    background-color: #86590d;
+    background-color: #f8452d;
     text-transform: uppercase;
     color: #fff;
     text-align: center;
@@ -952,18 +962,18 @@ button.fa-search {
 
 .modal__btn {
     padding: 10px 26px;
-    background-color: #86590d;
+    background-color: #f8452d;
     color: #fff;
     border-radius: 4px;
-    border: 1px solid #86590d;
+    border: 1px solid #f8452d;
     transition: .4s;
     cursor: pointer;
 }
 
-.modal__btn:hover {
-    background-color: transparent;
-    color: #86590d;
-}
+    .modal__btn:hover {
+        background-color: transparent;
+        color: #f8452d;
+    }
 
 .modal__or {
     padding: 0 10px;

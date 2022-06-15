@@ -21,7 +21,7 @@
             display: inline-block;
             padding: 6px 0;
             border: 1px solid #ccc;
-            border-radius: 5px;
+            border-radius: 2px;
             background-color: #f1f1f1;
             margin: 0 10px;
             cursor: pointer;
@@ -29,7 +29,7 @@
         }
 
             .pagination > li:hover {
-                background-color: blue;
+                background-color: #f8452d;
             }
 
                 .pagination > li:hover > a {
@@ -39,13 +39,13 @@
 
             .pagination > li > a {
                 padding: 15px 15px;
-                color: blue;
+                color: #f8452d;
                 font-weight: 500;
                 transition: all .3s ease-in-out;
             }
 
             .pagination > li.active {
-                background-color: blue;
+                background-color: #f8452d;
             }
 
                 .pagination > li.active > a {
@@ -62,7 +62,7 @@
                 <i class="link__icon fas fa-chevron-right"></i>
             </li>
             <li class="top__item">
-                <a href="#" class="top__item-link">Sản phẩm mới về</a>
+                <a href="#" class="top__item-link">Sản phẩm</a>
             </li>
         </ul>
     </div>
@@ -299,19 +299,19 @@
                         <div class="product__item">
                             <a href="@url" class="pro__item-link">
                                 <div class="product__img">
+                                    @if (item.PromotionPrice.HasValue)
+                                    {
+                                        <span class="onsale">@(Math.Ceiling(100 - (item.Price.Value / item.PromotionPrice.Value)*100))%</span>
+                                    }
                                     <img src="@item.Image1" class="product__item-img" alt="" width="100%">
                                     <img src="@item.Image2" class="product__item-hidden" alt="" width="100%">
                                 </div>
                                 <div class="product__name">
-                                    <h5 class="product__name-item">
-                                        <a href="product-details1.html" class="product__name-link">
-                                            @item.Name
-                                        </a>
-                                    </h5>
+                                    <h5 class="product__name-item">@item.Name</h5>
                                     @if (item.PromotionPrice.HasValue)
                                     {
-                                        <span><span class="price">@(item.Price.HasValue ? item.Price.Value.ToString("N0") + "₫" : "Liên hệ")</span></span>
-                                        <span class="product__price">@(item.PromotionPrice.HasValue ? item.PromotionPrice.Value.ToString("N0") + "₫" : "")</span>
+                                        <span><span class="product__price">@(item.Price.HasValue ? item.Price.Value.ToString("N0") + "₫" : "Liên hệ")</span></span>
+                                        <span class="price">@(item.PromotionPrice.HasValue ? item.PromotionPrice.Value.ToString("N0") + "₫" : "")</span>
                                     }
                                     else
                                     {
@@ -321,7 +321,7 @@
                             </a>
                             <div class="product__icon">
                                 <div class="product__ic icon__hover1">
-                                    <i class="fas fa-cart-plus"></i>
+                                    <a href="/them-gio-hang?productID=@item.ID&quantity=1" class="fas fa-cart-plus"></a>
                                 </div>
                                 <div class="product__ic icon__hover2" style="margin: 0 20px;">
                                     <i class="fas fa-heart"></i>
@@ -330,8 +330,6 @@
                                     <i class="fas fa-eye"></i>
                                 </div>
                             </div>
-
-                            <!-- Modal -->
                             <div class="product__modal">
                                 <div class="modal__title">
                                     <h3 class="modal__h3">thông tin sản phẩm</h3>
@@ -345,33 +343,38 @@
                                             <img src="@item.Image1" class="pro__main-im" width="100%" alt="">
                                         </div>
                                         <div class="modal__change-img">
-                                            <div class="modal__ch img__active" onclick="changeImg(this)">
+                                            <div class="modal__ch img__active">
                                                 <img src="@item.Image1" alt="">
                                             </div>
-                                            <div class="modal__ch" onclick="changeImg(this)">
+                                            <div class="modal__ch">
                                                 <img src="@item.Image2" alt="">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="modal__detail">
-                                        <h4 class="modal__detail-title">@item.Name</h4>
-                                        @if (item.PromotionPrice.HasValue)
-                                        {
-                                            <span><span class="price">@(item.Price.HasValue ? item.Price.Value.ToString("N0") + "₫" : "Liên hệ")</span></span>
-                                            <span class="product__price">@(item.PromotionPrice.HasValue ? item.PromotionPrice.Value.ToString("N0") + "₫" : "")</span>
-                                        }
-                                        else
-                                        {
-                                            <span><span class="product__price">@(item.Price.HasValue ? item.Price.Value.ToString("N0") + "₫" : "Liên hệ")</span></span>
-                                        }
-                                        <p class="modal__detail-p">
-                                            @item.Detail
-                                        </p>
-                                        <div class="modal__buy">
-                                            <button class="modal__btn">Hết hàng</button>
-                                            <span class="modal__or">hoặc</span>
-                                            <a href="#" class="modal__link">Xem chi tiết</a>
-                                        </div>
+                                            <h4 class="modal__detail-title">@item.Name</h4>
+                                            <span><span class="modal__price">@item.Price</span>₫</span>
+                                            <span class="price">@item.PromotionPrice đ</span>
+                                            <p class="modal__detail-p">
+                                                @item.Description
+                                            </p>
+                                            <div class="modal__size">
+                                                <span>Kích thước</span>
+                                                <select name="">
+                                                    <option value="S">S</option>
+                                                    <option value="M">M</option>
+                                                    <option value="L">L</option>
+                                                </select>
+                                            </div>
+                                            <div class="modal__quanlity">
+                                                <span>Số lượng</span>
+                                                <input type="number" min="1" id="quantity" value="1">
+                                            </div>
+                                            <div class="modal__buy">
+                                                <a href="/them-gio-hang?productID=@item.ID&quantity=1" class="modal__btn">Thêm vào giỏ</a>
+                                                <span class="modal__or">hoặc</span>
+                                                <a href="#" class="modal__link">Xem chi tiết</a>
+                                            </div>
                                     </div>
                                 </div>
                             </div>
@@ -383,3 +386,60 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    // Modal
+
+    var popupViews = document.querySelectorAll('.product__modal');
+    var popupBtns = document.querySelectorAll('.icon__hover3');
+    var closeBtns = document.querySelectorAll('.modal__close');
+    var overlay = document.querySelector(".product__overlay");
+
+    //javascript for quick view button
+    var popup = function (popupClick) {
+        popupViews[popupClick].classList.add('modal__active');
+        overlay.classList.add("modal__active");
+        document.getElementsByTagName("body")[0].style.overflow = "hidden";
+
+        // Change img in popup
+        var childrens = popupViews[popupClick].querySelector(".modal__change-img").children;
+        var imgMain = popupViews[popupClick].querySelector(".pro__main-im");
+        var imgDiv = popupViews[popupClick].querySelectorAll(".modal__ch");
+
+        imgDiv.forEach((item) => {
+            item.addEventListener("click", function (event) {
+                imgMain.src = event.target.src;
+            })
+        })
+
+    }
+
+    popupBtns.forEach((popupBtn, i) => {
+        popupBtn.addEventListener("click", () => {
+            popup(i);
+        });
+    });
+
+
+    // overlay button
+    overlay.addEventListener("click", () => {
+        overlay.classList.remove("modal__active");
+        popupViews.forEach((popupView) => {
+            popupView.classList.remove('modal__active');
+            overlay.classList.remove("modal__active");
+            document.getElementsByTagName("body")[0].style.overflow = "auto";
+        });
+    })
+
+    //javascript for close button
+    closeBtns.forEach((closeBtn) => {
+        closeBtn.addEventListener("click", () => {
+            popupViews.forEach((popupView) => {
+                popupView.classList.remove('modal__active');
+                overlay.classList.remove("modal__active");
+                document.getElementsByTagName("body")[0].style.overflow = "auto";
+            });
+        });
+    });
+</script>

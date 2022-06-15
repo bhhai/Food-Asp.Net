@@ -11,6 +11,19 @@
         margin: 50px auto 0;
     }
 </style>
+
+<link rel="stylesheet" href="~/Assets/Client/assets/css/intro.css">
+<div class="Introduce__baner">
+    <div class="items">
+        <h4>@ViewBag.Title</h4>
+        <ul class="list__title">
+            <li><a class="items-font" href="/">Trang chủ</a></li>
+            <i class="link__icon fas fa-chevron-right"></i>
+            <li><span class="list_item-tab">@ViewBag.Title</span></li>
+        </ul>
+    </div>
+</div>
+
 @using (Html.BeginForm("Login", "User", FormMethod.Post, new { @class = "form__item", @id = "login__form" }))
 {
     @Html.AntiForgeryToken()

@@ -9,10 +9,10 @@ body {
     position: relative;
 }
 
-.navbar {
-    width: 100%;
-    background-color: #494a48;
-}
+/*.navbar {
+    width: 100%;*/
+    /*background-color: #fff;*/
+/*}
 
 .navbar__container {
     width: 80%;
@@ -37,9 +37,9 @@ body {
 }
 
 .modul__item-link {
-    text-decoration: none;
-    color: #fff;
-    line-height: 30px;
+    text-decoration: none;*/
+    /*color: #fff;*/
+    /*line-height: 30px;
 }
 
 .modul__item-link::after {
@@ -89,7 +89,7 @@ body {
     color: #fff;
     font-size: 22px;
     margin-right: 15px;
-}
+}*/
 
 
 /*   Gioi thieu nd*/
@@ -100,31 +100,53 @@ body {
 
 
 
-.Introduce__baner{
-    background-color: #e1e1e1;
+.Introduce__baner {
     padding: 15px;
+    background-image: url(https://bizweb.dktcdn.net/100/310/257/themes/801944/assets/breadcrum_bg_real.png);
+    height: 300px;
+    position: relative;
+}
+
+.items {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+    .items h4 {
+        color: #fff;
+        font-size: 32px;
+    }
+
+    .items ul {
+        display: flex;
+        padding-left: 8%;
+        padding-right: 8%;
+        justify-content: center;
+        margin-top: 30px;
+    }
+
+        .items ul li {
+            list-style: none;
+        }
+
+.fa-chevron-right {
+    margin-right: 15px;
+    color: #fff;
 }
 
 
-.items ul {
-    display: flex;
-    padding-left: 8%;
-    padding-right: 8%;
-}
-
-.items ul li{
-    list-style: none;
-}
-
-.items ul li .items-font{
+.items ul li .items-font {
     text-decoration: none;
-    color: #494a48;
-    margin-right: 20px;
+    color: #fff;
     font-size: 14px;
 }
 
 .items ul li .list_item-tab{
-    color: #494a48;
+    color: #fff;
     font-size: 14px;
 }
 

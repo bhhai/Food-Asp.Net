@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -54,22 +55,42 @@ namespace FationShop.Areas.Admin.Controllers
         public ActionResult Create(Product product)
         {
 
-            //string fileName1 = Path.GetFileNameWithoutExtension(product.ImageFile1.FileName);
-            //string extension = Path.GetExtension(product.ImageFile1.FileName);
-            //fileName1 = fileName1 + DateTime.Now.ToString("yymmssfff") + extension;
-            //product.Image1 = "/Areas/Admin/Image/" + fileName1;
-            //fileName1 = Path.Combine(Server.MapPath("/Areas/Admin/Image/"), fileName1);
-            //product.ImageFile1.SaveAs(fileName1);
+            try
+            {
+                string fileName1 = Path.GetFileNameWithoutExtension(product.ImageFile1.FileName);
+                string extension = Path.GetExtension(product.ImageFile1.FileName);
+                fileName1 = fileName1 + DateTime.Now.ToString("yymmssfff") + extension;
+                product.Image1 = "/Areas/Admin/Image/" + fileName1;
+                fileName1 = Path.Combine(Server.MapPath("/Areas/Admin/Image/"), fileName1);
+                product.ImageFile1.SaveAs(fileName1);
 
-            //string fileName2 = Path.GetFileNameWithoutExtension(product.ImageFile2.FileName);
-            //string extension2 = Path.GetExtension(product.ImageFile2.FileName);
-            //fileName2 = fileName2 + DateTime.Now.ToString("yymmssfff") + extension2;
-            //product.Image2 = "/Areas/Admin/Image/" + fileName2;
-            //fileName2 = Path.Combine(Server.MapPath("/Areas/Admin/Image/"), fileName2);
-            //product.ImageFile2.SaveAs(fileName2);
+                string fileName2 = Path.GetFileNameWithoutExtension(product.ImageFile2.FileName);
+                string extension2 = Path.GetExtension(product.ImageFile2.FileName);
+                fileName2 = fileName2 + DateTime.Now.ToString("yymmssfff") + extension2;
+                product.Image2 = "/Areas/Admin/Image/" + fileName2;
+                fileName2 = Path.Combine(Server.MapPath("/Areas/Admin/Image/"), fileName2);
+                product.ImageFile2.SaveAs(fileName2);
 
-            db.Products.Add(product);
-            db.SaveChanges();
+                db.Products.Add(product);
+                db.SaveChanges();
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                            ve.PropertyName, ve.ErrorMessage);
+                    }
+                }
+                throw;
+            }
+
+            
+
 
 
             return RedirectToAction("Index");

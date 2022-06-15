@@ -16,8 +16,8 @@ namespace FationShop.Controllers
         {
             ViewBag.Slides = db.Slides.Where(x => x.Status == true).OrderBy(x => x.DisplayOrder).ToList();
             ViewBag.FeatureCategory = db.Categories.Where(x => x.Status == true).OrderBy(x => x.DisplayOrder).ToList();
-            ViewBag.FeatureProduct = db.Products.Where(x => x.Status == true).OrderByDescending(x => x.Price).Take(6).ToList();
-            ViewBag.NewProduct = db.Products.Where(x => x.Status == true).OrderByDescending(x => x.ID).Take(6).ToList();
+            ViewBag.FeatureProduct = db.Products.Where(x => x.Status == true).OrderByDescending(x => x.Price).Take(9).ToList();
+            ViewBag.NewProduct = db.Products.Where(x => x.Status == true).OrderByDescending(x => x.ID).Take(9).ToList();
             ViewBag.Blog = db.Blogs.Where(x => x.Status == true).ToList();
 
             return View();

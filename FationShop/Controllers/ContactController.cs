@@ -12,7 +12,6 @@ namespace FationShop.Controllers
     {
         private FashionShopEntities db = new FashionShopEntities();
         // GET: Contact
-        [OutputCache(Location = OutputCacheLocation.Server, Duration = 1800)]
         public ActionResult Index()
         {
             var contact = db.Contacts.Where(x => x.Status == true).Take(1).ToList();
