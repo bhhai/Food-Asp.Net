@@ -10,7 +10,7 @@
         <div class="card">
             <div class="card-body">
 
-                @using (Html.BeginForm())
+                @using (Html.BeginForm("Edit", "Blogs", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
                     @Html.AntiForgeryToken()
 
@@ -47,7 +47,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.TextAreaFor(model => model.Description, new { @class = "ckeditor" } )
+                                @Html.TextAreaFor(model => model.Description, new { @class = "ckeditor" })
                                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -55,7 +55,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.TextAreaFor(model => model.Content,  new { @class = "ckeditor" } )
+                                @Html.TextAreaFor(model => model.Content, new { @class = "ckeditor" })
                                 @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -63,16 +63,14 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.Avartar, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                <input type="file" name="ImageFile1" required />
-                                @Html.ValidationMessageFor(model => model.Avartar, "", new { @class = "text-danger" })
+                                <input type="file" name="ImageFile1" />
                             </div>
                         </div>
 
                         <div class="form-group">
                             @Html.LabelFor(model => model.Images, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                <input type="file" name="ImageFile2" required />
-                                @Html.ValidationMessageFor(model => model.Images, "", new { @class = "text-danger" })
+                                <input type="file" name="ImageFile2" />
                             </div>
                         </div>
 

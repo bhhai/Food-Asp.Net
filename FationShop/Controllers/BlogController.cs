@@ -12,7 +12,7 @@ namespace FationShop.Controllers
     {
         private FashionShopEntities db = new FashionShopEntities();
         // GET: Blog
-        [OutputCache(Location = OutputCacheLocation.Server, Duration = 1800)]
+        //[OutputCache(Location = OutputCacheLocation.Server, Duration = 1800)]
         public ActionResult Index()
         {
             return View(db.Blogs.Where(x => x.Status == true).ToList());

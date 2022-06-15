@@ -27,12 +27,19 @@
                 padding-right: 15px;
                 border-right: 2px solid #808080;
             }
+            #top-menu {
+                height: 40px;
+                display: flex;
+            }
+            #top-menu a {
+                color: #fff;
+            }
     </style>
 
 </head>
 
 <body>
-    <div id="top-menu" style="background-color: #ccc; color: #000; width: 100%; ">
+    <div id="top-menu" style="background-color: #f8452d; color: #fff; width: 100%; ">
         <div style="width: 80%; display: flex; justify-content: space-between; margin: auto; height: 30px; line-height: 30px">
             <a class="navbar__acount1 acc__hidden" style="border: none" href="mailto:Haibh0903@gmail.com">Contact: Haibh0903@gmail.com</a>
 
@@ -184,6 +191,7 @@
 
 
     </script>
+    <script src="/Assets/Admin/ckfinder/ckfinder/ckfinder.js"></script>
 
     @RenderSection("cartController", required: false)
 

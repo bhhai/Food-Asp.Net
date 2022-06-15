@@ -54,22 +54,24 @@ namespace FationShop.Areas.Admin.Controllers
         public ActionResult Create(Product product)
         {
 
-            string fileName = Path.GetFileNameWithoutExtension(product.ImageFile1.FileName);
-            string extension = Path.GetExtension(product.ImageFile1.FileName);
-            fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-            product.Image1 = "/Areas/Admin/Image/" + fileName;
-            fileName = Path.Combine(Server.MapPath("~/Areas/Admin/Image/"), fileName);
-            product.ImageFile1.SaveAs(fileName);
+            //string fileName1 = Path.GetFileNameWithoutExtension(product.ImageFile1.FileName);
+            //string extension = Path.GetExtension(product.ImageFile1.FileName);
+            //fileName1 = fileName1 + DateTime.Now.ToString("yymmssfff") + extension;
+            //product.Image1 = "/Areas/Admin/Image/" + fileName1;
+            //fileName1 = Path.Combine(Server.MapPath("/Areas/Admin/Image/"), fileName1);
+            //product.ImageFile1.SaveAs(fileName1);
 
-            string fileName2 = Path.GetFileNameWithoutExtension(product.ImageFile2.FileName);
-            string extension2 = Path.GetExtension(product.ImageFile2.FileName);
-            fileName2 = fileName2 + DateTime.Now.ToString("yymmssfff") + extension2;
-            product.Image2 = "/Areas/Admin/Image/" + fileName2;
-            fileName2 = Path.Combine(Server.MapPath("~/Areas/Admin/Image/"), fileName2);
-            product.ImageFile2.SaveAs(fileName2);
+            //string fileName2 = Path.GetFileNameWithoutExtension(product.ImageFile2.FileName);
+            //string extension2 = Path.GetExtension(product.ImageFile2.FileName);
+            //fileName2 = fileName2 + DateTime.Now.ToString("yymmssfff") + extension2;
+            //product.Image2 = "/Areas/Admin/Image/" + fileName2;
+            //fileName2 = Path.Combine(Server.MapPath("/Areas/Admin/Image/"), fileName2);
+            //product.ImageFile2.SaveAs(fileName2);
 
             db.Products.Add(product);
             db.SaveChanges();
+
+
             return RedirectToAction("Index");
 
         }
@@ -94,10 +96,20 @@ namespace FationShop.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,MetaTitle,Code,Description,Image1,Image2,MoreImage,Price,PromotionPrice,Quantity,CategoryID,Detail,Status,Size")] Product product)
+        public ActionResult Edit(Product product)
         {
             if (ModelState.IsValid)
             {
+                string fileName = Path.GetFileName(product.ImageFile1.FileName);
+                product.Image1 = "/Areas/Admin/Image/" + fileName;
+                var fileNameUpload = Path.Combine(Server.MapPath("/Areas/Admin/Image"), fileName);
+                product.ImageFile1.SaveAs(fileNameUpload);
+
+                string fileName2 = Path.GetFileName(product.ImageFile2.FileName);
+                product.Image2 = "/Areas/Admin/Image/" + fileName2;
+                var fileName2Upload = Path.Combine(Server.MapPath("/Areas/Admin/Image"), fileName2);
+                product.ImageFile2.SaveAs(fileName2Upload);
+
                 db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -126,6 +138,8 @@ namespace FationShop.Areas.Admin.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Product product = db.Products.Find(id);
+            OrderDetail orderDetail = db.OrderDetails.Where(x => x.ProductID == id).FirstOrDefault();
+            db.OrderDetails.Remove(orderDetail);
             db.Products.Remove(product);
             db.SaveChanges();
             return RedirectToAction("Index");

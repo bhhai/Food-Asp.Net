@@ -14,13 +14,11 @@ namespace FationShop.Controllers
     {
         private FashionShopEntities db = new FashionShopEntities();
         // GET: Product
-        [OutputCache(Location = OutputCacheLocation.Client, Duration = 1800)]
         public ActionResult Index(string searchString, int? page, int pageLimit = 6)
         {
             ViewBag.searchString = searchString;
             return View(db.Products.Where(x => x.Status == true && x.Name.Contains(searchString) || searchString == null).ToList().ToPagedList(page ?? 1, pageLimit));
         }
-        [OutputCache(Duration = 1800, VaryByParam = "id")]
         public ActionResult Detail(int id)
         {
             var product = db.Products.Find(id);

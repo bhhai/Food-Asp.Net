@@ -12,7 +12,6 @@ namespace FationShop.Controllers
     public class HomeController : Controller
     {
         private FashionShopEntities db = new FashionShopEntities();
-        [OutputCache(Location = OutputCacheLocation.Client, Duration = 1800)] //lưu cache vào server
         public ActionResult Index()
         {
             ViewBag.Slides = db.Slides.Where(x => x.Status == true).OrderBy(x => x.DisplayOrder).ToList();

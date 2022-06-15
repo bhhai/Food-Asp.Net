@@ -60,12 +60,6 @@ namespace FationShop.Areas.Admin.Controllers
             fileName = Path.Combine(Server.MapPath("~/Areas/Admin/Image/"), fileName);
             blog.ImageFile1.SaveAs(fileName);
 
-            string fileName2 = Path.GetFileNameWithoutExtension(blog.ImageFile2.FileName);
-            string extension2 = Path.GetExtension(blog.ImageFile2.FileName);
-            fileName2 = fileName2 + DateTime.Now.ToString("yymmssfff") + extension2;
-            blog.Images = "/Areas/Admin/Image/" + fileName2;
-            fileName2 = Path.Combine(Server.MapPath("~/Areas/Admin/Image/"), fileName2);
-            blog.ImageFile2.SaveAs(fileName2);
 
             db.Blogs.Add(blog);
             db.SaveChanges();
@@ -92,10 +86,28 @@ namespace FationShop.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,MetaTitle,SubTitle,Description,Content,Avartar,Images,Status,Tags")] Blog blog)
+        public ActionResult Edit(Blog blog)
         {
             if (ModelState.IsValid)
             {
+
+                string fileName = Path.GetFileNameWithoutExtension(blog.ImageFile1.FileName);
+                string extension = Path.GetExtension(blog.ImageFile1.FileName);
+                fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                blog.Avartar = "/Areas/Admin/Image/" + fileName;
+                fileName = Path.Combine(Server.MapPath("~/Areas/Admin/Image/"), fileName);
+                blog.ImageFile1.SaveAs(fileName);
+
+                //string fileName2 = Path.GetFileNameWithoutExtension(blog.ImageFile2.FileName);
+                //string extension2 = Path.GetExtension(blog.ImageFile2.FileName);
+                //fileName2 = fileName2 + DateTime.Now.ToString("yymmssfff") + extension2;
+                //blog.Images = "/Areas/Admin/Image/" + fileName2;
+                //fileName2 = Path.Combine(Server.MapPath("~/Areas/Admin/Image/"), fileName2);
+                //if (fileName2.Length > 0)
+                //{
+                //    blog.ImageFile2.SaveAs(fileName2);
+                //}
+
                 db.Entry(blog).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

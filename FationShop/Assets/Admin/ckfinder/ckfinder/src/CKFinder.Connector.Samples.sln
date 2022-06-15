@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CKFinder.Connector.Plugin.Watermark", "CKFinder.Connector.Plugin.Watermark\CKFinder.Connector.Plugin.Watermark.csproj", "{0022B188-779A-444B-97DB-6839365CD1B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CKFinder.Connector.WebApp", "CKFinder.Connector.WebApp\CKFinder.Connector.WebApp.csproj", "{257CDB15-7A78-463A-9018-2055D6257A09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CKFinder.Connector.Plugin.DiskQuota", "CKFinder.Connector.Plugin.DiskQuota\CKFinder.Connector.Plugin.DiskQuota.csproj", "{239D9F7D-47D4-4D22-B825-1F09A1ADE5D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CKFinder.Connector.Plugin.UserActionsLogger", "CKFinder.Connector.Plugin.UserActionsLogger\CKFinder.Connector.Plugin.UserActionsLogger.csproj", "{01DD07CB-9132-4DA0-852D-F7F48944C4C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CKFinder.Connector.Plugin.GetFileInfo", "CKFinder.Connector.Plugin.GetFileInfo\CKFinder.Connector.Plugin.GetFileInfo.csproj", "{52FADEA1-5470-4824-9548-0A5D86A3A893}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CKFinder.Connector.MVCIntegration", "CKFinder.Connector.MVCIntegration\CKFinder.Connector.MVCIntegration.csproj", "{E7B71319-5A01-40E0-8E17-C0CE580935A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileSystem.Database", "FileSystem.Database\FileSystem.Database.csproj", "{0ED49CE6-7E61-4FA1-B22D-66E90622E4AF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0022B188-779A-444B-97DB-6839365CD1B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0022B188-779A-444B-97DB-6839365CD1B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0022B188-779A-444B-97DB-6839365CD1B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0022B188-779A-444B-97DB-6839365CD1B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{257CDB15-7A78-463A-9018-2055D6257A09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{257CDB15-7A78-463A-9018-2055D6257A09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{257CDB15-7A78-463A-9018-2055D6257A09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{257CDB15-7A78-463A-9018-2055D6257A09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{239D9F7D-47D4-4D22-B825-1F09A1ADE5D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{239D9F7D-47D4-4D22-B825-1F09A1ADE5D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{239D9F7D-47D4-4D22-B825-1F09A1ADE5D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{239D9F7D-47D4-4D22-B825-1F09A1ADE5D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01DD07CB-9132-4DA0-852D-F7F48944C4C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01DD07CB-9132-4DA0-852D-F7F48944C4C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01DD07CB-9132-4DA0-852D-F7F48944C4C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01DD07CB-9132-4DA0-852D-F7F48944C4C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52FADEA1-5470-4824-9548-0A5D86A3A893}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52FADEA1-5470-4824-9548-0A5D86A3A893}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52FADEA1-5470-4824-9548-0A5D86A3A893}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52FADEA1-5470-4824-9548-0A5D86A3A893}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7B71319-5A01-40E0-8E17-C0CE580935A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7B71319-5A01-40E0-8E17-C0CE580935A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7B71319-5A01-40E0-8E17-C0CE580935A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7B71319-5A01-40E0-8E17-C0CE580935A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0ED49CE6-7E61-4FA1-B22D-66E90622E4AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0ED49CE6-7E61-4FA1-B22D-66E90622E4AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0ED49CE6-7E61-4FA1-B22D-66E90622E4AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0ED49CE6-7E61-4FA1-B22D-66E90622E4AF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AF73A0D8-9E81-4836-A0E4-6BAB91F81206}
+	EndGlobalSection
+EndGlobal

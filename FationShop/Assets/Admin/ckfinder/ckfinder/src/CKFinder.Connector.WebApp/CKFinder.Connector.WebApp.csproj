@@ -1,0 +1,997 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{257CDB15-7A78-463A-9018-2055D6257A09}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CKSource.CKFinder.Connector.WebApp</RootNamespace>
+    <AssemblyName>CKSource.CKFinder.Connector.WebApp</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=5.2.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.5.2.0\lib\net461\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="AWSSDK.Core">
+      <HintPath>..\packages\AWSSDK.Core.3.3.24.3\lib\net45\AWSSDK.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="AWSSDK.S3">
+      <HintPath>..\packages\AWSSDK.S3.3.3.18.6\lib\net45\AWSSDK.S3.dll</HintPath>
+    </Reference>
+    <Reference Include="CKSource.CKFinder.Connector.Config, Version=3.5.2.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\CKSource.CKFinder.Connector.Config.3.5.2\lib\net461\CKSource.CKFinder.Connector.Config.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CKSource.CKFinder.Connector.Core, Version=3.5.2.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\CKSource.CKFinder.Connector.Core.3.5.2\lib\net461\CKSource.CKFinder.Connector.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CKSource.CKFinder.Connector.Host.Owin, Version=3.5.2.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\CKSource.CKFinder.Connector.Host.Owin.3.5.2\lib\net461\CKSource.CKFinder.Connector.Host.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CKSource.CKFinder.Connector.KeyValue.FileSystem, Version=3.5.2.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\CKSource.CKFinder.Connector.KeyValue.FileSystem.3.5.2\lib\net461\CKSource.CKFinder.Connector.KeyValue.FileSystem.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CKSource.CKFinder.Connector.Logs.NLog, Version=3.5.2.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\CKSource.CKFinder.Connector.Logs.NLog.3.5.2\lib\net461\CKSource.CKFinder.Connector.Logs.NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CKSource.FileSystem">
+      <HintPath>..\packages\CKSource.FileSystem.1.1.2\lib\net452\CKSource.FileSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="CKSource.FileSystem.Amazon">
+      <HintPath>..\packages\CKSource.FileSystem.Amazon.1.1.3\lib\net452\CKSource.FileSystem.Amazon.dll</HintPath>
+    </Reference>
+    <Reference Include="CKSource.FileSystem.Azure">
+      <HintPath>..\packages\CKSource.FileSystem.Azure.1.1.2\lib\net452\CKSource.FileSystem.Azure.dll</HintPath>
+    </Reference>
+    <Reference Include="CKSource.FileSystem.Dropbox">
+      <HintPath>..\packages\CKSource.FileSystem.Dropbox.1.1.2\lib\net452\CKSource.FileSystem.Dropbox.dll</HintPath>
+    </Reference>
+    <Reference Include="CKSource.FileSystem.Ftp">
+      <HintPath>..\packages\CKSource.FileSystem.Ftp.1.1.2\lib\net452\CKSource.FileSystem.Ftp.dll</HintPath>
+    </Reference>
+    <Reference Include="CKSource.FileSystem.Local">
+      <HintPath>..\packages\CKSource.FileSystem.Local.1.1.2\lib\net452\CKSource.FileSystem.Local.dll</HintPath>
+    </Reference>
+    <Reference Include="Dropbox.Api, Version=0.1.5960.22395, Culture=neutral, PublicKeyToken=310f0e82fbb45d01, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dropbox.Api.3.1.1\lib\net45\Dropbox.Api.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ImageProcessor, Version=2.8.0.152, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImageProcessor.2.8.0\lib\net452\ImageProcessor.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Data.Edm, Version=5.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.Edm.5.7.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.OData.5.7.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client, Version=5.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.Services.Client.5.7.0\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAzure.Storage.7.0.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.3.2\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Pri.LongPath">
+      <HintPath>..\packages\Pri.LongPath.2.0.45\lib\net45\Pri.LongPath.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\packages\RestSharp.105.2.3\lib\net45\RestSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.SqlServerCe">
+      <HintPath>..\packages\Microsoft.SqlServer.Compact.4.0.8876.1\lib\net40\System.Data.SqlServerCe.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.FtpClient, Version=1.0.5824.34026, Culture=neutral, PublicKeyToken=fa4be07daa57c2b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.FtpClient.1.0.5824.34026\lib\net40\System.Net.FtpClient.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Spatial, Version=5.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Spatial.5.7.0\lib\net40\System.Spatial.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CHANGELOG.html" />
+    <Content Include="ckfinder.html" />
+    <Content Include="ckfinder.js" />
+    <Content Include="config.js" />
+    <Content Include="libs\caman.js" />
+    <Content Include="libs\images\ajax-loader.gif" />
+    <Content Include="libs\images\icons-png\action-black.png" />
+    <Content Include="libs\images\icons-png\action-white.png" />
+    <Content Include="libs\images\icons-png\alert-black.png" />
+    <Content Include="libs\images\icons-png\alert-white.png" />
+    <Content Include="libs\images\icons-png\arrow-d-black.png" />
+    <Content Include="libs\images\icons-png\arrow-d-l-black.png" />
+    <Content Include="libs\images\icons-png\arrow-d-l-white.png" />
+    <Content Include="libs\images\icons-png\arrow-d-r-black.png" />
+    <Content Include="libs\images\icons-png\arrow-d-r-white.png" />
+    <Content Include="libs\images\icons-png\arrow-d-white.png" />
+    <Content Include="libs\images\icons-png\arrow-l-black.png" />
+    <Content Include="libs\images\icons-png\arrow-l-white.png" />
+    <Content Include="libs\images\icons-png\arrow-r-black.png" />
+    <Content Include="libs\images\icons-png\arrow-r-white.png" />
+    <Content Include="libs\images\icons-png\arrow-u-black.png" />
+    <Content Include="libs\images\icons-png\arrow-u-l-black.png" />
+    <Content Include="libs\images\icons-png\arrow-u-l-white.png" />
+    <Content Include="libs\images\icons-png\arrow-u-r-black.png" />
+    <Content Include="libs\images\icons-png\arrow-u-r-white.png" />
+    <Content Include="libs\images\icons-png\arrow-u-white.png" />
+    <Content Include="libs\images\icons-png\audio-black.png" />
+    <Content Include="libs\images\icons-png\audio-white.png" />
+    <Content Include="libs\images\icons-png\back-black.png" />
+    <Content Include="libs\images\icons-png\back-white.png" />
+    <Content Include="libs\images\icons-png\bars-black.png" />
+    <Content Include="libs\images\icons-png\bars-white.png" />
+    <Content Include="libs\images\icons-png\bullets-black.png" />
+    <Content Include="libs\images\icons-png\bullets-white.png" />
+    <Content Include="libs\images\icons-png\calendar-black.png" />
+    <Content Include="libs\images\icons-png\calendar-white.png" />
+    <Content Include="libs\images\icons-png\camera-black.png" />
+    <Content Include="libs\images\icons-png\camera-white.png" />
+    <Content Include="libs\images\icons-png\carat-d-black.png" />
+    <Content Include="libs\images\icons-png\carat-d-white.png" />
+    <Content Include="libs\images\icons-png\carat-l-black.png" />
+    <Content Include="libs\images\icons-png\carat-l-white.png" />
+    <Content Include="libs\images\icons-png\carat-r-black.png" />
+    <Content Include="libs\images\icons-png\carat-r-white.png" />
+    <Content Include="libs\images\icons-png\carat-u-black.png" />
+    <Content Include="libs\images\icons-png\carat-u-white.png" />
+    <Content Include="libs\images\icons-png\check-black.png" />
+    <Content Include="libs\images\icons-png\check-white.png" />
+    <Content Include="libs\images\icons-png\clock-black.png" />
+    <Content Include="libs\images\icons-png\clock-white.png" />
+    <Content Include="libs\images\icons-png\cloud-black.png" />
+    <Content Include="libs\images\icons-png\cloud-white.png" />
+    <Content Include="libs\images\icons-png\comment-black.png" />
+    <Content Include="libs\images\icons-png\comment-white.png" />
+    <Content Include="libs\images\icons-png\delete-black.png" />
+    <Content Include="libs\images\icons-png\delete-white.png" />
+    <Content Include="libs\images\icons-png\edit-black.png" />
+    <Content Include="libs\images\icons-png\edit-white.png" />
+    <Content Include="libs\images\icons-png\eye-black.png" />
+    <Content Include="libs\images\icons-png\eye-white.png" />
+    <Content Include="libs\images\icons-png\forbidden-black.png" />
+    <Content Include="libs\images\icons-png\forbidden-white.png" />
+    <Content Include="libs\images\icons-png\forward-black.png" />
+    <Content Include="libs\images\icons-png\forward-white.png" />
+    <Content Include="libs\images\icons-png\gear-black.png" />
+    <Content Include="libs\images\icons-png\gear-white.png" />
+    <Content Include="libs\images\icons-png\grid-black.png" />
+    <Content Include="libs\images\icons-png\grid-white.png" />
+    <Content Include="libs\images\icons-png\heart-black.png" />
+    <Content Include="libs\images\icons-png\heart-white.png" />
+    <Content Include="libs\images\icons-png\home-black.png" />
+    <Content Include="libs\images\icons-png\home-white.png" />
+    <Content Include="libs\images\icons-png\info-black.png" />
+    <Content Include="libs\images\icons-png\info-white.png" />
+    <Content Include="libs\images\icons-png\location-black.png" />
+    <Content Include="libs\images\icons-png\location-white.png" />
+    <Content Include="libs\images\icons-png\lock-black.png" />
+    <Content Include="libs\images\icons-png\lock-white.png" />
+    <Content Include="libs\images\icons-png\mail-black.png" />
+    <Content Include="libs\images\icons-png\mail-white.png" />
+    <Content Include="libs\images\icons-png\minus-black.png" />
+    <Content Include="libs\images\icons-png\minus-white.png" />
+    <Content Include="libs\images\icons-png\navigation-black.png" />
+    <Content Include="libs\images\icons-png\navigation-white.png" />
+    <Content Include="libs\images\icons-png\phone-black.png" />
+    <Content Include="libs\images\icons-png\phone-white.png" />
+    <Content Include="libs\images\icons-png\plus-black.png" />
+    <Content Include="libs\images\icons-png\plus-white.png" />
+    <Content Include="libs\images\icons-png\power-black.png" />
+    <Content Include="libs\images\icons-png\power-white.png" />
+    <Content Include="libs\images\icons-png\recycle-black.png" />
+    <Content Include="libs\images\icons-png\recycle-white.png" />
+    <Content Include="libs\images\icons-png\refresh-black.png" />
+    <Content Include="libs\images\icons-png\refresh-white.png" />
+    <Content Include="libs\images\icons-png\search-black.png" />
+    <Content Include="libs\images\icons-png\search-white.png" />
+    <Content Include="libs\images\icons-png\shop-black.png" />
+    <Content Include="libs\images\icons-png\shop-white.png" />
+    <Content Include="libs\images\icons-png\star-black.png" />
+    <Content Include="libs\images\icons-png\star-white.png" />
+    <Content Include="libs\images\icons-png\tag-black.png" />
+    <Content Include="libs\images\icons-png\tag-white.png" />
+    <Content Include="libs\images\icons-png\user-black.png" />
+    <Content Include="libs\images\icons-png\user-white.png" />
+    <Content Include="libs\images\icons-png\video-black.png" />
+    <Content Include="libs\images\icons-png\video-white.png" />
+    <Content Include="libs\jquery.js" />
+    <Content Include="libs\jquery.mobile.icons.css" />
+    <Content Include="libs\jquery.mobile.js" />
+    <Content Include="libs\jquery.mobile.structure.css" />
+    <Content Include="libs\jquery.mobile.theme.css" />
+    <Content Include="LICENSE.html" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="NLog.config" />
+    <Content Include="lang\bg.json" />
+    <Content Include="lang\bs.json" />
+    <Content Include="lang\ca.json" />
+    <Content Include="lang\cs.json" />
+    <Content Include="lang\cy.json" />
+    <Content Include="lang\da.json" />
+    <Content Include="lang\de.json" />
+    <Content Include="lang\el.json" />
+    <Content Include="lang\en.json" />
+    <Content Include="lang\eo.json" />
+    <Content Include="lang\es-mx.json" />
+    <Content Include="lang\es.json" />
+    <Content Include="lang\et.json" />
+    <Content Include="lang\eu.json" />
+    <Content Include="lang\fa.json" />
+    <Content Include="lang\fi.json" />
+    <Content Include="lang\fr.json" />
+    <Content Include="lang\gu.json" />
+    <Content Include="lang\he.json" />
+    <Content Include="lang\hi.json" />
+    <Content Include="lang\hr.json" />
+    <Content Include="lang\hu.json" />
+    <Content Include="lang\id.json" />
+    <Content Include="lang\it.json" />
+    <Content Include="lang\ja.json" />
+    <Content Include="lang\ko.json" />
+    <Content Include="lang\ku.json" />
+    <Content Include="lang\lt.json" />
+    <Content Include="lang\lv.json" />
+    <Content Include="lang\nb.json" />
+    <Content Include="lang\nl.json" />
+    <Content Include="lang\nn.json" />
+    <Content Include="lang\no.json" />
+    <Content Include="lang\pl.json" />
+    <Content Include="lang\pt-br.json" />
+    <Content Include="lang\ro.json" />
+    <Content Include="lang\ru.json" />
+    <Content Include="lang\sk.json" />
+    <Content Include="lang\sl.json" />
+    <Content Include="lang\sr.json" />
+    <Content Include="lang\sv.json" />
+    <Content Include="lang\tr.json" />
+    <Content Include="lang\vi.json" />
+    <Content Include="lang\zh-cn.json" />
+    <Content Include="lang\zh-tw.json" />
+    <Content Include="plugins\README.md" />
+    <None Include="Properties\PublishProfiles\Default.pubxml" />
+    <Content Include="README.md" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
+    <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
+    <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />
+    <None Include="_bin_deployableAssemblies\x86\sqlceer40EN.dll" />
+    <None Include="_bin_deployableAssemblies\x86\sqlcecompact40.dll" />
+    <None Include="_bin_deployableAssemblies\x86\sqlceca40.dll" />
+    <None Include="_bin_deployableAssemblies\x86\Microsoft.VC90.CRT\README_ENU.txt" />
+    <None Include="_bin_deployableAssemblies\x86\Microsoft.VC90.CRT\msvcr90.dll" />
+    <None Include="_bin_deployableAssemblies\amd64\sqlcese40.dll" />
+    <None Include="_bin_deployableAssemblies\amd64\sqlceqp40.dll" />
+    <None Include="_bin_deployableAssemblies\amd64\sqlceme40.dll" />
+    <None Include="_bin_deployableAssemblies\amd64\sqlceer40EN.dll" />
+    <None Include="_bin_deployableAssemblies\amd64\sqlcecompact40.dll" />
+    <None Include="_bin_deployableAssemblies\amd64\sqlceca40.dll" />
+    <None Include="_bin_deployableAssemblies\amd64\Microsoft.VC90.CRT\README_ENU.txt" />
+    <None Include="_bin_deployableAssemblies\amd64\Microsoft.VC90.CRT\msvcr90.dll" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="_bin_deployableAssemblies\amd64\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" />
+    <None Include="_bin_deployableAssemblies\x86\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="README.html" />
+    <Content Include="samples\ckeditor.html" />
+    <Content Include="samples\css\img\adjoined-separator.png" />
+    <Content Include="samples\css\img\alert.png" />
+    <Content Include="samples\css\img\icon-close.png" />
+    <Content Include="samples\css\img\icon-download.png" />
+    <Content Include="samples\css\img\icon-navigation-a-github.png" />
+    <Content Include="samples\css\img\icon-question-mark.png" />
+    <Content Include="samples\css\img\icon-sdk-book.png" />
+    <Content Include="samples\css\img\icon-sdk-documentation.png" />
+    <Content Include="samples\css\img\icon-sdk-gear.png" />
+    <Content Include="samples\css\img\icon-sdk-sample.png" />
+    <Content Include="samples\css\img\icon-toggler-light.png" />
+    <Content Include="samples\css\img\icon-toggler.png" />
+    <Content Include="samples\css\img\icon-tree-a-collapser.png" />
+    <Content Include="samples\css\img\icon-tree-a-link.png" />
+    <Content Include="samples\css\img\tip.png" />
+    <Content Include="samples\css\sample.css" />
+    <Content Include="samples\full-page-open.html" />
+    <Content Include="samples\full-page.html" />
+    <Content Include="samples\img\favicon.ico" />
+    <Content Include="samples\img\logo.png" />
+    <Content Include="samples\index.html" />
+    <Content Include="samples\js\html5shiv.min.js" />
+    <Content Include="samples\js\sf.js" />
+    <Content Include="samples\js\tree-a.js" />
+    <Content Include="samples\localization.html" />
+    <Content Include="samples\modals.html" />
+    <Content Include="samples\other-custom-configuration.html" />
+    <Content Include="samples\other-read-only.html" />
+    <Content Include="samples\plugin-examples.html" />
+    <Content Include="samples\plugins\StatusBarInfo\StatusBarInfo.js" />
+    <Content Include="samples\popups.html" />
+    <Content Include="samples\skins-jquery-mobile.html" />
+    <Content Include="samples\skins-moono.html" />
+    <Content Include="samples\skins-neko.html" />
+    <Content Include="samples\user-interface-compact.html" />
+    <Content Include="samples\user-interface-default.html" />
+    <Content Include="samples\user-interface-listview.html" />
+    <Content Include="samples\user-interface-mobile.html" />
+    <Content Include="samples\widget.html" />
+    <Content Include="skins\core\ckfinder.css" />
+    <Content Include="skins\core\file-icons\128\7z.png" />
+    <Content Include="skins\core\file-icons\128\access.png" />
+    <Content Include="skins\core\file-icons\128\audio.png" />
+    <Content Include="skins\core\file-icons\128\calc.png" />
+    <Content Include="skins\core\file-icons\128\css.png" />
+    <Content Include="skins\core\file-icons\128\csv.png" />
+    <Content Include="skins\core\file-icons\128\directory.png" />
+    <Content Include="skins\core\file-icons\128\draw.png" />
+    <Content Include="skins\core\file-icons\128\excel.png" />
+    <Content Include="skins\core\file-icons\128\html.png" />
+    <Content Include="skins\core\file-icons\128\image.png" />
+    <Content Include="skins\core\file-icons\128\impress.png" />
+    <Content Include="skins\core\file-icons\128\javascript.png" />
+    <Content Include="skins\core\file-icons\128\log.png" />
+    <Content Include="skins\core\file-icons\128\msword.png" />
+    <Content Include="skins\core\file-icons\128\pdf.png" />
+    <Content Include="skins\core\file-icons\128\php.png" />
+    <Content Include="skins\core\file-icons\128\plain.png" />
+    <Content Include="skins\core\file-icons\128\powerpoint.png" />
+    <Content Include="skins\core\file-icons\128\rar.png" />
+    <Content Include="skins\core\file-icons\128\readme.png" />
+    <Content Include="skins\core\file-icons\128\rtf.png" />
+    <Content Include="skins\core\file-icons\128\sql.png" />
+    <Content Include="skins\core\file-icons\128\tar.png" />
+    <Content Include="skins\core\file-icons\128\unknown.png" />
+    <Content Include="skins\core\file-icons\128\video.png" />
+    <Content Include="skins\core\file-icons\128\writer.png" />
+    <Content Include="skins\core\file-icons\128\zip.png" />
+    <Content Include="skins\core\file-icons\16\7z.png" />
+    <Content Include="skins\core\file-icons\16\access.png" />
+    <Content Include="skins\core\file-icons\16\audio.png" />
+    <Content Include="skins\core\file-icons\16\calc.png" />
+    <Content Include="skins\core\file-icons\16\css.png" />
+    <Content Include="skins\core\file-icons\16\csv.png" />
+    <Content Include="skins\core\file-icons\16\directory.png" />
+    <Content Include="skins\core\file-icons\16\draw.png" />
+    <Content Include="skins\core\file-icons\16\excel.png" />
+    <Content Include="skins\core\file-icons\16\html.png" />
+    <Content Include="skins\core\file-icons\16\image.png" />
+    <Content Include="skins\core\file-icons\16\impress.png" />
+    <Content Include="skins\core\file-icons\16\javascript.png" />
+    <Content Include="skins\core\file-icons\16\log.png" />
+    <Content Include="skins\core\file-icons\16\msword.png" />
+    <Content Include="skins\core\file-icons\16\pdf.png" />
+    <Content Include="skins\core\file-icons\16\php.png" />
+    <Content Include="skins\core\file-icons\16\plain.png" />
+    <Content Include="skins\core\file-icons\16\powerpoint.png" />
+    <Content Include="skins\core\file-icons\16\rar.png" />
+    <Content Include="skins\core\file-icons\16\readme.png" />
+    <Content Include="skins\core\file-icons\16\rtf.png" />
+    <Content Include="skins\core\file-icons\16\sql.png" />
+    <Content Include="skins\core\file-icons\16\tar.png" />
+    <Content Include="skins\core\file-icons\16\unknown.png" />
+    <Content Include="skins\core\file-icons\16\video.png" />
+    <Content Include="skins\core\file-icons\16\writer.png" />
+    <Content Include="skins\core\file-icons\16\zip.png" />
+    <Content Include="skins\core\file-icons\22\7z.png" />
+    <Content Include="skins\core\file-icons\22\access.png" />
+    <Content Include="skins\core\file-icons\22\audio.png" />
+    <Content Include="skins\core\file-icons\22\calc.png" />
+    <Content Include="skins\core\file-icons\22\css.png" />
+    <Content Include="skins\core\file-icons\22\csv.png" />
+    <Content Include="skins\core\file-icons\22\directory.png" />
+    <Content Include="skins\core\file-icons\22\draw.png" />
+    <Content Include="skins\core\file-icons\22\excel.png" />
+    <Content Include="skins\core\file-icons\22\html.png" />
+    <Content Include="skins\core\file-icons\22\image.png" />
+    <Content Include="skins\core\file-icons\22\javascript.png" />
+    <Content Include="skins\core\file-icons\22\log.png" />
+    <Content Include="skins\core\file-icons\22\msword.png" />
+    <Content Include="skins\core\file-icons\22\pdf.png" />
+    <Content Include="skins\core\file-icons\22\php.png" />
+    <Content Include="skins\core\file-icons\22\plain.png" />
+    <Content Include="skins\core\file-icons\22\powerpoint.png" />
+    <Content Include="skins\core\file-icons\22\rar.png" />
+    <Content Include="skins\core\file-icons\22\readme.png" />
+    <Content Include="skins\core\file-icons\22\rtf.png" />
+    <Content Include="skins\core\file-icons\22\sql.png" />
+    <Content Include="skins\core\file-icons\22\tar.png" />
+    <Content Include="skins\core\file-icons\22\unknown.png" />
+    <Content Include="skins\core\file-icons\22\video.png" />
+    <Content Include="skins\core\file-icons\22\zip.png" />
+    <Content Include="skins\core\file-icons\256\7z.png" />
+    <Content Include="skins\core\file-icons\256\access.png" />
+    <Content Include="skins\core\file-icons\256\audio.png" />
+    <Content Include="skins\core\file-icons\256\calc.png" />
+    <Content Include="skins\core\file-icons\256\css.png" />
+    <Content Include="skins\core\file-icons\256\csv.png" />
+    <Content Include="skins\core\file-icons\256\directory.png" />
+    <Content Include="skins\core\file-icons\256\draw.png" />
+    <Content Include="skins\core\file-icons\256\excel.png" />
+    <Content Include="skins\core\file-icons\256\html.png" />
+    <Content Include="skins\core\file-icons\256\image.png" />
+    <Content Include="skins\core\file-icons\256\javascript.png" />
+    <Content Include="skins\core\file-icons\256\log.png" />
+    <Content Include="skins\core\file-icons\256\msword.png" />
+    <Content Include="skins\core\file-icons\256\pdf.png" />
+    <Content Include="skins\core\file-icons\256\php.png" />
+    <Content Include="skins\core\file-icons\256\plain.png" />
+    <Content Include="skins\core\file-icons\256\powerpoint.png" />
+    <Content Include="skins\core\file-icons\256\rar.png" />
+    <Content Include="skins\core\file-icons\256\readme.png" />
+    <Content Include="skins\core\file-icons\256\rtf.png" />
+    <Content Include="skins\core\file-icons\256\sql.png" />
+    <Content Include="skins\core\file-icons\256\tar.png" />
+    <Content Include="skins\core\file-icons\256\unknown.png" />
+    <Content Include="skins\core\file-icons\256\video.png" />
+    <Content Include="skins\core\file-icons\256\zip.png" />
+    <Content Include="skins\core\file-icons\32\7z.png" />
+    <Content Include="skins\core\file-icons\32\access.png" />
+    <Content Include="skins\core\file-icons\32\audio.png" />
+    <Content Include="skins\core\file-icons\32\calc.png" />
+    <Content Include="skins\core\file-icons\32\css.png" />
+    <Content Include="skins\core\file-icons\32\csv.png" />
+    <Content Include="skins\core\file-icons\32\directory.png" />
+    <Content Include="skins\core\file-icons\32\draw.png" />
+    <Content Include="skins\core\file-icons\32\excel.png" />
+    <Content Include="skins\core\file-icons\32\html.png" />
+    <Content Include="skins\core\file-icons\32\image.png" />
+    <Content Include="skins\core\file-icons\32\impress.png" />
+    <Content Include="skins\core\file-icons\32\javascript.png" />
+    <Content Include="skins\core\file-icons\32\log.png" />
+    <Content Include="skins\core\file-icons\32\msword.png" />
+    <Content Include="skins\core\file-icons\32\pdf.png" />
+    <Content Include="skins\core\file-icons\32\php.png" />
+    <Content Include="skins\core\file-icons\32\plain.png" />
+    <Content Include="skins\core\file-icons\32\powerpoint.png" />
+    <Content Include="skins\core\file-icons\32\rar.png" />
+    <Content Include="skins\core\file-icons\32\readme.png" />
+    <Content Include="skins\core\file-icons\32\rtf.png" />
+    <Content Include="skins\core\file-icons\32\sql.png" />
+    <Content Include="skins\core\file-icons\32\tar.png" />
+    <Content Include="skins\core\file-icons\32\unknown.png" />
+    <Content Include="skins\core\file-icons\32\video.png" />
+    <Content Include="skins\core\file-icons\32\writer.png" />
+    <Content Include="skins\core\file-icons\32\zip.png" />
+    <Content Include="skins\core\file-icons\48\7z.png" />
+    <Content Include="skins\core\file-icons\48\access.png" />
+    <Content Include="skins\core\file-icons\48\audio.png" />
+    <Content Include="skins\core\file-icons\48\calc.png" />
+    <Content Include="skins\core\file-icons\48\css.png" />
+    <Content Include="skins\core\file-icons\48\csv.png" />
+    <Content Include="skins\core\file-icons\48\directory.png" />
+    <Content Include="skins\core\file-icons\48\draw.png" />
+    <Content Include="skins\core\file-icons\48\excel.png" />
+    <Content Include="skins\core\file-icons\48\html.png" />
+    <Content Include="skins\core\file-icons\48\image.png" />
+    <Content Include="skins\core\file-icons\48\impress.png" />
+    <Content Include="skins\core\file-icons\48\javascript.png" />
+    <Content Include="skins\core\file-icons\48\log.png" />
+    <Content Include="skins\core\file-icons\48\msword.png" />
+    <Content Include="skins\core\file-icons\48\pdf.png" />
+    <Content Include="skins\core\file-icons\48\php.png" />
+    <Content Include="skins\core\file-icons\48\plain.png" />
+    <Content Include="skins\core\file-icons\48\powerpoint.png" />
+    <Content Include="skins\core\file-icons\48\rar.png" />
+    <Content Include="skins\core\file-icons\48\readme.png" />
+    <Content Include="skins\core\file-icons\48\rtf.png" />
+    <Content Include="skins\core\file-icons\48\sql.png" />
+    <Content Include="skins\core\file-icons\48\tar.png" />
+    <Content Include="skins\core\file-icons\48\unknown.png" />
+    <Content Include="skins\core\file-icons\48\video.png" />
+    <Content Include="skins\core\file-icons\48\writer.png" />
+    <Content Include="skins\core\file-icons\48\zip.png" />
+    <Content Include="skins\core\file-icons\64\7z.png" />
+    <Content Include="skins\core\file-icons\64\access.png" />
+    <Content Include="skins\core\file-icons\64\audio.png" />
+    <Content Include="skins\core\file-icons\64\calc.png" />
+    <Content Include="skins\core\file-icons\64\css.png" />
+    <Content Include="skins\core\file-icons\64\csv.png" />
+    <Content Include="skins\core\file-icons\64\directory.png" />
+    <Content Include="skins\core\file-icons\64\draw.png" />
+    <Content Include="skins\core\file-icons\64\excel.png" />
+    <Content Include="skins\core\file-icons\64\html.png" />
+    <Content Include="skins\core\file-icons\64\image.png" />
+    <Content Include="skins\core\file-icons\64\impress.png" />
+    <Content Include="skins\core\file-icons\64\javascript.png" />
+    <Content Include="skins\core\file-icons\64\log.png" />
+    <Content Include="skins\core\file-icons\64\msword.png" />
+    <Content Include="skins\core\file-icons\64\pdf.png" />
+    <Content Include="skins\core\file-icons\64\php.png" />
+    <Content Include="skins\core\file-icons\64\plain.png" />
+    <Content Include="skins\core\file-icons\64\powerpoint.png" />
+    <Content Include="skins\core\file-icons\64\rar.png" />
+    <Content Include="skins\core\file-icons\64\readme.png" />
+    <Content Include="skins\core\file-icons\64\rtf.png" />
+    <Content Include="skins\core\file-icons\64\sql.png" />
+    <Content Include="skins\core\file-icons\64\tar.png" />
+    <Content Include="skins\core\file-icons\64\unknown.png" />
+    <Content Include="skins\core\file-icons\64\video.png" />
+    <Content Include="skins\core\file-icons\64\writer.png" />
+    <Content Include="skins\core\file-icons\64\zip.png" />
+    <Content Include="skins\core\images\custom\128\image.png" />
+    <Content Include="skins\core\images\custom\256\image.png" />
+    <Content Include="skins\core\images\custom\32\image.png" />
+    <Content Include="skins\core\images\custom\48\image.png" />
+    <Content Include="skins\core\images\custom\64\image.png" />
+    <Content Include="skins\jquery-mobile\icons.css" />
+    <Content Include="skins\moono\ckfinder.css" />
+    <Content Include="skins\moono\icons.css" />
+    <Content Include="skins\moono\images\ajax-loader.gif" />
+    <Content Include="skins\neko\ckfinder.css" />
+    <Content Include="skins\neko\file-icons\128\7z.png" />
+    <Content Include="skins\neko\file-icons\128\access.png" />
+    <Content Include="skins\neko\file-icons\128\audio.png" />
+    <Content Include="skins\neko\file-icons\128\calc.png" />
+    <Content Include="skins\neko\file-icons\128\css.png" />
+    <Content Include="skins\neko\file-icons\128\csv.png" />
+    <Content Include="skins\neko\file-icons\128\directory.png" />
+    <Content Include="skins\neko\file-icons\128\draw.png" />
+    <Content Include="skins\neko\file-icons\128\excel.png" />
+    <Content Include="skins\neko\file-icons\128\html.png" />
+    <Content Include="skins\neko\file-icons\128\image-preview.png" />
+    <Content Include="skins\neko\file-icons\128\image.png" />
+    <Content Include="skins\neko\file-icons\128\impress.png" />
+    <Content Include="skins\neko\file-icons\128\javascript.png" />
+    <Content Include="skins\neko\file-icons\128\log.png" />
+    <Content Include="skins\neko\file-icons\128\msword.png" />
+    <Content Include="skins\neko\file-icons\128\pdf.png" />
+    <Content Include="skins\neko\file-icons\128\photo.png" />
+    <Content Include="skins\neko\file-icons\128\php.png" />
+    <Content Include="skins\neko\file-icons\128\plain.png" />
+    <Content Include="skins\neko\file-icons\128\powerpoint.png" />
+    <Content Include="skins\neko\file-icons\128\rar.png" />
+    <Content Include="skins\neko\file-icons\128\readme.png" />
+    <Content Include="skins\neko\file-icons\128\rtf.png" />
+    <Content Include="skins\neko\file-icons\128\sql.png" />
+    <Content Include="skins\neko\file-icons\128\tar.png" />
+    <Content Include="skins\neko\file-icons\128\unknow.png" />
+    <Content Include="skins\neko\file-icons\128\unknown.png" />
+    <Content Include="skins\neko\file-icons\128\video.png" />
+    <Content Include="skins\neko\file-icons\128\writer.png" />
+    <Content Include="skins\neko\file-icons\128\zip.png" />
+    <Content Include="skins\neko\file-icons\16\7z.png" />
+    <Content Include="skins\neko\file-icons\16\access.png" />
+    <Content Include="skins\neko\file-icons\16\audio.png" />
+    <Content Include="skins\neko\file-icons\16\calc.png" />
+    <Content Include="skins\neko\file-icons\16\css.png" />
+    <Content Include="skins\neko\file-icons\16\csv.png" />
+    <Content Include="skins\neko\file-icons\16\directory.png" />
+    <Content Include="skins\neko\file-icons\16\draw.png" />
+    <Content Include="skins\neko\file-icons\16\excel.png" />
+    <Content Include="skins\neko\file-icons\16\html.png" />
+    <Content Include="skins\neko\file-icons\16\image-preview.png" />
+    <Content Include="skins\neko\file-icons\16\image.png" />
+    <Content Include="skins\neko\file-icons\16\impress.png" />
+    <Content Include="skins\neko\file-icons\16\javascript.png" />
+    <Content Include="skins\neko\file-icons\16\log.png" />
+    <Content Include="skins\neko\file-icons\16\msword.png" />
+    <Content Include="skins\neko\file-icons\16\pdf.png" />
+    <Content Include="skins\neko\file-icons\16\php.png" />
+    <Content Include="skins\neko\file-icons\16\plain.png" />
+    <Content Include="skins\neko\file-icons\16\powerpoint.png" />
+    <Content Include="skins\neko\file-icons\16\rar.png" />
+    <Content Include="skins\neko\file-icons\16\readme.png" />
+    <Content Include="skins\neko\file-icons\16\rtf.png" />
+    <Content Include="skins\neko\file-icons\16\sql.png" />
+    <Content Include="skins\neko\file-icons\16\tar.png" />
+    <Content Include="skins\neko\file-icons\16\unknown.png" />
+    <Content Include="skins\neko\file-icons\16\video.png" />
+    <Content Include="skins\neko\file-icons\16\writer.png" />
+    <Content Include="skins\neko\file-icons\16\zip.png" />
+    <Content Include="skins\neko\file-icons\22\7z.png" />
+    <Content Include="skins\neko\file-icons\22\access.png" />
+    <Content Include="skins\neko\file-icons\22\audio.png" />
+    <Content Include="skins\neko\file-icons\22\calc.png" />
+    <Content Include="skins\neko\file-icons\22\css.png" />
+    <Content Include="skins\neko\file-icons\22\csv.png" />
+    <Content Include="skins\neko\file-icons\22\directory.png" />
+    <Content Include="skins\neko\file-icons\22\draw.png" />
+    <Content Include="skins\neko\file-icons\22\excel.png" />
+    <Content Include="skins\neko\file-icons\22\html.png" />
+    <Content Include="skins\neko\file-icons\22\image-preview.png" />
+    <Content Include="skins\neko\file-icons\22\image.png" />
+    <Content Include="skins\neko\file-icons\22\javascript.png" />
+    <Content Include="skins\neko\file-icons\22\log.png" />
+    <Content Include="skins\neko\file-icons\22\msword.png" />
+    <Content Include="skins\neko\file-icons\22\pdf.png" />
+    <Content Include="skins\neko\file-icons\22\php.png" />
+    <Content Include="skins\neko\file-icons\22\plain.png" />
+    <Content Include="skins\neko\file-icons\22\powerpoint.png" />
+    <Content Include="skins\neko\file-icons\22\rar.png" />
+    <Content Include="skins\neko\file-icons\22\readme.png" />
+    <Content Include="skins\neko\file-icons\22\rtf.png" />
+    <Content Include="skins\neko\file-icons\22\sql.png" />
+    <Content Include="skins\neko\file-icons\22\tar.png" />
+    <Content Include="skins\neko\file-icons\22\unknown.png" />
+    <Content Include="skins\neko\file-icons\22\video.png" />
+    <Content Include="skins\neko\file-icons\22\zip.png" />
+    <Content Include="skins\neko\file-icons\256\7z.png" />
+    <Content Include="skins\neko\file-icons\256\access.png" />
+    <Content Include="skins\neko\file-icons\256\audio.png" />
+    <Content Include="skins\neko\file-icons\256\calc.png" />
+    <Content Include="skins\neko\file-icons\256\css.png" />
+    <Content Include="skins\neko\file-icons\256\csv.png" />
+    <Content Include="skins\neko\file-icons\256\directory.png" />
+    <Content Include="skins\neko\file-icons\256\draw.png" />
+    <Content Include="skins\neko\file-icons\256\excel.png" />
+    <Content Include="skins\neko\file-icons\256\html.png" />
+    <Content Include="skins\neko\file-icons\256\image-preview.png" />
+    <Content Include="skins\neko\file-icons\256\image.png" />
+    <Content Include="skins\neko\file-icons\256\javascript.png" />
+    <Content Include="skins\neko\file-icons\256\log.png" />
+    <Content Include="skins\neko\file-icons\256\msword.png" />
+    <Content Include="skins\neko\file-icons\256\pdf.png" />
+    <Content Include="skins\neko\file-icons\256\php.png" />
+    <Content Include="skins\neko\file-icons\256\plain.png" />
+    <Content Include="skins\neko\file-icons\256\powerpoint.png" />
+    <Content Include="skins\neko\file-icons\256\rar.png" />
+    <Content Include="skins\neko\file-icons\256\readme.png" />
+    <Content Include="skins\neko\file-icons\256\rtf.png" />
+    <Content Include="skins\neko\file-icons\256\sql.png" />
+    <Content Include="skins\neko\file-icons\256\tar.png" />
+    <Content Include="skins\neko\file-icons\256\unknow.png" />
+    <Content Include="skins\neko\file-icons\256\unknown.png" />
+    <Content Include="skins\neko\file-icons\256\video.png" />
+    <Content Include="skins\neko\file-icons\256\zip.png" />
+    <Content Include="skins\neko\file-icons\32\7z.png" />
+    <Content Include="skins\neko\file-icons\32\access.png" />
+    <Content Include="skins\neko\file-icons\32\audio.png" />
+    <Content Include="skins\neko\file-icons\32\calc.png" />
+    <Content Include="skins\neko\file-icons\32\css.png" />
+    <Content Include="skins\neko\file-icons\32\csv.png" />
+    <Content Include="skins\neko\file-icons\32\directory.png" />
+    <Content Include="skins\neko\file-icons\32\draw.png" />
+    <Content Include="skins\neko\file-icons\32\excel.png" />
+    <Content Include="skins\neko\file-icons\32\html.png" />
+    <Content Include="skins\neko\file-icons\32\image-preview.png" />
+    <Content Include="skins\neko\file-icons\32\image.png" />
+    <Content Include="skins\neko\file-icons\32\impress.png" />
+    <Content Include="skins\neko\file-icons\32\javascript.png" />
+    <Content Include="skins\neko\file-icons\32\log.png" />
+    <Content Include="skins\neko\file-icons\32\msword.png" />
+    <Content Include="skins\neko\file-icons\32\pdf.png" />
+    <Content Include="skins\neko\file-icons\32\php.png" />
+    <Content Include="skins\neko\file-icons\32\plain.png" />
+    <Content Include="skins\neko\file-icons\32\powerpoint.png" />
+    <Content Include="skins\neko\file-icons\32\rar.png" />
+    <Content Include="skins\neko\file-icons\32\readme.png" />
+    <Content Include="skins\neko\file-icons\32\rtf.png" />
+    <Content Include="skins\neko\file-icons\32\sql.png" />
+    <Content Include="skins\neko\file-icons\32\tar.png" />
+    <Content Include="skins\neko\file-icons\32\unknown.png" />
+    <Content Include="skins\neko\file-icons\32\video.png" />
+    <Content Include="skins\neko\file-icons\32\writer.png" />
+    <Content Include="skins\neko\file-icons\32\zip.png" />
+    <Content Include="skins\neko\file-icons\48\7z.png" />
+    <Content Include="skins\neko\file-icons\48\access.png" />
+    <Content Include="skins\neko\file-icons\48\audio.png" />
+    <Content Include="skins\neko\file-icons\48\calc.png" />
+    <Content Include="skins\neko\file-icons\48\css.png" />
+    <Content Include="skins\neko\file-icons\48\csv.png" />
+    <Content Include="skins\neko\file-icons\48\directory.png" />
+    <Content Include="skins\neko\file-icons\48\draw.png" />
+    <Content Include="skins\neko\file-icons\48\excel.png" />
+    <Content Include="skins\neko\file-icons\48\html.png" />
+    <Content Include="skins\neko\file-icons\48\image-preview.png" />
+    <Content Include="skins\neko\file-icons\48\image.png" />
+    <Content Include="skins\neko\file-icons\48\impress.png" />
+    <Content Include="skins\neko\file-icons\48\javascript.png" />
+    <Content Include="skins\neko\file-icons\48\log.png" />
+    <Content Include="skins\neko\file-icons\48\msword.png" />
+    <Content Include="skins\neko\file-icons\48\pdf.png" />
+    <Content Include="skins\neko\file-icons\48\php.png" />
+    <Content Include="skins\neko\file-icons\48\plain.png" />
+    <Content Include="skins\neko\file-icons\48\powerpoint.png" />
+    <Content Include="skins\neko\file-icons\48\rar.png" />
+    <Content Include="skins\neko\file-icons\48\readme.png" />
+    <Content Include="skins\neko\file-icons\48\rtf.png" />
+    <Content Include="skins\neko\file-icons\48\sql.png" />
+    <Content Include="skins\neko\file-icons\48\tar.png" />
+    <Content Include="skins\neko\file-icons\48\unknown.png" />
+    <Content Include="skins\neko\file-icons\48\video.png" />
+    <Content Include="skins\neko\file-icons\48\writer.png" />
+    <Content Include="skins\neko\file-icons\48\zip.png" />
+    <Content Include="skins\neko\file-icons\64\7z.png" />
+    <Content Include="skins\neko\file-icons\64\access.png" />
+    <Content Include="skins\neko\file-icons\64\audio.png" />
+    <Content Include="skins\neko\file-icons\64\calc.png" />
+    <Content Include="skins\neko\file-icons\64\css.png" />
+    <Content Include="skins\neko\file-icons\64\csv.png" />
+    <Content Include="skins\neko\file-icons\64\directory.png" />
+    <Content Include="skins\neko\file-icons\64\draw.png" />
+    <Content Include="skins\neko\file-icons\64\excel.png" />
+    <Content Include="skins\neko\file-icons\64\html.png" />
+    <Content Include="skins\neko\file-icons\64\image-preview.png" />
+    <Content Include="skins\neko\file-icons\64\image.png" />
+    <Content Include="skins\neko\file-icons\64\impress.png" />
+    <Content Include="skins\neko\file-icons\64\javascript.png" />
+    <Content Include="skins\neko\file-icons\64\log.png" />
+    <Content Include="skins\neko\file-icons\64\msword.png" />
+    <Content Include="skins\neko\file-icons\64\pdf.png" />
+    <Content Include="skins\neko\file-icons\64\php.png" />
+    <Content Include="skins\neko\file-icons\64\plain.png" />
+    <Content Include="skins\neko\file-icons\64\powerpoint.png" />
+    <Content Include="skins\neko\file-icons\64\rar.png" />
+    <Content Include="skins\neko\file-icons\64\readme.png" />
+    <Content Include="skins\neko\file-icons\64\rtf.png" />
+    <Content Include="skins\neko\file-icons\64\sql.png" />
+    <Content Include="skins\neko\file-icons\64\tar.png" />
+    <Content Include="skins\neko\file-icons\64\unknow.png" />
+    <Content Include="skins\neko\file-icons\64\unknown.png" />
+    <Content Include="skins\neko\file-icons\64\video.png" />
+    <Content Include="skins\neko\file-icons\64\writer.png" />
+    <Content Include="skins\neko\file-icons\64\zip.png" />
+    <Content Include="skins\neko\icons.css" />
+    <Content Include="skins\neko\images\ajax-loader.gif" />
+    <Content Include="skins\neko\images\svg\black\adjust-black.svg" />
+    <Content Include="skins\neko\images\svg\black\arrow-d-black.svg" />
+    <Content Include="skins\neko\images\svg\black\arrow-l-black.svg" />
+    <Content Include="skins\neko\images\svg\black\arrow-r-black.svg" />
+    <Content Include="skins\neko\images\svg\black\back-black.svg" />
+    <Content Include="skins\neko\images\svg\black\blur-black.svg" />
+    <Content Include="skins\neko\images\svg\black\brightness-black.svg" />
+    <Content Include="skins\neko\images\svg\black\cancel-black.svg" />
+    <Content Include="skins\neko\images\svg\black\choose-black.svg" />
+    <Content Include="skins\neko\images\svg\black\choose-resized-black.svg" />
+    <Content Include="skins\neko\images\svg\black\clip-black.svg" />
+    <Content Include="skins\neko\images\svg\black\contrast-black.svg" />
+    <Content Include="skins\neko\images\svg\black\crop-black.svg" />
+    <Content Include="skins\neko\images\svg\black\details-black.svg" />
+    <Content Include="skins\neko\images\svg\black\exposure-black.svg" />
+    <Content Include="skins\neko\images\svg\black\file-copy-black.svg" />
+    <Content Include="skins\neko\images\svg\black\file-delete-black.svg" />
+    <Content Include="skins\neko\images\svg\black\file-download-black.svg" />
+    <Content Include="skins\neko\images\svg\black\file-edit-black.svg" />
+    <Content Include="skins\neko\images\svg\black\file-move-black.svg" />
+    <Content Include="skins\neko\images\svg\black\file-rename-black.svg" />
+    <Content Include="skins\neko\images\svg\black\folder-add-black.svg" />
+    <Content Include="skins\neko\images\svg\black\folder-delete-black.svg" />
+    <Content Include="skins\neko\images\svg\black\folder-rename-black.svg" />
+    <Content Include="skins\neko\images\svg\black\forward-black.svg" />
+    <Content Include="skins\neko\images\svg\black\gamma-black.svg" />
+    <Content Include="skins\neko\images\svg\black\hue-black.svg" />
+    <Content Include="skins\neko\images\svg\black\maximize-black.svg" />
+    <Content Include="skins\neko\images\svg\black\menu-black.svg" />
+    <Content Include="skins\neko\images\svg\black\minimize-black.svg" />
+    <Content Include="skins\neko\images\svg\black\minus-black.svg" />
+    <Content Include="skins\neko\images\svg\black\more-vertical-black.svg" />
+    <Content Include="skins\neko\images\svg\black\noise-black.svg" />
+    <Content Include="skins\neko\images\svg\black\plus-black.svg" />
+    <Content Include="skins\neko\images\svg\black\presets-black.svg" />
+    <Content Include="skins\neko\images\svg\black\question-black.svg" />
+    <Content Include="skins\neko\images\svg\black\reset-black.svg" />
+    <Content Include="skins\neko\images\svg\black\resize-black.svg" />
+    <Content Include="skins\neko\images\svg\black\rotate-black.svg" />
+    <Content Include="skins\neko\images\svg\black\rotate-left-black.svg" />
+    <Content Include="skins\neko\images\svg\black\rotate-right-black.svg" />
+    <Content Include="skins\neko\images\svg\black\saturation-black.svg" />
+    <Content Include="skins\neko\images\svg\black\save-black.svg" />
+    <Content Include="skins\neko\images\svg\black\sepia-black.svg" />
+    <Content Include="skins\neko\images\svg\black\settings-black.svg" />
+    <Content Include="skins\neko\images\svg\black\sharpen-black.svg" />
+    <Content Include="skins\neko\images\svg\black\tick-black.svg" />
+    <Content Include="skins\neko\images\svg\black\upload-black.svg" />
+    <Content Include="skins\neko\images\svg\black\vibrance-black.svg" />
+    <Content Include="skins\neko\images\svg\black\view-black.svg" />
+    <Content Include="skins\neko\images\svg\gray\add-circle-gray.svg" />
+    <Content Include="skins\neko\images\svg\gray\add-gray.svg" />
+    <Content Include="skins\neko\images\svg\gray\add-photo-gray.svg" />
+    <Content Include="skins\neko\images\svg\gray\adjust-gray.svg" />
+    <Content Include="skins\neko\images\svg\gray\arrow-down-gray.svg" />
+    <Content Include="skins\neko\images\svg\gray\check-blue.svg" />
+    <Content Include="skins\neko\images\svg\gray\check-gray.svg" />
+    <Content Include="skins\neko\images\svg\gray\check-white.svg" />
+    <Content Include="skins\neko\images\svg\gray\checkbox-checked.svg" />
+    <Content Include="skins\neko\images\svg\gray\checkbox.svg" />
+    <Content Include="skins\neko\images\svg\gray\close-gray.svg" />
+    <Content Include="skins\neko\images\svg\gray\crop-gray.svg" />
+    <Content Include="skins\neko\images\svg\gray\folder-add-gray.svg" />
+    <Content Include="skins\neko\images\svg\gray\folder-blue.svg" />
+    <Content Include="skins\neko\images\svg\gray\folder-gray.svg" />
+    <Content Include="skins\neko\images\svg\gray\folder-open-blue.svg" />
+    <Content Include="skins\neko\images\svg\gray\info-gray.svg" />
+    <Content Include="skins\neko\images\svg\gray\photo-gray.svg" />
+    <Content Include="skins\neko\images\svg\gray\presets-gray.svg" />
+    <Content Include="skins\neko\images\svg\gray\reset-gray.svg" />
+    <Content Include="skins\neko\images\svg\gray\resize-gray.svg" />
+    <Content Include="skins\neko\images\svg\gray\rotate-gray.svg" />
+    <Content Include="skins\neko\images\svg\gray\rotate-left-gray.svg" />
+    <Content Include="skins\neko\images\svg\gray\rotate-right-gray.svg" />
+    <Content Include="skins\neko\images\svg\gray\save-gray.svg" />
+    <Content Include="skins\neko\images\svg\gray\settings.svg" />
+    <Content Include="skins\neko\images\svg\gray\trash-gray.svg" />
+    <Content Include="skins\neko\images\svg\white\arrow-left-white.svg" />
+    <Content Include="skins\neko\images\svg\white\arrow-right-white.svg" />
+    <Content Include="skins\neko\skin.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Code\ConnectorConfig.cs" />
+    <Content Include="App_Code\RoleBasedAuthenticator.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="userfiles\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != '' And Exists('$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets')" />
+  <Import Project="$(SolutionDir)\packages\MSBuild.Microsoft.VisualStudio.Web.targets.14.0.0\tools\VSToolsPath\WebApplications\Microsoft.WebApplication.targets" Condition="('$(VSToolsPath)' == '' Or !Exists('$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets')) And Exists('$(SolutionDir)\packages\MSBuild.Microsoft.VisualStudio.Web.targets.14.0.0\tools\VSToolsPath\WebApplications\Microsoft.WebApplication.targets')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>53746</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:50000/ckfinder</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

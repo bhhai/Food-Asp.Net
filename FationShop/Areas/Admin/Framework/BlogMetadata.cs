@@ -23,7 +23,6 @@ namespace FationShop.Areas.Admin.Models.DTO
         [Required(ErrorMessage = "Nội dung blog không được bỏ trống!")]
         public string Content { get; set; }
         [Display(Name = "Ảnh đại diện")]
-        [Required(ErrorMessage = "Ảnh đại diện không được bỏ trống!")]
         public string Avartar { get; set; }
         [Display(Name = "Ảnh mô tả")]
         public string Images { get; set; }

@@ -75,10 +75,10 @@
         @foreach (var item in categories)
         {
             <div class="category__block">
-                <img src="~/Assets/Client/assets/img/collec1.jpg" alt="Jacket" class="category__img">
+                <img src="@item.Image" alt="Jacket" class="category__img">
                 <div class="category__link">
                     <h4 class="category__title" data-aos="fade-up">@item.Name</h4>
-                    <p class="category__body" data-aos="fade-up" data-aos-delay="300"><a href="/Products/@item.MetaTitle.@item.ID">Mua ngay</a></p>
+                    <p class="category__body" data-aos="fade-up" data-aos-delay="300"><a href="/san-pham/@item.MetaTitle">Mua ngay</a></p>
                 </div>
             </div>
         }
@@ -98,14 +98,18 @@
             </a>
         </div>
 
-        <div class="product__list">
+        <div class="product__list"> 
             @foreach (var item in featureProducts)
             {
                 var url = "/san-pham/" + item.MetaTitle + "-" + item.ID;
                 <div class="product__item" data-aos="fade-up">
                     <a href="@url" class="pro__item-link">
                         <div class="product__img">
-                            <span class="onsale">14%</span>
+                            
+                            @if(item.PromotionPrice.HasValue)
+                {
+                            <span class="onsale">@(Math.Ceiling(100 - (item.Price.Value / item.PromotionPrice.Value)*100))%</span>
+                }
                             <img src="@item.Image1" class="product__item-img" alt="" width="100%">
                             <img src="@item.Image2" class="product__item-hidden" alt="" width="100%">
                         </div>
@@ -113,8 +117,8 @@
                             <h5 class="product__name-item">@item.Name</h5>
                             @if (item.PromotionPrice.HasValue)
                             {
-                                <span><span class="price">@(item.Price.HasValue ? item.Price.Value.ToString("N0") + "₫" : "Liên hệ")</span></span>
-                                <span class="product__price">@(item.PromotionPrice.HasValue ? item.PromotionPrice.Value.ToString("N0") + "₫" : "")</span>
+                                <span><span class="product__price">@(item.Price.HasValue ? item.Price.Value.ToString("N0") + "₫" : "Liên hệ")</span></span>
+                                <span class="price">@(item.PromotionPrice.HasValue ? item.PromotionPrice.Value.ToString("N0") + "₫" : "")</span>
                             }
                             else
                             {
@@ -324,7 +328,7 @@
                     </div>
                     <div class="blog__item-hover">
                         <p class="blog__item-hover__body">
-                            @item.Description
+                            @Html.Raw(item.Description)
                         </p>
                     </div>
                 </a>

@@ -86,10 +86,17 @@ namespace FationShop.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,MetaTitle,DisplayOrder,Status")] Category category)
+        public ActionResult Edit(Category category)
         {
             if (ModelState.IsValid)
             {
+                string fileName = Path.GetFileNameWithoutExtension(category.ImageFile1.FileName);
+                string extension = Path.GetExtension(category.ImageFile1.FileName);
+                fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                category.Image = "/Areas/Admin/Image/" + fileName;
+                fileName = Path.Combine(Server.MapPath("~/Areas/Admin/Image/"), fileName);
+                category.ImageFile1.SaveAs(fileName);
+
                 db.Entry(category).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
