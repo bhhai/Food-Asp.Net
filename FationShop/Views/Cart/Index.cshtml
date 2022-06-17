@@ -87,8 +87,8 @@
 
                         </table>
                         <button class="cart__button-link" type="submit">Cập nhật giỏ hàng</button>
-                        }
                     }
+                }
                 else
                 {
                     <span> Chưa có sản phẩm nào trong giỏ hàng! </span>
@@ -103,9 +103,26 @@
                     <span>Tổng tiền</span>
                     <span class="cart__payment-sum">@total.ToString("N0")<span>₫</span></span>
                 </div>
+                    @using (Html.BeginForm("Payment", "Cart"))
+                    {
                 <div class="cart__payment-pay">
-                    <a href="/thanh-toan" class="cart__button-link link-pay">thanh toán</a>
-                </div>
+                        <div class="cart__payment-pay__select">
+                            <h4>Chọn phương thức thanh toán</h4>
+
+                            <div class="mb-2">
+                                <input checked type="radio" name="1" value="cod" id="cod" />
+                                <label for="cod">Thanh toán bằng tiền mặt (COD)</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="1" id="online" value="online" />
+                                <label for="online">Thanh toán trực tuyến</label>
+                            </div>
+                            
+                            <input name="price" value="@total" style="display: none" />
+                        </div>
+                        <button type="submit" class="cart__button-link link-pay">thanh toán</button>
+                    </div>
+                    }
             </div>
         </div>
     </div>

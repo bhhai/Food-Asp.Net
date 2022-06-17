@@ -52,18 +52,16 @@
                     color: #fff;
                 }
 </style>
+<link rel="stylesheet" href="~/Assets/Client/assets/css/intro.css">
 
 
-<div class="top">
-    <div class="top-container">
-        <ul class="top__list">
-            <li class="top__item">
-                <a href="index.html" class="top__item-link">Trang chủ</a>
-                <i class="link__icon fas fa-chevron-right"></i>
-            </li>
-            <li class="top__item">
-                <a href="#" class="top__item-link">Sản phẩm</a>
-            </li>
+<div class="Introduce__baner" style="margin-bottom: 15px">
+    <div class="items">
+        <h4>@ViewBag.Title</h4>
+        <ul class="list__title">
+            <li><a class="items-font" href="/">Trang chủ</a></li>
+            <i class="link__icon fas fa-chevron-right"></i>
+            <li><span class="list_item-tab">@ViewBag.Title</span></li>
         </ul>
     </div>
 </div>
@@ -116,31 +114,31 @@
             <div class="new__all">
                 <h3 class="new__title">
                     <span>
-                        giới thiệu
+                        thương hiệu
                     </span>
                     <i class="fas fa-angle-down down__btn"></i>
                 </h3>
                 <ul class="new__list">
                     <li class="new__item">
                         <label for="vehicle1" class="new__box-color">
-                            <input type="checkbox" class="list__checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                            <input type="radio" class="list__checkbox" id="vehicle11" name="2" value="Bike">
                             <i class="fas fa-check tick-back"></i>
                         </label>
-                        <label class="new__cb-label" for="vehicle1">Danilo</label>
+                        <label class="new__cb-label" for="vehicle11">KFC</label>
                     </li>
                     <li for="id2" class="new__item">
                         <label for="vehicle1" class="new__box-color">
-                            <input type="checkbox" class="list__checkbox" id="vehicle2" name="vehicle2" value="Bike">
+                            <input type="radio" class="list__checkbox" id="vehicle22" name="2" value="Bike">
                             <i class="fas fa-check tick-back"></i>
                         </label>
-                        <label class="new__cb-label" for="vehicle2">Thecosmo</label>
+                        <label class="new__cb-label" for="vehicle22">Gogi House</label>
                     </li>
                     <li for="id3" class="new__item">
                         <label for="vehicle1" class="new__box-color">
-                            <input type="checkbox" class="list__checkbox" id="vehicle3" name="vehicle3" value="Bike">
+                            <input type="radio" class="list__checkbox" id="vehicle33" name="2" value="Bike">
                             <i class="fas fa-check tick-back"></i>
                         </label>
-                        <label class="new__cb-label" for="vehicle3">TOMATO</label>
+                        <label class="new__cb-label" for="vehicle33">Lẩu Wang</label>
                     </li>
                 </ul>
             </div>
@@ -154,137 +152,52 @@
                 <ul class="new__list">
                     <li class="new__item">
                         <label for="vehicle1" class="new__box-color">
-                            <input type="checkbox" class="list__checkbox" id="vehicle4" name="vehicle1" value="Bike">
+                            <input type="radio" class="list__checkbox" id="vehicle4" name="1" value="Bike">
                             <i class="fas fa-check tick-back"></i>
                         </label>
                         <label class="new__cb-label" for="vehicle4">Giá dưới 100.000₫</label>
                     </li>
                     <li class="new__item">
                         <label for="vehicle1" class="new__box-color">
-                            <input type="checkbox" class="list__checkbox" id="vehicle5" name="vehicle2" value="Bike">
+                            <input type="radio" class="list__checkbox" id="vehicle5" name="1" value="Bike">
                             <i class="fas fa-check tick-back"></i>
                         </label>
                         <label class="new__cb-label" for="vehicle5">100.000₫ - 200.000₫</label>
                     </li>
                     <li class="new__item">
                         <label for="vehicle1" class="new__box-color">
-                            <input type="checkbox" class="list__checkbox" id="vehicle6" name="vehicle3" value="Bike">
+                            <input type="radio" class="list__checkbox" id="vehicle6" name="1" value="Bike">
                             <i class="fas fa-check tick-back"></i>
                         </label>
                         <label class="new__cb-label" for="vehicle6">200.000₫ - 400.000₫</label>
                     </li>
                     <li class="new__item">
                         <label for="vehicle1" class="new__box-color">
-                            <input type="checkbox" class="list__checkbox" id="vehicle7" name="vehicle3" value="Bike">
+                            <input type="radio" class="list__checkbox" id="vehicle7" name="1" value="Bike">
                             <i class="fas fa-check tick-back"></i>
                         </label>
                         <label class="new__cb-label" for="vehicle7">400.000₫ - 500.000₫</label>
                     </li>
                     <li class="new__item">
                         <label for="vehicle1" class="new__box-color">
-                            <input type="checkbox" class="list__checkbox" id="vehicle8" name="vehicle3" value="Bike">
+                            <input type="radio" class="list__checkbox" id="vehicle8" name="1" value="Bike">
                             <i class="fas fa-check tick-back"></i>
                         </label>
                         <label class="new__cb-label" for="vehicle8">Trên 500.000₫</label>
                     </li>
                 </ul>
             </div>
-            <div class="new__all">
-                <h3 class="new__title">
-                    <span>
-                        kích cỡ
-                    </span>
-                    <i class="fas fa-angle-down down__btn"></i>
-                </h3>
-                <ul class="new__list">
-                    <li class="new__item">
-                        <label for="vehicle1" class="new__box-color">
-                            <input type="checkbox" class="list__checkbox" id="vehicle9" name="vehicle9" value="Bike">
-                            <i class="fas fa-check tick-back"></i>
-                        </label>
-                        <label class="new__cb-label" for="vehicle9">S</label>
-                    </li>
-                    <li for="id2" class="new__item">
-                        <label for="vehicle1" class="new__box-color">
-                            <input type="checkbox" class="list__checkbox" id="vehicle10" name="vehicle10" value="Bike">
-                            <i class="fas fa-check tick-back"></i>
-                        </label>
-                        <label class="new__cb-label" for="vehicle10">M</label>
-                    </li>
-                    <li for="id3" class="new__item">
-                        <label for="vehicle1" class="new__box-color">
-                            <input type="checkbox" class="list__checkbox" id="vehicle11" name="vehicle11" value="Bike">
-                            <i class="fas fa-check tick-back"></i>
-                        </label>
-                        <label class="new__cb-label" for="vehicle11">L</label>
-                    </li>
-                    <li for="id3" class="new__item">
-                        <label for="vehicle1" class="new__box-color">
-                            <input type="checkbox" class="list__checkbox" id="vehicle12" name="vehicle12" value="Bike">
-                            <i class="fas fa-check tick-back"></i>
-                        </label>
-                        <label class="new__cb-label" for="vehicle12">XL</label>
-                    </li>
-                    <li for="id3" class="new__item">
-                        <label for="vehicle1" class="new__box-color">
-                            <input type="checkbox" class="list__checkbox" id="vehicle13" name="vehicle13" value="Bike">
-                            <i class="fas fa-check tick-back"></i>
-                        </label>
-                        <label class="new__cb-label" for="vehicle13">XXL</label>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="new__all">
-                <h3 class="new__title">
-                    <span>
-                        màu sắc
-                    </span>
-                    <i class="fas fa-angle-down down__btn"></i>
-                </h3>
-                <div class="new__list new__color list__box">
-                    <label for="color__check">
-                        <div class="bg__color">
-                            <input type="checkbox" class="input__check" id="color__check">
-                            <i class="tick fas fa-check"></i>
-                        </div>
-                    </label>
-                    <label for="color__check2">
-                        <div class="bg__color" style="background-color: #b033de;">
-                            <input type="checkbox" class="input__check" id="color__check2">
-                            <i class="tick fas fa-check"></i>
-                        </div>
-                    </label>
-                    <label for="color__check3">
-                        <div class="bg__color" style="background-color: red;">
-                            <input type="checkbox" class="input__check" id="color__check3">
-                            <i class="tick fas fa-check"></i>
-                        </div>
-                    </label>
-                    <label for="color__check4">
-                        <div class="bg__color" style="background-color: green;">
-                            <input type="checkbox" class="input__check" id="color__check4">
-                            <i class="tick fas fa-check"></i>
-                        </div>
-                    </label>
-                    <label for="color__check5">
-                        <div class="bg__color" style="background-color: palevioletred;">
-                            <input type="checkbox" class="input__check" id="color__check5">
-                            <i class="tick fas fa-check"></i>
-                        </div>
-                    </label>
-                </div>
-            </div>
+            <button class="modal__btn">Lọc</button>
         </div>
         <div class="new__products">
             <div class="new__sort">
                 <span class="new__sort-txt">Sắp xếp:</span>
                 <select name="" class="new__select">
                     <option value="Mặc định">Mặc định</option>
-                    <option value="Giá: Tăng dần">Giá: Tăng dần</option>
-                    <option value="Giá: Giảm dần">Giá: Giảm dần</option>
-                    <option value="Tên: A-Z">Tên: A-Z</option>
-                    <option value="Tên: Z-A">Tên: Z-A</option>
+                    <option value="gia">@Html.ActionLink("Giá: Tăng dần", "Index", new { sortOrder = ViewBag.PriceSort })</option>
+                    <option value="gia_desc">Giá: Giảm dần</option>
+                    <option value="ten">Tên: A-Z</option>
+                    <option value="ten_desc">Tên: Z-A</option>
                     <option value="Mới nhất">Mới nhất</option>
                     <option value="Cũ nhất">Cũ nhất</option>
                 </select>

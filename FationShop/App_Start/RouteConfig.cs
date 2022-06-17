@@ -57,6 +57,13 @@ namespace FationShop
             );
 
             routes.MapRoute(
+                name: "PaymentConfirm",
+                url: "PaymentConfirm",
+                defaults: new { controller = "Cart", action = "PaymentConfirm", id = UrlParameter.Optional },
+                namespaces: new[] { "FationShop.Controllers" }
+            );
+
+            routes.MapRoute(
                 name: "Login",
                 url: "dang-nhap",
                 defaults: new { controller = "User", action = "Login", id = UrlParameter.Optional },

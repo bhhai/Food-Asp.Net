@@ -968,6 +968,7 @@ button.fa-search {
     border: 1px solid #f8452d;
     transition: .4s;
     cursor: pointer;
+    text-decoration: none;
 }
 
     .modal__btn:hover {

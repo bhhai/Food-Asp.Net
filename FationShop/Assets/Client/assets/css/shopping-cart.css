@@ -143,13 +143,28 @@
     border: 1px solid #eee;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     background-color: #fafafa;
 }
 
-.link-pay {
-    margin: 50px;
-    font-size: 12px;
+.cart__payment-pay__select {
+    padding: 10px 20px;
 }
+
+    .cart__payment-pay__select h4 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+    .cart__payment-pay__select .mb-2 {
+        margin-bottom: 10px;
+    }
+
+    .link-pay {
+        font-size: 16px;
+        text-align: center;
+        width: 40%;
+        margin: 20px auto;
+    }
 
 .modal__quan-container {
     justify-content: center;
